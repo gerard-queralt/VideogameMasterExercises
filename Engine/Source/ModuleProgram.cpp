@@ -11,7 +11,7 @@ ModuleProgram::~ModuleProgram()
 {
 }
 
-unsigned int ModuleProgram::CreateProgramFromShaders(const std::string& vertexShaderName, const std::string& fragmentShaderName)
+GLuint ModuleProgram::CreateProgramFromShaders(const std::string& vertexShaderName, const std::string& fragmentShaderName)
 {
 	std::string vertexShaderCode = ReadShaderFile(vertexShaderName);
 	std::string fragmentShaderCode = ReadShaderFile(fragmentShaderName);
