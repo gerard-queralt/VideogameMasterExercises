@@ -59,3 +59,29 @@ GLuint ModuleProgram::compileShader(GLenum shaderType, const std::string& shader
 	}
 	return shaderID;
 }
+
+GLuint ModuleProgram::createProgram(GLuint vertexShader, GLuint fragmentShader)
+{
+	GLuint programID = glCreateProgram();
+	glAttachShader(programID, vertexShader);
+	glAttachShader(programID, fragmentShader);
+	glLinkProgram(programID);
+
+	int res = GL_FALSE;
+	glGetProgramiv(programID, GL_LINK_STATUS, &res);
+	if (res == GL_FALSE) {
+		int len = 0;
+		glGetProgramiv(programID, GL_INFO_LOG_LENGTH, &len);
+		if (len > 0)
+		{
+			int written = 0;
+			char* info = (char*)malloc(len);
+			glGetProgramInfoLog(programID, len, &written, info);
+			LOG("Program Log Info: %s", info);
+			free(info);
+		}
+	}
+	glDeleteShader(vertexShader);
+	glDeleteShader(fragmentShader);
+	return programID;
+}
