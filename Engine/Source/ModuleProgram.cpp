@@ -1,7 +1,7 @@
 #include "ModuleProgram.h"
 #include <fstream>
 
-const std::string ModuleProgram::SHADER_FOLDER_PATH = "";
+const std::string ModuleProgram::SHADER_FOLDER_PATH = "/shaders/";
 
 ModuleProgram::ModuleProgram()
 {
