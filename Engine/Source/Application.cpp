@@ -3,6 +3,7 @@
 #include "ModuleWindow.h"
 #include "ModuleRender.h"
 #include "ModuleInput.h"
+#include "ModuleProgram.h"
 
 using namespace std;
 
