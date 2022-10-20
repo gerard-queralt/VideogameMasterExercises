@@ -16,7 +16,12 @@ unsigned int ModuleProgram::CreateProgramFromShaders(const std::string& vertexSh
 	std::string vertexShaderCode = readShaderFile(vertexShaderName);
 	std::string fragmentShaderCode = readShaderFile(fragmentShaderName);
 
-	return 0;
+	GLuint vertexShader = compileShader(GL_VERTEX_SHADER, vertexShaderCode);
+	GLuint fragmentShader = compileShader(GL_FRAGMENT_SHADER, fragmentShaderCode);
+
+	GLuint program = createProgram(vertexShader, fragmentShader);
+
+	return program;
 }
 
 std::string ModuleProgram::readShaderFile(const std::string& fileName)
