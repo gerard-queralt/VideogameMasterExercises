@@ -12,10 +12,10 @@ public:
 
 	static const std::string SHADER_FOLDER_PATH;
 
-	unsigned int CreateProgramFromShaders(std::string vertexShaderName, std::string fragmentShaderName);
+	unsigned int CreateProgramFromShaders(const std::string& vertexShaderName, const std::string& fragmentShaderName);
 
 private:
-	std::string readShaderFile(std::string fileName);
-	GLuint compileShader(GLenum shaderType, std::string shaderSource);
+	std::string readShaderFile(const std::string& fileName);
+	GLuint compileShader(GLenum shaderType, const std::string& shaderSource);
 };
 

@@ -11,7 +11,7 @@ ModuleProgram::~ModuleProgram()
 {
 }
 
-unsigned int ModuleProgram::CreateProgramFromShaders(std::string vertexShaderName, std::string fragmentShaderName)
+unsigned int ModuleProgram::CreateProgramFromShaders(const std::string& vertexShaderName, const std::string& fragmentShaderName)
 {
 	std::string vertexShaderCode = readShaderFile(vertexShaderName);
 	std::string fragmentShaderCode = readShaderFile(fragmentShaderName);
@@ -19,7 +19,7 @@ unsigned int ModuleProgram::CreateProgramFromShaders(std::string vertexShaderNam
 	return 0;
 }
 
-std::string ModuleProgram::readShaderFile(std::string fileName)
+std::string ModuleProgram::readShaderFile(const std::string& fileName)
 {
 	std::ifstream file;
 	std::string fileContents = "";
@@ -37,7 +37,7 @@ std::string ModuleProgram::readShaderFile(std::string fileName)
 	return fileContents;
 }
 
-GLuint ModuleProgram::compileShader(GLenum shaderType, std::string shaderSource)
+GLuint ModuleProgram::compileShader(GLenum shaderType, const std::string& shaderSource)
 {
 	GLuint shaderID = glCreateShader(shaderType);
 	const char* sourceAsChars = shaderSource.c_str();
