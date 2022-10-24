@@ -8,13 +8,16 @@
 class ModuleScene : public Module
 {
 private:
-	static const std::string PATH;
-
 	SDL_Texture* texture;
-	SDL_Rect* rect;
+	SDL_Rect* rectBackground;
+	SDL_Rect* rectGround;
 
 public:
-	bool Init();
+	static const float DELTA_X_FRAME_INC;
+
+	bool Start();
 	update_status Update();
+
+	float deltaX;
 };
 

@@ -70,19 +70,16 @@ bool ModuleRender::CleanUp()
 }
 
 // Blit to screen
-bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, SDL_Rect* section)
+bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, int w, int h, SDL_Rect* section)
 {
 	bool ret = true;
 	SDL_Rect rect;
 	rect.x = x;
 	rect.y = y;
+	rect.w = w;
+	rect.h = h;
 
-	if(section != NULL)
-	{
-		rect.w = section->w;
-		rect.h = section->h;
-	}
-	else
+	if (section == NULL)
 	{
 		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
 	}
