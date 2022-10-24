@@ -76,10 +76,13 @@ bool ModuleRender::Blit(SDL_Texture* texture, int x, int y, int w, int h, SDL_Re
 	SDL_Rect rect;
 	rect.x = x;
 	rect.y = y;
-	rect.w = w;
-	rect.h = h;
 
-	if (section == NULL)
+	if(section != NULL)
+	{
+		rect.w = section->w;
+		rect.h = section->h;
+	}
+	else
 	{
 		SDL_QueryTexture(texture, NULL, NULL, &rect.w, &rect.h);
 	}
