@@ -6,5 +6,6 @@ class ModuleEditor : public Module
 {
 public:
 	bool Init();
+	bool Start();
 };
 

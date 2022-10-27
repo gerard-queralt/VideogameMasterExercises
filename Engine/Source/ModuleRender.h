@@ -20,5 +20,7 @@ public:
 	void WindowResized(unsigned width, unsigned height);
 
 private:
+	friend class ModuleEditor;
+
 	void* context;
 };
