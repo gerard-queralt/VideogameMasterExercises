@@ -99,7 +99,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\External\ImGui\Include\GlueCode;.\External\ImGui\Include\MainSource;.\glew-2.1.0\include\GL;.\SDL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\External\ImGui\Include\GlueCode;..\External\ImGui\Include\MainSource;.\glew-2.1.0\include\GL;.\SDL\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -144,14 +144,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\External\ImGui\Include\GlueCode\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="..\External\ImGui\Include\GlueCode\imgui_impl_sdl.cpp" />
+    <ClCompile Include="..\External\ImGui\Include\MainSource\imgui.cpp" />
+    <ClCompile Include="..\External\ImGui\Include\MainSource\imgui_demo.cpp" />
+    <ClCompile Include="..\External\ImGui\Include\MainSource\imgui_draw.cpp" />
+    <ClCompile Include="..\External\ImGui\Include\MainSource\imgui_tables.cpp" />
+    <ClCompile Include="..\External\ImGui\Include\MainSource\imgui_widgets.cpp" />
     <ClCompile Include="Application.cpp" />
-    <ClCompile Include="External\ImGui\Include\GlueCode\imgui_impl_opengl3.cpp" />
-    <ClCompile Include="External\ImGui\Include\GlueCode\imgui_impl_sdl.cpp" />
-    <ClCompile Include="External\ImGui\Include\MainSource\imgui.cpp" />
-    <ClCompile Include="External\ImGui\Include\MainSource\imgui_demo.cpp" />
-    <ClCompile Include="External\ImGui\Include\MainSource\imgui_draw.cpp" />
-    <ClCompile Include="External\ImGui\Include\MainSource\imgui_tables.cpp" />
-    <ClCompile Include="External\ImGui\Include\MainSource\imgui_widgets.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="ModuleEditor.cpp" />
@@ -161,17 +161,17 @@
     <ClCompile Include="ModuleWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\External\ImGui\Include\GlueCode\imgui_impl_opengl3.h" />
+    <ClInclude Include="..\External\ImGui\Include\GlueCode\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="..\External\ImGui\Include\GlueCode\imgui_impl_sdl.h" />
+    <ClInclude Include="..\External\ImGui\Include\MainSource\imconfig.h" />
+    <ClInclude Include="..\External\ImGui\Include\MainSource\imgui.h" />
+    <ClInclude Include="..\External\ImGui\Include\MainSource\imgui_internal.h" />
+    <ClInclude Include="..\External\ImGui\Include\MainSource\imstb_rectpack.h" />
+    <ClInclude Include="..\External\ImGui\Include\MainSource\imstb_textedit.h" />
+    <ClInclude Include="..\External\ImGui\Include\MainSource\imstb_truetype.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Dummy.h" />
-    <ClInclude Include="External\ImGui\Include\GlueCode\imgui_impl_opengl3.h" />
-    <ClInclude Include="External\ImGui\Include\GlueCode\imgui_impl_opengl3_loader.h" />
-    <ClInclude Include="External\ImGui\Include\GlueCode\imgui_impl_sdl.h" />
-    <ClInclude Include="External\ImGui\Include\MainSource\imconfig.h" />
-    <ClInclude Include="External\ImGui\Include\MainSource\imgui.h" />
-    <ClInclude Include="External\ImGui\Include\MainSource\imgui_internal.h" />
-    <ClInclude Include="External\ImGui\Include\MainSource\imstb_rectpack.h" />
-    <ClInclude Include="External\ImGui\Include\MainSource\imstb_textedit.h" />
-    <ClInclude Include="External\ImGui\Include\MainSource\imstb_truetype.h" />
     <ClInclude Include="Globals.h" />
     <ClInclude Include="Module.h" />
     <ClInclude Include="ModuleEditor.h" />
