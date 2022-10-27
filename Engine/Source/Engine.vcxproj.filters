@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="Application.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="log.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="Main.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleProgram.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleWindow.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEditor.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
+    <ClCompile Include="External\ImGui\Include\GlueCode\imgui_impl_opengl3.cpp" />
+    <ClCompile Include="External\ImGui\Include\GlueCode\imgui_impl_sdl.cpp" />
+    <ClCompile Include="External\ImGui\Include\MainSource\imgui.cpp" />
+    <ClCompile Include="External\ImGui\Include\MainSource\imgui_demo.cpp" />
+    <ClCompile Include="External\ImGui\Include\MainSource\imgui_draw.cpp" />
+    <ClCompile Include="External\ImGui\Include\MainSource\imgui_tables.cpp" />
+    <ClCompile Include="External\ImGui\Include\MainSource\imgui_widgets.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Application.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Dummy.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Globals.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleProgram.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRender.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleWindow.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEditor.h">
+      <Filter>Source</Filter>
+    </ClInclude>
+    <ClInclude Include="External\ImGui\Include\GlueCode\imgui_impl_opengl3.h" />
+    <ClInclude Include="External\ImGui\Include\GlueCode\imgui_impl_opengl3_loader.h" />
+    <ClInclude Include="External\ImGui\Include\GlueCode\imgui_impl_sdl.h" />
+    <ClInclude Include="External\ImGui\Include\MainSource\imconfig.h" />
+    <ClInclude Include="External\ImGui\Include\MainSource\imgui.h" />
+    <ClInclude Include="External\ImGui\Include\MainSource\imgui_internal.h" />
+    <ClInclude Include="External\ImGui\Include\MainSource\imstb_rectpack.h" />
+    <ClInclude Include="External\ImGui\Include\MainSource\imstb_textedit.h" />
+    <ClInclude Include="External\ImGui\Include\MainSource\imstb_truetype.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source">
+      <UniqueIdentifier>{8e30c3c1-a3b8-4389-a177-b260e182701e}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
