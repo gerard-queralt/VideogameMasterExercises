@@ -51,7 +51,7 @@ update_status ModuleRender::PreUpdate()
 	int window_width, window_height;
 	SDL_GetWindowSize(App->window->window, &window_width, &window_height);
 	glViewport(0, 0, window_width, window_height);
-	glClearColor(0.1f, 0.1f, 0.1f, 1.0f);
+	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	return UPDATE_CONTINUE;
 }
