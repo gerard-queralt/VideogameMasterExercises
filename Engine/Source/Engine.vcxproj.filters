@@ -46,6 +46,9 @@
     <ClCompile Include="..\External\ImGui\Include\MainSource\imgui_widgets.cpp">
       <Filter>External</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleRenderExercise.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -101,6 +104,9 @@
     </ClInclude>
     <ClInclude Include="..\External\ImGui\Include\MainSource\imstb_truetype.h">
       <Filter>External</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRenderExercise.h">
+      <Filter>Source</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
