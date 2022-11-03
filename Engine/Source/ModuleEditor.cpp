@@ -27,3 +27,46 @@ bool ModuleEditor::Start()
 
 	return true;
 }
+
+update_status ModuleEditor::PreUpdate()
+{
+	ImGui_ImplOpenGL3_NewFrame();
+	ImGui_ImplSDL2_NewFrame(App->window->window);
+	ImGui::NewFrame();
+
+	return UPDATE_CONTINUE;
+}
+
+update_status ModuleEditor::Update()
+{
+	ImGui::Render();
+	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
+
+	ImGuiIO& io = ImGui::GetIO();
+	if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable)
+	{
+		SDL_Window* backup_current_window = SDL_GL_GetCurrentWindow();
+		SDL_GLContext backup_current_context = SDL_GL_GetCurrentContext();
+		ImGui::UpdatePlatformWindows();
+		ImGui::RenderPlatformWindowsDefault();
+		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
+	}
+
+	SDL_GL_SwapWindow(App->window->window);
+
+	return UPDATE_CONTINUE;
+}
+
+update_status ModuleEditor::PostUpdate()
+{
+	return UPDATE_CONTINUE;
+}
+
+bool ModuleEditor::CleanUp()
+{
+	ImGui_ImplOpenGL3_Shutdown();
+    ImGui_ImplSDL2_Shutdown();
+    ImGui::DestroyContext();
+
+	return true;
+}
