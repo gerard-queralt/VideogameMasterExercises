@@ -58,7 +58,7 @@ GLuint ModuleProgram::CompileShader(GLenum shaderType, const std::string& shader
 			int written = 0;
 			char* info = (char*)malloc(len);
 			glGetShaderInfoLog(shaderID, len, &written, info);
-			LOG("Log Info: %s", info);
+			LOG_ENGINE("Log Info: %s", info);
 			free(info);
 		}
 	}
@@ -82,7 +82,7 @@ GLuint ModuleProgram::CreateProgram(GLuint vertexShader, GLuint fragmentShader)
 			int written = 0;
 			char* info = (char*)malloc(len);
 			glGetProgramInfoLog(programID, len, &written, info);
-			LOG("Program Log Info: %s", info);
+			LOG_ENGINE("Program Log Info: %s", info);
 			free(info);
 		}
 	}

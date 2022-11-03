@@ -39,7 +39,7 @@ update_status ModuleEditor::PreUpdate()
 
 update_status ModuleEditor::Update()
 {
-	//ImGui::ShowDemoWindow();
+	ImGui::ShowDemoWindow();
 	
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -53,8 +53,6 @@ update_status ModuleEditor::Update()
 		ImGui::RenderPlatformWindowsDefault();
 		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
 	}
-
-	SDL_GL_SwapWindow(App->window->window);
 
 	return UPDATE_CONTINUE;
 }
