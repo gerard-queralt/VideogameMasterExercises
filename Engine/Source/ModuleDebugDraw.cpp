@@ -1,5 +1,9 @@
 #include "Globals.h"
 #include "ModuleDebugDraw.h"
+#include "Application.h"
+#include "ModuleRenderExercise.h"
+#include "ModuleWindow.h"
+#include "SDL.h"
 
 #define DEBUG_DRAW_IMPLEMENTATION
 #include "DebugDraw.h"     // Debug Draw API. Notice that we need the DEBUG_DRAW_IMPLEMENTATION macro here!
@@ -608,6 +612,9 @@ bool ModuleDebugDraw::CleanUp()
 
 update_status  ModuleDebugDraw::Update()
 {
+    int w, h;
+    SDL_GetWindowSize(App->window->window, &w, &h);
+    Draw(App->exercise->getView(), App->exercise->getProj(), w, h);
 	return UPDATE_CONTINUE;
 }
 
