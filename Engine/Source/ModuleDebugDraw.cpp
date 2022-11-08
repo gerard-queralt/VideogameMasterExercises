@@ -1,7 +1,7 @@
 #include "Globals.h"
 #include "ModuleDebugDraw.h"
 #include "Application.h"
-#include "ModuleRenderExercise.h"
+#include "ModuleEditorCamera.h"
 #include "ModuleWindow.h"
 #include "SDL.h"
 
@@ -614,7 +614,7 @@ update_status  ModuleDebugDraw::Update()
 {
     int w, h;
     SDL_GetWindowSize(App->window->window, &w, &h);
-    Draw(App->exercise->getView(), App->exercise->getProj(), w, h);
+    Draw(App->camera->getView(), App->camera->getProj(), w, h);
 	return UPDATE_CONTINUE;
 }
 
