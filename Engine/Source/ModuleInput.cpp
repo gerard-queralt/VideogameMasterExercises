@@ -1,7 +1,10 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleInput.h"
+
 #include "ModuleRender.h"
+#include "ModuleWindow.h"
+#include "ModuleEditorCamera.h"
 #include "SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
 
@@ -41,7 +44,7 @@ update_status ModuleInput::Update()
             case SDL_QUIT:
                 return UPDATE_STOP;
             case SDL_WINDOWEVENT:
-                if (sdlEvent.window.event == SDL_WINDOWEVENT_RESIZED || sdlEvent.window.event == SDL_WINDOWEVENT_SIZE_CHANGED)
+                if (sdlEvent.window.event == SDL_WINDOWEVENT_RESIZED || sdlEvent.window.event == SDL_WINDOWEVENT_SIZE_CHANGED) 
                     App->renderer->WindowResized(sdlEvent.window.data1, sdlEvent.window.data2);
                 if (sdlEvent.window.event == SDL_WINDOWEVENT_CLOSE)
                     return UPDATE_STOP;
@@ -50,6 +53,28 @@ update_status ModuleInput::Update()
     }
 
     keyboard = SDL_GetKeyboardState(NULL);
+
+    //translate camera
+    float3 deltaPos = float3::zero;
+    if (keyboard[SDL_SCANCODE_W]) {
+        deltaPos.x += 0.2f;
+    }
+    if (keyboard[SDL_SCANCODE_S]) {
+        deltaPos.x -= 0.2f;
+    }
+    if (keyboard[SDL_SCANCODE_Q]) {
+        deltaPos.y += 0.2f;
+    }
+    if (keyboard[SDL_SCANCODE_E]) {
+        deltaPos.y -= 0.2f;
+    }
+    if (keyboard[SDL_SCANCODE_D]) {
+        deltaPos.z += 0.2f;
+    }
+    if (keyboard[SDL_SCANCODE_A]) {
+        deltaPos.z -= 0.2f;
+    }
+    App->camera->Translate(deltaPos);
 
     return UPDATE_CONTINUE;
 }

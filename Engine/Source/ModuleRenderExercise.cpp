@@ -33,6 +33,10 @@ bool ModuleRenderExercise::Start()
 {
 	program = App->program->CreateProgramFromShaders(VERT_SHADER, FRAG_SHADER);
 
+	model = float4x4::FromTRS(float3(2.0f, 0.0f, 0.0f),
+			float4x4::RotateZ(pi / 4.0f),
+			float3(2.0f, 1.0f, 0.0f));
+
 	return true;
 }
 
@@ -47,7 +51,7 @@ update_status ModuleRenderExercise::Update()
 
 	glUniformMatrix4fv(0, 1, GL_TRUE, &App->camera->getProj()[0][0]);
 	glUniformMatrix4fv(1, 1, GL_TRUE, &App->camera->getView()[0][0]);
-	glUniformMatrix4fv(2, 1, GL_TRUE, &App->camera->getModel()[0][0]);
+	glUniformMatrix4fv(2, 1, GL_TRUE, &getModel()[0][0]);
 
 	glDrawArrays(GL_TRIANGLES, 0, 3);
 

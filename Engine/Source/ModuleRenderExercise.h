@@ -2,6 +2,7 @@
 
 #include "Module.h"
 #include <glew.h>
+#include "float4x4.h"
 
 class ModuleRenderExercise : public Module
 {
@@ -13,8 +14,13 @@ public:
 	bool Start();
 	update_status Update();
 
+	float4x4 getModel() {
+		return model;
+	}
+
 private:
 	GLuint vbo;
 	GLuint program;
+	float4x4 model;
 };
 
