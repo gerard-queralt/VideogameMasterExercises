@@ -20,7 +20,14 @@ ModuleRenderExercise::~ModuleRenderExercise()
 
 bool ModuleRenderExercise::Init()
 {
-	float vtx_data[] = { -1.0f, -1.0f, 0.0f, 1.0f, -1.0f, 0.0f, 0.0f, 1.0f, 0.0f };
+	float vtx_data[] = { 
+		-1.0f, -1.0f, 0.0f,
+		1.0f, -1.0f, 0.0f,
+		0.0f, 1.0f, 0.0f,
+		0.0f, 0.0f,
+		1.0f, 0.0f,
+		0.5f, 1.0f
+	};
 
 	glGenBuffers(1, &vbo);
 	glBindBuffer(GL_ARRAY_BUFFER, vbo); // set vbo active
@@ -43,9 +50,12 @@ bool ModuleRenderExercise::Start()
 update_status ModuleRenderExercise::Update()
 {
 	glBindBuffer(GL_ARRAY_BUFFER, vbo);
+	
 	glEnableVertexAttribArray(0);
-
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+
+	glEnableVertexAttribArray(1);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, (void*)(sizeof(float) * 3 * 3) /*buffer offset*/);
 
 	glUseProgram(program);
 
