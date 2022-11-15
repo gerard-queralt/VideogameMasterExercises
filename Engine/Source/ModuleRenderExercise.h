@@ -21,7 +21,7 @@ public:
 private:
 	GLuint vbo;
 	GLuint program;
+	GLuint texture;
 	float4x4 model;
-
 };
 

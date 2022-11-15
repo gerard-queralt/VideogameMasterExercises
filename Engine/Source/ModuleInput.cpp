@@ -76,6 +76,23 @@ update_status ModuleInput::Update()
     }
     App->camera->Translate(deltaPos);
 
+    //rotate camera
+    float3 deltaRot = float3::zero;
+    float deltaAngle = 0.05f;
+    if (keyboard[SDL_SCANCODE_LEFT]) {
+        deltaRot.y += deltaAngle;
+    }
+    if (keyboard[SDL_SCANCODE_RIGHT]) {
+        deltaRot.y -= deltaAngle;
+    }
+    if (keyboard[SDL_SCANCODE_UP]) {
+        deltaRot.x += deltaAngle;
+    }
+    if (keyboard[SDL_SCANCODE_DOWN]) {
+        deltaRot.x -= deltaAngle;
+    }
+    App->camera->Rotate(deltaRot);
+
     return UPDATE_CONTINUE;
 }
 

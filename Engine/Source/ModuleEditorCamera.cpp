@@ -115,7 +115,7 @@ void ModuleEditorCamera::Translate(float deltaX, float deltaY, float deltaZ)
 	Translate(float3(deltaX, deltaY, deltaZ));
 }
 
-void ModuleEditorCamera::Rotate(float3 thetasRad)
+void ModuleEditorCamera::Rotate(float3 thetasRad) //TODO: not working properly with multiple rotations
 {
 	float3x3 rotationX = float3x3::RotateX(thetasRad.x);
 	float3x3 rotationY = float3x3::RotateY(thetasRad.y);
