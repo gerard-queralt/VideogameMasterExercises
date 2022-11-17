@@ -1,11 +1,11 @@
-#version 330
+#version 430 core
 
 layout(location = 0) in vec3 vertex_position;
 layout(location = 1) in vec2 vertex_uv0;
 
-uniform mat4 proj;
-uniform mat4 view;
-uniform mat4 model;
+layout(location = 0) uniform mat4 proj;
+layout(location = 1) uniform mat4 view;
+layout(location = 2) uniform mat4 model;
 
 out vec2 uv0;
 

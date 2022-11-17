@@ -1,10 +1,11 @@
 #include "ModuleEditor.h"
 
+#include <string>
+
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "ModuleRender.h"
 
-#include "imgui.h"
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl.h"
 
@@ -39,8 +40,10 @@ update_status ModuleEditor::PreUpdate()
 
 update_status ModuleEditor::Update()
 {
-	ImGui::ShowDemoWindow();
-	
+	update_status status = UPDATE_CONTINUE;
+
+	status = UpdateConsole();
+
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
 
@@ -54,7 +57,7 @@ update_status ModuleEditor::Update()
 		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
 	}
 
-	return UPDATE_CONTINUE;
+	return status;
 }
 
 update_status ModuleEditor::PostUpdate()
@@ -69,4 +72,26 @@ bool ModuleEditor::CleanUp()
     ImGui::DestroyContext();
 
 	return true;
+}
+
+void ModuleEditor::OutputToConsole(const char* i_textToPrint)
+{
+	LOG_ENGINE(i_textToPrint);
+	consloneContents.push_back(i_textToPrint);
+}
+
+update_status ModuleEditor::UpdateConsole()
+{
+	bool enabled;
+	std::string consoleWindowName = "Console";
+
+	if (ImGui::Begin(consoleWindowName.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
+		for (int i = 0; i < consloneContents.size(); ++i) {
+			const char* line = consloneContents[i];
+			ImGui::TextUnformatted(line);
+		}
+	}
+	ImGui::End();
+
+	return UPDATE_CONTINUE;
 }

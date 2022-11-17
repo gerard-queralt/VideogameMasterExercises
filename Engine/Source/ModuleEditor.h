@@ -2,6 +2,8 @@
 
 #include "Module.h"
 
+#include "imgui.h"
+
 class ModuleEditor : public Module
 {
 public:
@@ -11,5 +13,12 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 	bool CleanUp();
+
+	void OutputToConsole(const char* i_textToPrint);
+
+private:
+	update_status UpdateConsole();
+
+	ImVector<const char*> consloneContents;
 };
 

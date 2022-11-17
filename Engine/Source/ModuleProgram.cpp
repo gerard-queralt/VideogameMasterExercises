@@ -1,5 +1,8 @@
 #include "ModuleProgram.h"
+
 #include <fstream>
+#include "Application.h"
+#include "ModuleEditor.h"
 
 const std::string ModuleProgram::SHADER_FOLDER_PATH = "shaders/";
 
@@ -58,7 +61,7 @@ GLuint ModuleProgram::CompileShader(GLenum shaderType, const std::string& shader
 			int written = 0;
 			char* info = (char*)malloc(len);
 			glGetShaderInfoLog(shaderID, len, &written, info);
-			LOG_ENGINE("Log Info: %s", info);
+			App->editor->OutputToConsole(("Log Info: " + std::string(info)).c_str());
 			free(info);
 		}
 	}
@@ -82,7 +85,7 @@ GLuint ModuleProgram::CreateProgram(GLuint vertexShader, GLuint fragmentShader)
 			int written = 0;
 			char* info = (char*)malloc(len);
 			glGetProgramInfoLog(programID, len, &written, info);
-			LOG_ENGINE("Program Log Info: %s", info);
+			LOG_ENGINE("Program Log Info: %s", std::string(info));
 			free(info);
 		}
 	}

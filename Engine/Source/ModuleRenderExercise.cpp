@@ -9,7 +9,7 @@
 
 #define VERT_SHADER "default_vertex.glsl"
 #define FRAG_SHADER "default_fragment.glsl"
-#define TEXTURE "tex.png"
+#define TEXTURE "baboon.ppm"
 
 #define NUM_VERTEX 4
 #define NUM_TRIANGLE math::Ceil(NUM_VERTEX / 3.0f) //num vertex divided by vertex per triangle, rounded up
@@ -34,7 +34,8 @@ bool ModuleRenderExercise::Init()
 
 		0.0f, 0.0f,
 		1.0f, 0.0f,
-		0.5f, 1.0f
+		0.0f, 1.0f,
+		1.0f, 1.0f
 	};
 
 	glGenBuffers(1, &vbo);
@@ -50,9 +51,9 @@ bool ModuleRenderExercise::Start()
 {
 	program = App->program->CreateProgramFromShaders(VERT_SHADER, FRAG_SHADER);
 
-	model = float4x4::FromTRS(float3(2.0f, 0.0f, 0.0f),
-			float4x4::RotateZ(pi / 4.0f),
-			float3(2.0f, 1.0f, 0.0f));
+	model = float4x4::FromTRS(float3(2.0f, 2.0f, 0.0f),
+			float4x4::identity,
+			float3(1.0f));
 
 	//load texture
 	glGenTextures(1, &texture);

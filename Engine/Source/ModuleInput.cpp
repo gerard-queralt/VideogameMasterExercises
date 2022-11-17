@@ -7,6 +7,7 @@
 #include "ModuleEditorCamera.h"
 #include "SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
+#include "ModuleEditor.h"
 
 ModuleInput::ModuleInput()
 {}
@@ -18,13 +19,14 @@ ModuleInput::~ModuleInput()
 // Called before render is available
 bool ModuleInput::Init()
 {
-	LOG_ENGINE("Init SDL input event system");
+	App->editor->OutputToConsole("Init SDL input event system");
 	bool ret = true;
 	SDL_Init(0);
 
 	if(SDL_InitSubSystem(SDL_INIT_EVENTS) < 0)
 	{
-		LOG_ENGINE("SDL_EVENTS could not initialize! SDL_Error: %s\n", SDL_GetError());
+        std::string errorLog = "SDL_EVENTS could not initialize! SDL_Error: " + std::string(SDL_GetError()) + "\n";
+        App->editor->OutputToConsole(errorLog.c_str());
 		ret = false;
 	}
 
@@ -99,7 +101,7 @@ update_status ModuleInput::Update()
 // Called before quitting
 bool ModuleInput::CleanUp()
 {
-	LOG_ENGINE("Quitting SDL input event subsystem");
+    LOG_ENGINE("Quitting SDL input event subsystem");
 	SDL_QuitSubSystem(SDL_INIT_EVENTS);
 	return true;
 }
