@@ -11,7 +11,7 @@
 #define FRAG_SHADER "default_fragment.glsl"
 #define TEXTURE "baboon.ppm"
 
-#define NUM_VERTEX 4
+#define NUM_VERTEX 6
 #define NUM_TRIANGLE math::Ceil(NUM_VERTEX / 3.0f) //num vertex divided by vertex per triangle, rounded up
 
 ModuleRenderExercise::ModuleRenderExercise()
@@ -28,13 +28,17 @@ bool ModuleRenderExercise::Init()
 {
 	float vtx_data[] = { 
 		-0.5f, -0.5f, 0.0f,
-		0.5f, -0.5f, 0.0f,
+		0.5f, 0.5f, 0.0f,
 		-0.5f, 0.5f, 0.0f,
+		-0.5f, -0.5f, 0.0f,
+		0.5f, -0.5f, 0.0f,
 		0.5f, 0.5f, 0.0f,
 
 		0.0f, 0.0f,
-		1.0f, 0.0f,
+		1.0f, 1.0f,
 		0.0f, 1.0f,
+		0.0f, 0.0f,
+		1.0f, 0.0f,
 		1.0f, 1.0f
 	};
 
@@ -93,7 +97,7 @@ update_status ModuleRenderExercise::Update()
 	glActiveTexture(GL_TEXTURE5);
 	glBindTexture(GL_TEXTURE_2D, texture);
 
-	glDrawArrays(GL_TRIANGLE_STRIP, 0, 3 * NUM_TRIANGLE);
+	glDrawArrays(GL_TRIANGLES, 0, 3 * NUM_TRIANGLE);
 
 	return UPDATE_CONTINUE;
 }
