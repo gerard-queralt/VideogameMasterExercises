@@ -1,6 +1,7 @@
 #include "Globals.h"
 #include "Application.h"
 #include "ModuleWindow.h"
+#include "ModuleEditor.h"
 
 ModuleWindow::ModuleWindow()
 {
@@ -14,12 +15,13 @@ ModuleWindow::~ModuleWindow()
 // Called before render is available
 bool ModuleWindow::Init()
 {
-	LOG_ENGINE("Init SDL window & surface");
+	App->editor->OutputToConsole("Init SDL window & surface");
 	bool ret = true;
 
 	if(SDL_Init(SDL_INIT_VIDEO) < 0)
 	{
-		LOG_ENGINE("SDL_VIDEO could not initialize! SDL_Error: %s\n", SDL_GetError());
+		std::string sdlError = "SDL_VIDEO could not initialize! SDL_Error: " + std::string(SDL_GetError()) + "\n";
+		App->editor->OutputToConsole(sdlError.c_str());
 		ret = false;
 	}
 	else
@@ -38,7 +40,8 @@ bool ModuleWindow::Init()
 
 		if(window == NULL)
 		{
-			LOG_ENGINE("Window could not be created! SDL_Error: %s\n", SDL_GetError());
+			std::string sdlError = "Window could not be created! SDL_Error: " + std::string(SDL_GetError()) + "\n";
+			App->editor->OutputToConsole(sdlError.c_str());
 			ret = false;
 		}
 		else

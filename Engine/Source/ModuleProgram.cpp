@@ -85,7 +85,7 @@ GLuint ModuleProgram::CreateProgram(GLuint vertexShader, GLuint fragmentShader)
 			int written = 0;
 			char* info = (char*)malloc(len);
 			glGetProgramInfoLog(programID, len, &written, info);
-			LOG_ENGINE("Program Log Info: %s", std::string(info));
+			App->editor->OutputToConsole(("Program Log Info: " + std::string(info)).c_str());
 			free(info);
 		}
 	}

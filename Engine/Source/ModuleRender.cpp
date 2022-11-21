@@ -32,13 +32,23 @@ bool ModuleRender::Init()
 
 	GLenum err = glewInit();
 	// … check for errors
-	LOG_ENGINE("Using Glew %s", glewGetString(GLEW_VERSION));
+	char glewVersion[128];
+	sprintf(glewVersion, "Using Glew %s", glewGetString(GLEW_VERSION));
+	App->editor->OutputToConsole(glewVersion);
 	// Should be 2.0
 
-	LOG_ENGINE("Vendor: %s", glGetString(GL_VENDOR));
-	LOG_ENGINE("Renderer: %s", glGetString(GL_RENDERER));
-	LOG_ENGINE("OpenGL version supported %s", glGetString(GL_VERSION));
-	LOG_ENGINE("GLSL: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+	char glVendor[128];
+	sprintf(glVendor, "Vendor: %s", glGetString(GL_VENDOR));
+	App->editor->OutputToConsole(glVendor);
+	char glRenderer[128];
+	sprintf(glRenderer, "Renderer: %s", glGetString(GL_RENDERER));
+	App->editor->OutputToConsole(glRenderer);
+	char glSupported[128];
+	sprintf(glSupported, "OpenGL version supported %s", glGetString(GL_VERSION));
+	App->editor->OutputToConsole(glSupported);
+	char glslVersion[128];
+	sprintf(glslVersion, "GLSL: %s\n", glGetString(GL_SHADING_LANGUAGE_VERSION));
+	App->editor->OutputToConsole(glslVersion);
 
 	glEnable(GL_DEPTH_TEST); // Enable depth test
 	glEnable(GL_CULL_FACE); // Enable cull backward faces

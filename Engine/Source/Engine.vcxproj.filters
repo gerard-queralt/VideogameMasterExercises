@@ -10,24 +10,6 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleInput.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleProgram.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleRender.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleWindow.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleEditor.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="ModuleRenderExercise.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="..\External\ImGui\Include\MainSource\imgui.cpp">
       <Filter>External\ImGui</Filter>
     </ClCompile>
@@ -176,13 +158,37 @@
       <Filter>External\MathGeoLib\Time</Filter>
     </ClCompile>
     <ClCompile Include="ModuleDebugDraw.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEditor.cpp">
+      <Filter>Source\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleEditorCamera.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleInput.cpp">
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleProgram.cpp">
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRender.cpp">
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleRenderExercise.cpp">
+      <Filter>Source\Modules</Filter>
     </ClCompile>
     <ClCompile Include="ModuleTexture.cpp">
-      <Filter>Source</Filter>
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleWindow.cpp">
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source\Models\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowConsole.cpp">
+      <Filter>Source\Models\Windows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -193,27 +199,6 @@
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Globals.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Module.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleInput.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleProgram.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleRender.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleWindow.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleEditor.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="ModuleRenderExercise.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="..\External\ImGui\Include\MainSource\imstb_truetype.h">
@@ -474,14 +459,41 @@
     <ClInclude Include="debugdraw.h">
       <Filter>Source</Filter>
     </ClInclude>
+    <ClInclude Include="Module.h">
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
     <ClInclude Include="ModuleDebugDraw.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEditor.h">
+      <Filter>Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleEditorCamera.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleInput.h">
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleProgram.h">
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRender.h">
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleRenderExercise.h">
+      <Filter>Source\Modules</Filter>
     </ClInclude>
     <ClInclude Include="ModuleTexture.h">
-      <Filter>Source</Filter>
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleWindow.h">
+      <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.h">
+      <Filter>Source\Models\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowConsole.h">
+      <Filter>Source\Models\Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -511,6 +523,15 @@
     </Filter>
     <Filter Include="External\MathGeoLib\Time">
       <UniqueIdentifier>{b2b8350e-04a2-4d05-8788-e81bfd3e821e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Modules">
+      <UniqueIdentifier>{0e47e329-0ce9-412a-9e41-ff511aa8574c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Models">
+      <UniqueIdentifier>{e72b1714-064d-4ec4-b321-4de0d338005e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Models\Windows">
+      <UniqueIdentifier>{3c49c286-9acb-4a3f-861d-e6328d76ad29}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

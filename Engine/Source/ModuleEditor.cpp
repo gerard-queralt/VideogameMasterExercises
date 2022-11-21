@@ -18,6 +18,8 @@ bool ModuleEditor::Init()
 	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
+	windows.push_back(console = new WindowConsole());
+
 	return true;
 }
 
@@ -42,7 +44,9 @@ update_status ModuleEditor::Update()
 {
 	update_status status = UPDATE_CONTINUE;
 
-	status = UpdateConsole();
+	for (std::list<Window*>::iterator it = windows.begin(); it != windows.end() && status == UPDATE_CONTINUE; ++it) {
+		status = (*it)->Update();
+	}
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
@@ -76,22 +80,5 @@ bool ModuleEditor::CleanUp()
 
 void ModuleEditor::OutputToConsole(const char* i_textToPrint)
 {
-	LOG_ENGINE(i_textToPrint);
-	consloneContents.push_back(i_textToPrint);
-}
-
-update_status ModuleEditor::UpdateConsole()
-{
-	bool enabled;
-	std::string consoleWindowName = "Console";
-
-	if (ImGui::Begin(consoleWindowName.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
-		for (int i = 0; i < consloneContents.size(); ++i) {
-			const char* line = consloneContents[i];
-			ImGui::TextUnformatted(line);
-		}
-	}
-	ImGui::End();
-
-	return UPDATE_CONTINUE;
+	console->Output(i_textToPrint);
 }

@@ -2,7 +2,9 @@
 
 #include "Module.h"
 
-#include "imgui.h"
+#include <list>
+#include "Window.h"
+#include "WindowConsole.h"
 
 class ModuleEditor : public Module
 {
@@ -17,8 +19,7 @@ public:
 	void OutputToConsole(const char* i_textToPrint);
 
 private:
-	update_status UpdateConsole();
-
-	ImVector<const char*> consloneContents;
+	std::list<Window*> windows;
+	WindowConsole* console = nullptr;
 };
 
