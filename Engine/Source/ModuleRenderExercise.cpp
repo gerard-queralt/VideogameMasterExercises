@@ -6,6 +6,7 @@
 #include "ModuleWindow.h"
 #include "ModuleEditorCamera.h"
 #include "ModuleTexture.h"
+#include "Model3D.h"
 
 #define VERT_SHADER "default_vertex.glsl"
 #define FRAG_SHADER "default_fragment.glsl"
@@ -47,6 +48,8 @@ bool ModuleRenderExercise::Init()
 	glBufferData(GL_ARRAY_BUFFER, sizeof(vtx_data), vtx_data, GL_STATIC_DRAW);
 
 	glEnable(GL_TEXTURE_2D);
+
+	(new Model3D())->LoadFromFile("a");
 
 	return true;
 }

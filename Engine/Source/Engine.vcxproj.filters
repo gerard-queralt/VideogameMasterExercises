@@ -190,6 +190,7 @@
     <ClCompile Include="WindowConsole.cpp">
       <Filter>Source\Models\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="Model3D.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -495,6 +496,7 @@
     <ClInclude Include="WindowConsole.h">
       <Filter>Source\Models\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="Model3D.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
