@@ -18,6 +18,10 @@ public:
 		return model;
 	}
 
+	GLuint getProgram() {
+		return program;
+	}
+
 private:
 	GLuint vbo;
 	GLuint program;
