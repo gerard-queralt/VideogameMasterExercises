@@ -4,7 +4,7 @@
 #include "Application.h"
 #include "ModuleEditor.h"
 
-const std::string ModuleProgram::SHADER_FOLDER_PATH = "shaders/";
+const std::string ModuleProgram::s_shaderFolderPath = "shaders/";
 
 ModuleProgram::ModuleProgram()
 {
@@ -14,10 +14,10 @@ ModuleProgram::~ModuleProgram()
 {
 }
 
-GLuint ModuleProgram::CreateProgramFromShaders(const std::string& vertexShaderName, const std::string& fragmentShaderName)
+GLuint ModuleProgram::CreateProgramFromShaders(const std::string& i_vertexShaderName, const std::string& i_fragmentShaderName)
 {
-	std::string vertexShaderCode = ReadShaderFile(vertexShaderName);
-	std::string fragmentShaderCode = ReadShaderFile(fragmentShaderName);
+	std::string vertexShaderCode = ReadShaderFile(i_vertexShaderName);
+	std::string fragmentShaderCode = ReadShaderFile(i_fragmentShaderName);
 
 	GLuint vertexShader = CompileShader(GL_VERTEX_SHADER, vertexShaderCode);
 	GLuint fragmentShader = CompileShader(GL_FRAGMENT_SHADER, fragmentShaderCode);
@@ -27,13 +27,13 @@ GLuint ModuleProgram::CreateProgramFromShaders(const std::string& vertexShaderNa
 	return program;
 }
 
-std::string ModuleProgram::ReadShaderFile(const std::string& fileName)
+std::string ModuleProgram::ReadShaderFile(const std::string& i_fileName)
 {
 	std::ifstream file;
 	std::string fileContents = "";
 	std::string fileLine;
 
-	file.open(SHADER_FOLDER_PATH + fileName);
+	file.open(s_shaderFolderPath + i_fileName);
 
 	if (file.is_open()) {
 		while (std::getline(file, fileLine)) {
@@ -45,10 +45,10 @@ std::string ModuleProgram::ReadShaderFile(const std::string& fileName)
 	return fileContents;
 }
 
-GLuint ModuleProgram::CompileShader(GLenum shaderType, const std::string& shaderSource)
+GLuint ModuleProgram::CompileShader(GLenum i_shaderType, const std::string& i_shaderSource)
 {
-	GLuint shaderID = glCreateShader(shaderType);
-	const char* sourceAsChars = shaderSource.c_str();
+	GLuint shaderID = glCreateShader(i_shaderType);
+	const char* sourceAsChars = i_shaderSource.c_str();
 	glShaderSource(shaderID, 1, &sourceAsChars, 0);
 	glCompileShader(shaderID);
 
@@ -68,11 +68,11 @@ GLuint ModuleProgram::CompileShader(GLenum shaderType, const std::string& shader
 	return shaderID;
 }
 
-GLuint ModuleProgram::CreateProgram(GLuint vertexShader, GLuint fragmentShader)
+GLuint ModuleProgram::CreateProgram(GLuint i_vertexShader, GLuint i_fragmentShader)
 {
 	GLuint programID = glCreateProgram();
-	glAttachShader(programID, vertexShader);
-	glAttachShader(programID, fragmentShader);
+	glAttachShader(programID, i_vertexShader);
+	glAttachShader(programID, i_fragmentShader);
 	glLinkProgram(programID);
 
 	int res = GL_FALSE;
@@ -89,7 +89,7 @@ GLuint ModuleProgram::CreateProgram(GLuint vertexShader, GLuint fragmentShader)
 			free(info);
 		}
 	}
-	glDeleteShader(vertexShader);
-	glDeleteShader(fragmentShader);
+	glDeleteShader(i_vertexShader);
+	glDeleteShader(i_fragmentShader);
 	return programID;
 }

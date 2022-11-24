@@ -36,9 +36,9 @@ bool ModuleWindow::Init()
 			flags |= SDL_WINDOW_FULLSCREEN;
 		}
 
-		window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
+		m_window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
 
-		if(window == NULL)
+		if(m_window == NULL)
 		{
 			std::string sdlError = "Window could not be created! SDL_Error: " + std::string(SDL_GetError()) + "\n";
 			App->editor->OutputToConsole(sdlError.c_str());
@@ -48,7 +48,7 @@ bool ModuleWindow::Init()
 		{
 			//Get window surface
 			
-			screen_surface = SDL_GetWindowSurface(window);
+			m_screenSurface = SDL_GetWindowSurface(m_window);
 		}
 	}
 
@@ -61,9 +61,9 @@ bool ModuleWindow::CleanUp()
 	LOG_ENGINE("Destroying SDL window and quitting all SDL systems");
 
 	//Destroy window
-	if(window != NULL)
+	if(m_window != NULL)
 	{
-		SDL_DestroyWindow(window);
+		SDL_DestroyWindow(m_window);
 	}
 
 	//Quit SDL subsystems

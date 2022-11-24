@@ -17,10 +17,10 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 	bool CleanUp();
-	void WindowResized(unsigned width, unsigned height);
+	void WindowResized(unsigned i_width, unsigned i_height);
 
 private:
 	friend class ModuleEditor;
 
-	void* context;
+	void* m_context;
 };

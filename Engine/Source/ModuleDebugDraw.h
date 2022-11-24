@@ -20,10 +20,10 @@ public:
 	update_status   Update();
 	bool            CleanUp();
 
-    void            Draw(const float4x4& view, const float4x4& proj, unsigned width, unsigned height);
+    void            Draw(const float4x4& i_view, const float4x4& i_proj, unsigned i_width, unsigned i_height);
 private:
 
-    static DDRenderInterfaceCoreGL* implementation;
+    static DDRenderInterfaceCoreGL* s_implementation;
 };
 
 #endif /* _MODULE_DEBUGDRAW_H_ */

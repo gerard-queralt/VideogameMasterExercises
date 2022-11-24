@@ -54,26 +54,26 @@ update_status ModuleInput::Update()
         }
     }
 
-    keyboard = SDL_GetKeyboardState(NULL);
+    m_keyboard = SDL_GetKeyboardState(NULL);
 
     //translate camera
     float3 deltaPos = float3::zero;
-    if (keyboard[SDL_SCANCODE_W]) {
+    if (m_keyboard[SDL_SCANCODE_W]) {
         deltaPos.x += 0.2f;
     }
-    if (keyboard[SDL_SCANCODE_S]) {
+    if (m_keyboard[SDL_SCANCODE_S]) {
         deltaPos.x -= 0.2f;
     }
-    if (keyboard[SDL_SCANCODE_Q]) {
+    if (m_keyboard[SDL_SCANCODE_Q]) {
         deltaPos.y += 0.2f;
     }
-    if (keyboard[SDL_SCANCODE_E]) {
+    if (m_keyboard[SDL_SCANCODE_E]) {
         deltaPos.y -= 0.2f;
     }
-    if (keyboard[SDL_SCANCODE_D]) {
+    if (m_keyboard[SDL_SCANCODE_D]) {
         deltaPos.z += 0.2f;
     }
-    if (keyboard[SDL_SCANCODE_A]) {
+    if (m_keyboard[SDL_SCANCODE_A]) {
         deltaPos.z -= 0.2f;
     }
     App->camera->Translate(deltaPos);
@@ -81,16 +81,16 @@ update_status ModuleInput::Update()
     //rotate camera
     float3 deltaRot = float3::zero;
     float deltaAngle = 0.05f;
-    if (keyboard[SDL_SCANCODE_LEFT]) {
+    if (m_keyboard[SDL_SCANCODE_LEFT]) {
         deltaRot.y += deltaAngle;
     }
-    if (keyboard[SDL_SCANCODE_RIGHT]) {
+    if (m_keyboard[SDL_SCANCODE_RIGHT]) {
         deltaRot.y -= deltaAngle;
     }
-    if (keyboard[SDL_SCANCODE_UP]) {
+    if (m_keyboard[SDL_SCANCODE_UP]) {
         deltaRot.x += deltaAngle;
     }
-    if (keyboard[SDL_SCANCODE_DOWN]) {
+    if (m_keyboard[SDL_SCANCODE_DOWN]) {
         deltaRot.x -= deltaAngle;
     }
     App->camera->Rotate(deltaRot);

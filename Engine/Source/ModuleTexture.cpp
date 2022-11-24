@@ -1,6 +1,6 @@
 #include "ModuleTexture.h"
 
-const std::string ModuleTexture::TEXTURE_FOLDER_PATH = "textures/";
+const std::string ModuleTexture::s_textureFolderPath = "textures/";
 
 ModuleTexture::ModuleTexture()
 {
@@ -34,7 +34,7 @@ GLuint ModuleTexture::LoadTextureFromFile(std::string i_textureName)
 
 DirectX::ScratchImage ModuleTexture::LoadImageFromFile(std::string i_textureName)
 {
-    std::string texturePath = TEXTURE_FOLDER_PATH + i_textureName;
+    std::string texturePath = s_textureFolderPath + i_textureName;
     std::wstring texturePathAsWString = std::wstring(texturePath.begin(), texturePath.end());
     DirectX::ScratchImage image;
     HRESULT res;

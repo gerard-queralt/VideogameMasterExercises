@@ -582,7 +582,7 @@ const char * DDRenderInterfaceCoreGL::textFragShaderSrc = "\n"
     "    out_FragColor.a = texture(u_glyphTexture, v_TexCoords).r;\n"
     "}\n";
 
-DDRenderInterfaceCoreGL* ModuleDebugDraw::implementation = 0;
+DDRenderInterfaceCoreGL* ModuleDebugDraw::s_implementation = 0;
 
 ModuleDebugDraw::ModuleDebugDraw() 
 {
@@ -594,8 +594,8 @@ ModuleDebugDraw::~ModuleDebugDraw()
 
 bool ModuleDebugDraw::Init()
 {
-    implementation = new DDRenderInterfaceCoreGL;
-    dd::initialize(implementation);
+    s_implementation = new DDRenderInterfaceCoreGL;
+    dd::initialize(s_implementation);
     return true;
 }
 
@@ -604,8 +604,8 @@ bool ModuleDebugDraw::CleanUp()
 {
     dd::shutdown();
 
-    delete implementation;
-    implementation = 0;
+    delete s_implementation;
+    s_implementation = 0;
 
     return true;
 }
@@ -613,16 +613,16 @@ bool ModuleDebugDraw::CleanUp()
 update_status  ModuleDebugDraw::Update()
 {
     int w, h;
-    SDL_GetWindowSize(App->window->window, &w, &h);
-    Draw(App->camera->getView(), App->camera->getProj(), w, h);
+    SDL_GetWindowSize(App->window->m_window, &w, &h);
+    Draw(App->camera->GetView(), App->camera->GetProjection(), w, h);
 	return UPDATE_CONTINUE;
 }
 
-void ModuleDebugDraw::Draw(const float4x4& view, const float4x4& proj, unsigned width, unsigned height)
+void ModuleDebugDraw::Draw(const float4x4& i_view, const float4x4& i_proj, unsigned i_width, unsigned i_height)
 {
-    implementation->width     = width;
-    implementation->height    = height;
-    implementation->mvpMatrix = proj * view;
+    s_implementation->width     = i_width;
+    s_implementation->height    = i_height;
+    s_implementation->mvpMatrix = i_proj * i_view;
 
     dd::axisTriad(float4x4::identity, 0.1f, 1.0f);
     dd::xzSquareGrid(-10, 10, 0.0f, 1.0f, dd::colors::Gray);

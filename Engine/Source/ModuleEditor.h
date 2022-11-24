@@ -19,7 +19,7 @@ public:
 	void OutputToConsole(const char* i_textToPrint);
 
 private:
-	std::list<Window*> windows;
-	WindowConsole* console = nullptr;
+	std::list<Window*> m_windows;
+	WindowConsole* m_console = nullptr;
 };
 

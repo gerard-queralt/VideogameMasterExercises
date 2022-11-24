@@ -18,18 +18,18 @@ public:
 	bool Start();
 	update_status Update();
 
-	float4x4 getModel() {
-		return model;
+	float4x4 GetModel() {
+		return m_model;
 	}
 
-	GLuint getProgram() {
-		return program;
+	GLuint GetProgram() {
+		return m_program;
 	}
 
 private:
-	GLuint vbo;
-	GLuint program;
-	Model3D* model3D;
-	float4x4 model;
+	GLuint m_vbo;
+	GLuint m_program;
+	Model3D* m_model3D;
+	float4x4 m_model;
 };
 

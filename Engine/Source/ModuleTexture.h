@@ -12,7 +12,7 @@ public:
 	ModuleTexture();
 	~ModuleTexture();
 
-	static const std::string TEXTURE_FOLDER_PATH;
+	static const std::string s_textureFolderPath;
 
 	GLuint LoadTextureFromFile(std::string i_textureName);
 

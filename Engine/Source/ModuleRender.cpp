@@ -28,7 +28,7 @@ bool ModuleRender::Init()
 	SDL_GL_SetAttribute(SDL_GL_DEPTH_SIZE, 24); // we want to have a depth buffer with 24 bits
 	SDL_GL_SetAttribute(SDL_GL_STENCIL_SIZE, 8); // we want to have a stencil buffer with 8 bits
 
-	context = SDL_GL_CreateContext(App->window->window);
+	m_context = SDL_GL_CreateContext(App->window->m_window);
 
 	GLenum err = glewInit();
 	// … check for errors
@@ -60,7 +60,7 @@ bool ModuleRender::Init()
 update_status ModuleRender::PreUpdate()
 {
 	int window_width, window_height;
-	SDL_GetWindowSize(App->window->window, &window_width, &window_height);
+	SDL_GetWindowSize(App->window->m_window, &window_width, &window_height);
 	glViewport(0, 0, window_width, window_height);
 	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -76,7 +76,7 @@ update_status ModuleRender::Update()
 
 update_status ModuleRender::PostUpdate()
 {
-	SDL_GL_SwapWindow(App->window->window);
+	SDL_GL_SwapWindow(App->window->m_window);
 	return UPDATE_CONTINUE;
 }
 
@@ -86,12 +86,12 @@ bool ModuleRender::CleanUp()
 	LOG_ENGINE("Destroying renderer");
 
 	//Destroy window
-	SDL_GL_DeleteContext(context);
+	SDL_GL_DeleteContext(m_context);
 
 	return true;
 }
 
-void ModuleRender::WindowResized(unsigned width, unsigned height)
+void ModuleRender::WindowResized(unsigned i_width, unsigned i_height)
 {
 }
 

@@ -18,14 +18,14 @@ bool ModuleEditor::Init()
 	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
-	windows.push_back(console = new WindowConsole());
+	m_windows.push_back(m_console = new WindowConsole());
 
 	return true;
 }
 
 bool ModuleEditor::Start()
 {
-	ImGui_ImplSDL2_InitForOpenGL(App->window->window, App->renderer->context);
+	ImGui_ImplSDL2_InitForOpenGL(App->window->m_window, App->renderer->m_context);
 	ImGui_ImplOpenGL3_Init("#version 130");
 
 	return true;
@@ -34,7 +34,7 @@ bool ModuleEditor::Start()
 update_status ModuleEditor::PreUpdate()
 {
 	ImGui_ImplOpenGL3_NewFrame();
-	ImGui_ImplSDL2_NewFrame(App->window->window);
+	ImGui_ImplSDL2_NewFrame(App->window->m_window);
 	ImGui::NewFrame();
 
 	return UPDATE_CONTINUE;
@@ -44,7 +44,7 @@ update_status ModuleEditor::Update()
 {
 	update_status status = UPDATE_CONTINUE;
 
-	for (std::list<Window*>::iterator it = windows.begin(); it != windows.end() && status == UPDATE_CONTINUE; ++it) {
+	for (std::list<Window*>::iterator it = m_windows.begin(); it != m_windows.end() && status == UPDATE_CONTINUE; ++it) {
 		status = (*it)->Update();
 	}
 
@@ -80,5 +80,5 @@ bool ModuleEditor::CleanUp()
 
 void ModuleEditor::OutputToConsole(const char* i_textToPrint)
 {
-	console->Output(i_textToPrint);
+	m_console->Output(i_textToPrint);
 }
