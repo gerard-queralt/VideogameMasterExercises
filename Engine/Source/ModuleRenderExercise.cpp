@@ -36,8 +36,7 @@ bool ModuleRenderExercise::Start()
 			float4x4::identity,
 			float3(1.0f));
 
-	m_model3D = new Model3D();
-	m_model3D->LoadFromFile("BakerHouse.fbx");
+	m_model3D = Model3D::LoadFromFile("BakerHouse.fbx");
 
 	return true;
 }

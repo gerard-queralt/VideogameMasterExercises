@@ -10,15 +10,16 @@
 class Model3D
 {
 public:
-	Model3D();
 	~Model3D();
 
-	static const std::string MODEL_FOLDER_PATH;
+	static const std::string s_modelFolderPath;
 
-	void LoadFromFile(std::string i_fileName);
+	static Model3D* LoadFromFile(std::string i_fileName);
 	void Draw();
 
 private:
+	Model3D();
+
 	void LoadMaterials(const aiScene* i_scene);
 	void LoadMeshes(aiMesh** i_meshes, int i_numMeshes);
 

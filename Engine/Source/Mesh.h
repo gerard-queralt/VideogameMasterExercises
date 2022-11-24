@@ -7,14 +7,15 @@
 class Mesh
 {
 public:
-	Mesh();
 	~Mesh();
 
-	void LoadMesh(const aiMesh* i_mesh);
+	static Mesh* LoadMesh(const aiMesh* i_mesh);
 
 	void Draw(const std::vector<GLuint>& i_modelTextures);
 
 private:
+	Mesh();
+
 	void LoadVBO(const aiMesh* i_mesh);
 	void LoadEBO(const aiMesh* i_mesh);
 	void CreateVAO();

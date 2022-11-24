@@ -20,12 +20,12 @@ GLuint ModuleTexture::LoadTextureFromFile(std::string i_textureName)
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
 
-    DirectX::ScratchImage imageTexture = LoadImageFromFile(i_textureName);
+    DirectX::ScratchImage image = LoadImageFromFile(i_textureName);
 
     GLint width, height, internalFormat, format, type;
-    LoadInformationFromImage(imageTexture, width, height, internalFormat, format, type);
+    LoadInformationFromImage(image, width, height, internalFormat, format, type);
 
-    glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, type, imageTexture.GetPixels());
+    glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, type, image.GetPixels());
 
     glGenerateMipmap(GL_TEXTURE_2D);
 

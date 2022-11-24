@@ -13,12 +13,14 @@ Mesh::~Mesh()
 {
 }
 
-void Mesh::LoadMesh(const aiMesh* i_mesh)
+Mesh* Mesh::LoadMesh(const aiMesh* i_mesh)
 {
-	m_materialIndex = i_mesh->mMaterialIndex;
-	LoadVBO(i_mesh);
-	LoadEBO(i_mesh);
-	CreateVAO();
+	Mesh* mesh = new Mesh();
+	mesh->m_materialIndex = i_mesh->mMaterialIndex;
+	mesh->LoadVBO(i_mesh);
+	mesh->LoadEBO(i_mesh);
+	mesh->CreateVAO();
+	return mesh;
 }
 
 void Mesh::Draw(const std::vector<GLuint>& i_modelTextures)

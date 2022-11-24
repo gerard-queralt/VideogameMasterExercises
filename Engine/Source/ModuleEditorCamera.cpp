@@ -119,7 +119,7 @@ void ModuleEditorCamera::Rotate(float3 i_thetasRad)
 {
 	float3x3 rotationX = float3x3::RotateAxisAngle(m_frustum.WorldRight(), i_thetasRad.x);
 	float3x3 rotationY = float3x3::RotateY(i_thetasRad.y);
-	float3x3 rotationZ = float3x3::RotateZ(i_thetasRad.z);
+	float3x3 rotationZ = float3x3::RotateAxisAngle(m_frustum.Front(), i_thetasRad.z);
 
 	float3x3 rotationMat = rotationY * rotationX * rotationZ;
 
