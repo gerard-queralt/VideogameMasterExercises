@@ -190,7 +190,12 @@
     <ClCompile Include="WindowConsole.cpp">
       <Filter>Source\Models\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="Model3D.cpp" />
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source\Models\3D Models</Filter>
+    </ClCompile>
+    <ClCompile Include="Model3D.cpp">
+      <Filter>Source\Models\3D Models</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -496,7 +501,12 @@
     <ClInclude Include="WindowConsole.h">
       <Filter>Source\Models\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="Model3D.h" />
+    <ClInclude Include="Mesh.h">
+      <Filter>Source\Models\3D Models</Filter>
+    </ClInclude>
+    <ClInclude Include="Model3D.h">
+      <Filter>Source\Models\3D Models</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
@@ -534,6 +544,9 @@
     </Filter>
     <Filter Include="Source\Models\Windows">
       <UniqueIdentifier>{3c49c286-9acb-4a3f-861d-e6328d76ad29}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Models\3D Models">
+      <UniqueIdentifier>{abb92933-208e-4c28-ab39-2895bdd583c6}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

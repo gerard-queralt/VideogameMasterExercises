@@ -1,5 +1,6 @@
 #pragma once
 
+#include <vector>
 #include "scene.h"
 #include "glew.h"
 
@@ -11,7 +12,7 @@ public:
 
 	void LoadMesh(const aiMesh* i_mesh);
 
-	void Draw(GLuint i_textures);
+	void Draw(const std::vector<GLuint>& i_modelTextures);
 
 private:
 	void LoadVBO(const aiMesh* i_mesh);
@@ -22,6 +23,7 @@ private:
 	GLuint m_ebo;
 	GLuint m_vao;
 
+	int m_materialIndex;
 	int m_numVertices;
 	int m_numIndices;
 };

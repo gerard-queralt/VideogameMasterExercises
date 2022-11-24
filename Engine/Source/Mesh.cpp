@@ -15,12 +15,13 @@ Mesh::~Mesh()
 
 void Mesh::LoadMesh(const aiMesh* i_mesh)
 {
+	m_materialIndex = i_mesh->mMaterialIndex;
 	LoadVBO(i_mesh);
 	LoadEBO(i_mesh);
 	CreateVAO();
 }
 
-void Mesh::Draw(GLuint i_texture)
+void Mesh::Draw(const std::vector<GLuint>& i_modelTextures)
 {
 	GLuint program = App->exercise->getProgram();
 	const float4x4& view = App->camera->getView();
@@ -33,11 +34,12 @@ void Mesh::Draw(GLuint i_texture)
 	glUniformMatrix4fv(glGetUniformLocation(program, "view"), 1, GL_TRUE, (const float*)&view);
 	glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_TRUE, (const float*)&proj);
 	
-	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, i_texture);
+	glActiveTexture(GL_TEXTURE5);
+	glBindTexture(GL_TEXTURE_2D, i_modelTextures[m_materialIndex]);
 	glUniform1i(glGetUniformLocation(program, "diffuse"), 0);
 	
 	glBindVertexArray(m_vao);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
 	glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_INT, nullptr);
 }
 
@@ -79,7 +81,7 @@ void Mesh::LoadEBO(const aiMesh* i_mesh)
 	
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, index_size, nullptr, GL_STATIC_DRAW);
 	
-	GLuint* indices = (GLuint*)(glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_MAP_WRITE_BIT));
+	GLuint* indices = (GLuint*)(glMapBuffer(GL_ELEMENT_ARRAY_BUFFER, GL_WRITE_ONLY));
 	
 	for (int i = 0; i < i_mesh->mNumFaces; ++i)
 	{

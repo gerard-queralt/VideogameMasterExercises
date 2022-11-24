@@ -1,8 +1,12 @@
 #pragma once
 
 #include "Module.h"
+
 #include <glew.h>
+
 #include "float4x4.h"
+
+#include "Model3D.h"
 
 class ModuleRenderExercise : public Module
 {
@@ -25,7 +29,7 @@ public:
 private:
 	GLuint vbo;
 	GLuint program;
-	GLuint texture;
+	Model3D* model3D;
 	float4x4 model;
 };
 

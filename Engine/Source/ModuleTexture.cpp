@@ -10,7 +10,29 @@ ModuleTexture::~ModuleTexture()
 {
 }
 
-DirectX::ScratchImage ModuleTexture::LoadTextureFromFile(std::string i_textureName)
+GLuint ModuleTexture::LoadTextureFromFile(std::string i_textureName)
+{
+    GLuint texture;
+
+    glGenTextures(1, &texture);
+    glBindTexture(GL_TEXTURE_2D, texture);
+
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+    DirectX::ScratchImage imageTexture = LoadImageFromFile(i_textureName);
+
+    GLint width, height, internalFormat, format, type;
+    LoadInformationFromImage(imageTexture, width, height, internalFormat, format, type);
+
+    glTexImage2D(GL_TEXTURE_2D, 0, internalFormat, width, height, 0, format, type, imageTexture.GetPixels());
+
+    glGenerateMipmap(GL_TEXTURE_2D);
+
+    return texture;
+}
+
+DirectX::ScratchImage ModuleTexture::LoadImageFromFile(std::string i_textureName)
 {
     std::string texturePath = TEXTURE_FOLDER_PATH + i_textureName;
     std::wstring texturePathAsWString = std::wstring(texturePath.begin(), texturePath.end());
