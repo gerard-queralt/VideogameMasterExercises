@@ -18,6 +18,8 @@ public:
 	void Draw();
 
 private:
+	friend class WindowModel3D;
+
 	Model3D();
 
 	void LoadMaterials(const aiScene* i_scene);

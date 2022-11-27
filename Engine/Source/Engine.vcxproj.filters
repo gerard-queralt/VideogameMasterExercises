@@ -202,6 +202,9 @@
     <ClCompile Include="ModuleTimer.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
+    <ClCompile Include="WindowModel3D.cpp">
+      <Filter>Source\Models\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -518,6 +521,9 @@
     </ClInclude>
     <ClInclude Include="ModuleTimer.h">
       <Filter>Source\Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowModel3D.h">
+      <Filter>Source\Models\Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

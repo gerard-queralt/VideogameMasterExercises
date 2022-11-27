@@ -21,6 +21,7 @@ bool ModuleEditor::Init()
 
 	m_windows.push_back(m_console = new WindowConsole());
 	m_windows.push_back(new WindowHardware());
+	m_windows.push_back(m_model = new WindowModel3D());
 
 	return true;
 }
@@ -87,4 +88,9 @@ bool ModuleEditor::CleanUp()
 void ModuleEditor::OutputToConsole(const char* i_textToPrint)
 {
 	m_console->Output(i_textToPrint);
+}
+
+void ModuleEditor::SetTargetModel(const Model3D* i_model)
+{
+	m_model->SetModel(i_model);
 }

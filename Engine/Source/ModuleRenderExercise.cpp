@@ -7,6 +7,7 @@
 #include "ModuleEditorCamera.h"
 #include "ModuleTexture.h"
 #include "Model3D.h"
+#include "ModuleEditor.h"
 
 #define VERT_SHADER "default_vertex.glsl"
 #define FRAG_SHADER "default_fragment.glsl"
@@ -37,6 +38,7 @@ bool ModuleRenderExercise::Start()
 			float3(1.0f));
 
 	m_model3D = Model3D::LoadFromFile("BakerHouse.fbx");
+	App->editor->SetTargetModel(m_model3D);
 
 	return true;
 }

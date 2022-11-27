@@ -17,6 +17,7 @@ Mesh* Mesh::LoadMesh(const aiMesh* i_mesh)
 {
 	Mesh* mesh = new Mesh();
 	mesh->m_materialIndex = i_mesh->mMaterialIndex;
+	mesh->m_numTriangles = i_mesh->mNumFaces;
 	mesh->LoadVBO(i_mesh);
 	mesh->LoadEBO(i_mesh);
 	mesh->CreateVAO();

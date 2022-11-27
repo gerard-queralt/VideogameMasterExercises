@@ -14,6 +14,8 @@ public:
 	void Draw(const std::vector<GLuint>& i_modelTextures);
 
 private:
+	friend class WindowModel3D;
+
 	Mesh();
 
 	void LoadVBO(const aiMesh* i_mesh);
@@ -26,6 +28,7 @@ private:
 
 	int m_materialIndex;
 	int m_numVertices;
+	int m_numTriangles;
 	int m_numIndices;
 };
 
