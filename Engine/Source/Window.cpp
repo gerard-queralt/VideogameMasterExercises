@@ -9,6 +9,10 @@ Window::~Window()
 {
 }
 
+void Window::Start()
+{
+}
+
 update_status Window::Update()
 {
 	return UPDATE_CONTINUE;

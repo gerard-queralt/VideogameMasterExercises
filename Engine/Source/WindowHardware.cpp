@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include "imgui.h"
+#include "glew.h"
 #include "SDL.h"
 
 WindowHardware::WindowHardware() : Window("Hardware")
@@ -26,11 +27,20 @@ WindowHardware::WindowHardware() : Window("Hardware")
 	//insert a dot in the penultimate position
 	ramInGbOneDecimal.insert(ramInGbOneDecimal.length() - 1, ".");
 	m_ram = ramInGbOneDecimal + "Gb";
-	//m_gpu = _strdup(SDL_GetCurrentVideoDriver());
 }
 
 WindowHardware::~WindowHardware()
 {
+}
+
+void WindowHardware::Start()
+{
+	char glVendor[128];
+	sprintf(glVendor, "%s", glGetString(GL_VENDOR));
+	m_gpuVendor = _strdup(glVendor);
+	char glRenderer[128];
+	sprintf(glRenderer, "%s", glGetString(GL_RENDERER));
+	m_gpuBrand = _strdup(glRenderer);
 }
 
 update_status WindowHardware::Update()
@@ -39,9 +49,16 @@ update_status WindowHardware::Update()
 
 	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
 		ImGui::TextUnformatted(("SDL Version: " + m_sdlVersion).c_str());
+
+		ImGui::Separator();
+
 		ImGui::TextUnformatted(("CPUs: " + m_cpusAndCache).c_str());
 		ImGui::TextUnformatted(("System RAM: " + m_ram).c_str());
-		//ImGui::TextUnformatted(("GPU: " + m_gpu).c_str());
+
+		ImGui::Separator();
+
+		ImGui::TextUnformatted(("GPU: " + m_gpuVendor).c_str());
+		ImGui::TextUnformatted(("Brand: " + m_gpuBrand).c_str());
 	}
 	ImGui::End();
 
