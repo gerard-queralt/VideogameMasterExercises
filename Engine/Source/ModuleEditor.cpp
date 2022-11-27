@@ -5,6 +5,7 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "ModuleRender.h"
+#include "WindowHardware.h"
 
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl.h"
@@ -19,6 +20,7 @@ bool ModuleEditor::Init()
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
 	m_windows.push_back(m_console = new WindowConsole());
+	m_windows.push_back(new WindowHardware());
 
 	return true;
 }

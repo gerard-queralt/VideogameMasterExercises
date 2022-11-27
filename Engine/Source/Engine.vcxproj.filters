@@ -196,6 +196,9 @@
     <ClCompile Include="Model3D.cpp">
       <Filter>Source\Models\3D Models</Filter>
     </ClCompile>
+    <ClCompile Include="WindowHardware.cpp">
+      <Filter>Source\Models\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -506,6 +509,9 @@
     </ClInclude>
     <ClInclude Include="Model3D.h">
       <Filter>Source\Models\3D Models</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowHardware.h">
+      <Filter>Source\Models\Windows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

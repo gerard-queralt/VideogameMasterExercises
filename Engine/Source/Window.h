@@ -6,11 +6,12 @@
 class Window
 {
 public:
-	Window(std::string i_name);
 	~Window();
 
 	virtual update_status Update();
 protected:
+	Window(std::string i_name);
+
 	std::string m_name;
 };
 

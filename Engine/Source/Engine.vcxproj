@@ -211,6 +211,7 @@
     <ClCompile Include="ModuleWindow.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="WindowConsole.cpp" />
+    <ClCompile Include="WindowHardware.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\External\ImGui\Include\GlueCode\imgui_impl_opengl3.h" />
@@ -316,6 +317,7 @@
     <ClInclude Include="ModuleWindow.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowConsole.h" />
+    <ClInclude Include="WindowHardware.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\External\MathGeoLib\Include\Geometry\KDTree.inl" />
