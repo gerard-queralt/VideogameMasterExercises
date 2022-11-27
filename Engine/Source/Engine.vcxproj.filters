@@ -199,6 +199,9 @@
     <ClCompile Include="WindowHardware.cpp">
       <Filter>Source\Models\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="ModuleTimer.cpp">
+      <Filter>Source\Modules</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -512,6 +515,9 @@
     </ClInclude>
     <ClInclude Include="WindowHardware.h">
       <Filter>Source\Models\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleTimer.h">
+      <Filter>Source\Modules</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

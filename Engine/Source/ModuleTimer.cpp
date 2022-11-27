@@ -28,6 +28,5 @@ update_status ModuleTimer::PreUpdate()
 
 int ModuleTimer::GetCurrentSDLTime()
 {
-	//SDL_GetTicks returns milliseconds
-	return SDL_GetTicks() / 1000;
+	return SDL_GetTicks();
 }

@@ -2,6 +2,7 @@
 
 #include "Module.h"
 
+//Time is in milliseconds. Might need to be in seconds
 class ModuleTimer : public Module
 {
 public:
@@ -18,7 +19,7 @@ public:
 private:
 	int GetCurrentSDLTime();
 
-	int m_prevTime;
-	int m_deltaTime;
+	int m_prevTime = 0;
+	int m_deltaTime = 0;
 };
 

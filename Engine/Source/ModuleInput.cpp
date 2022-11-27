@@ -5,9 +5,11 @@
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
 #include "ModuleEditorCamera.h"
+#include "ModuleEditor.h"
+#include "ModuleTimer.h"
+
 #include "SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
-#include "ModuleEditor.h"
 
 ModuleInput::ModuleInput()
 {}
@@ -55,32 +57,38 @@ update_status ModuleInput::Update()
     }
 
     m_keyboard = SDL_GetKeyboardState(NULL);
+    float deltaTime = App->timer->GetDeltaTime();
 
     //translate camera
-    float3 deltaPos = float3::zero;
+    float3 deltaPosVec = float3::zero;
+    float cameraSpeed = 0.02f;
+    float deltaPos = cameraSpeed * deltaTime;
+
     if (m_keyboard[SDL_SCANCODE_W]) {
-        deltaPos.x += 0.2f;
+        deltaPosVec.x += deltaPos;
     }
     if (m_keyboard[SDL_SCANCODE_S]) {
-        deltaPos.x -= 0.2f;
+        deltaPosVec.x -= deltaPos;
     }
     if (m_keyboard[SDL_SCANCODE_Q]) {
-        deltaPos.y += 0.2f;
+        deltaPosVec.y += deltaPos;
     }
     if (m_keyboard[SDL_SCANCODE_E]) {
-        deltaPos.y -= 0.2f;
+        deltaPosVec.y -= deltaPos;
     }
     if (m_keyboard[SDL_SCANCODE_D]) {
-        deltaPos.z += 0.2f;
+        deltaPosVec.z += deltaPos;
     }
     if (m_keyboard[SDL_SCANCODE_A]) {
-        deltaPos.z -= 0.2f;
+        deltaPosVec.z -= deltaPos;
     }
-    App->camera->Translate(deltaPos);
+    App->camera->Translate(deltaPosVec);
 
     //rotate camera
     float3 deltaRot = float3::zero;
-    float deltaAngle = 0.05f;
+    float angleSpeed = 0.005f;
+    float deltaAngle = angleSpeed * deltaTime;
+
     if (m_keyboard[SDL_SCANCODE_LEFT]) {
         deltaRot.y += deltaAngle;
     }
