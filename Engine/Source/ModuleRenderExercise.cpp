@@ -46,10 +46,7 @@ bool ModuleRenderExercise::Start()
 
 update_status ModuleRenderExercise::Update()
 {
-	MicrosecondTimer t;
-	t.Start();
 	m_model3D->Draw();
-	LOG_ENGINE(std::to_string(t.Read()).c_str());
 
 	return UPDATE_CONTINUE;
 }

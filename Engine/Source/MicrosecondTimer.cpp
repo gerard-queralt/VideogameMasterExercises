@@ -12,5 +12,5 @@ MicrosecondTimer::~MicrosecondTimer()
 
 int MicrosecondTimer::GetCurrentTime()
 {
-	return SDL_GetPerformanceCounter() * PerformanceFrequency;
+	return SDL_GetPerformanceCounter() / PerformanceFrequency;
 }
