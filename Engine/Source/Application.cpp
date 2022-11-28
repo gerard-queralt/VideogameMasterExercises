@@ -9,7 +9,8 @@
 #include "ModuleEditor.h"
 #include "ModuleDebugDraw.h"
 #include "ModuleTexture.h"
-#include "ModuleTimer.h"
+
+#include "MicrosecondTimer.h"
 
 using namespace std;
 
@@ -25,7 +26,8 @@ Application::Application()
 	modules.push_back(exercise = new ModuleRenderExercise());
 	modules.push_back(debugDraw = new ModuleDebugDraw());
 	modules.push_back(texture = new ModuleTexture());
-	modules.push_back(timer = new ModuleTimer());
+	
+	timer = new MicrosecondTimer();
 }
 
 Application::~Application()
@@ -53,6 +55,8 @@ bool Application::Start()
 	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret; ++it)
 		ret = (*it)->Start();
 
+	timer->Start();
+
 	return ret;
 }
 
@@ -60,14 +64,18 @@ update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 
-	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it) {
+		timer->Stop();
 		ret = (*it)->PreUpdate();
+	}
 
-	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
 		ret = (*it)->Update();
 
-	for(list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it) {
 		ret = (*it)->PostUpdate();
+		timer->Start();
+	}
 
 	return ret;
 }

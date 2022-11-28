@@ -199,11 +199,20 @@
     <ClCompile Include="WindowHardware.cpp">
       <Filter>Source\Models\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleTimer.cpp">
-      <Filter>Source\Modules</Filter>
-    </ClCompile>
     <ClCompile Include="WindowModel3D.cpp">
       <Filter>Source\Models\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="Timer.cpp">
+      <Filter>Source\Models\Timers</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowFPS.cpp">
+      <Filter>Source\Models\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="MillisecondTimer.cpp">
+      <Filter>Source\Models\Timers</Filter>
+    </ClCompile>
+    <ClCompile Include="MicrosecondTimer.cpp">
+      <Filter>Source\Models\Timers</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -519,11 +528,20 @@
     <ClInclude Include="WindowHardware.h">
       <Filter>Source\Models\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleTimer.h">
-      <Filter>Source\Modules</Filter>
-    </ClInclude>
     <ClInclude Include="WindowModel3D.h">
       <Filter>Source\Models\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="Timer.h">
+      <Filter>Source\Models\Timers</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowFPS.h">
+      <Filter>Source\Models\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="MillisecondTimer.h">
+      <Filter>Source\Models\Timers</Filter>
+    </ClInclude>
+    <ClInclude Include="MicrosecondTimer.h">
+      <Filter>Source\Models\Timers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -565,6 +583,9 @@
     </Filter>
     <Filter Include="Source\Models\3D Models">
       <UniqueIdentifier>{abb92933-208e-4c28-ab39-2895bdd583c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Models\Timers">
+      <UniqueIdentifier>{26e31c71-09fc-4943-96e4-55fa89d0309d}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
