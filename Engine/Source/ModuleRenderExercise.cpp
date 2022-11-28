@@ -8,6 +8,7 @@
 #include "ModuleTexture.h"
 #include "Model3D.h"
 #include "ModuleEditor.h"
+#include "MicrosecondTimer.h"
 
 #define VERT_SHADER "default_vertex.glsl"
 #define FRAG_SHADER "default_fragment.glsl"
@@ -45,7 +46,10 @@ bool ModuleRenderExercise::Start()
 
 update_status ModuleRenderExercise::Update()
 {
+	MicrosecondTimer t;
+	t.Start();
 	m_model3D->Draw();
+	LOG_ENGINE(std::to_string(t.Read()).c_str());
 
 	return UPDATE_CONTINUE;
 }

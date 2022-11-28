@@ -10,9 +10,11 @@
 #include "ModuleDebugDraw.h"
 #include "ModuleTexture.h"
 
-#include "MicrosecondTimer.h"
+#include "MillisecondTimer.h"
 
 using namespace std;
+
+#define TIME_PER_FRAME 1000.f / 60.f // Approx. 60 fps
 
 Application::Application()
 {
@@ -27,7 +29,7 @@ Application::Application()
 	modules.push_back(debugDraw = new ModuleDebugDraw());
 	modules.push_back(texture = new ModuleTexture());
 	
-	timer = new MicrosecondTimer();
+	timer = new MillisecondTimer();
 }
 
 Application::~Application()
@@ -56,6 +58,7 @@ bool Application::Start()
 		ret = (*it)->Start();
 
 	timer->Start();
+	m_prevTime = timer->Read();
 
 	return ret;
 }
@@ -64,17 +67,20 @@ update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 
-	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it) {
-		timer->Stop();
-		ret = (*it)->PreUpdate();
-	}
+	int currentTime = timer->Read();
+	m_deltaTime = currentTime - m_prevTime;
 
-	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
-		ret = (*it)->Update();
+	if (TIME_PER_FRAME < m_deltaTime){
+		for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+			ret = (*it)->PreUpdate();
 
-	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it) {
-		ret = (*it)->PostUpdate();
-		timer->Start();
+		for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+			ret = (*it)->Update();
+
+		for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
+			ret = (*it)->PostUpdate();
+
+		m_prevTime = currentTime;
 	}
 
 	return ret;

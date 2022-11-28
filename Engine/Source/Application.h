@@ -38,12 +38,16 @@ public:
 	ModuleDebugDraw* debugDraw = nullptr;
 	ModuleTexture* texture = nullptr;
 
-	Timer* timer = nullptr;
+	int GetDeltaTime() {
+		return m_deltaTime;
+	}
 
 private:
-
 	std::list<Module*> modules;
 
+	Timer* timer = nullptr;
+	int m_prevTime = 0;
+	int m_deltaTime = 0;
 };
 
 extern Application* App;

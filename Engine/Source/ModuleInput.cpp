@@ -6,7 +6,6 @@
 #include "ModuleWindow.h"
 #include "ModuleEditorCamera.h"
 #include "ModuleEditor.h"
-#include "Timer.h"
 
 #include "SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
@@ -57,7 +56,7 @@ update_status ModuleInput::Update()
     }
 
     m_keyboard = SDL_GetKeyboardState(NULL);
-    float deltaTime = App->timer->Read();
+    int deltaTime = App->GetDeltaTime();
 
     //translate camera
     float3 deltaPosVec = float3::zero;
