@@ -21,7 +21,6 @@ update_status WindowFPS::Update()
 	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
 		int deltaTime = App->GetDeltaTime();
 		m_fpsHist[m_currentIndex] = 1000.f / deltaTime;
-		LOG_ENGINE(std::to_string(1000.f / deltaTime).c_str());
 		
 		ImGui::PlotHistogram("Framerate Plot", &m_fpsHist[0], m_fpsCaptures, 0, "", 0.f, 160.f, ImVec2(310, 160));
 		
