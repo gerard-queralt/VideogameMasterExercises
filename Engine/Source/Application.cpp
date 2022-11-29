@@ -68,7 +68,9 @@ update_status Application::Update()
 	int currentTime = m_timer->Read();
 	m_deltaTime = currentTime - m_prevTime;
 
-	float timePerFrame = 1000.f / m_framesPerSecond;
+	float timePerFrame = 0.f;
+	if (0 < m_framesPerSecond)
+		timePerFrame = 1000.f / m_framesPerSecond;
 
 	if (timePerFrame < m_deltaTime){
 		for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
