@@ -19,9 +19,14 @@ update_status WindowFPS::Update()
 	bool enabled;
 
 	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
-		m_fpsHist[m_currentIndex] = App->GetDeltaTime();
-		LOG_ENGINE(std::to_string(App->GetDeltaTime()).c_str());
-		ImGui::PlotHistogram("Framerate Plot", &m_fpsHist[0], m_fpsCaptures);
+		int deltaTime = App->GetDeltaTime();
+		float timePerFrame = App->GetMsPerFrame();
+		float fps = deltaTime / timePerFrame;
+		m_fpsHist[m_currentIndex] = fps;
+		LOG_ENGINE(std::to_string(fps).c_str());
+		
+		ImGui::PlotHistogram("Framerate Plot", &m_fpsHist[0], m_fpsCaptures, 0, "", 0.f, 160.f, ImVec2(310, 160));
+		
 		if (m_currentIndex < m_fpsCaptures - 1) {
 			++m_currentIndex;
 		}

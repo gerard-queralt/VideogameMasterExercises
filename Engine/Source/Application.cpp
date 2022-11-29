@@ -14,8 +14,6 @@
 
 using namespace std;
 
-#define TIME_PER_FRAME 1000.f / 60.f // Approx. 60 fps
-
 Application::Application()
 {
 	// Order matters: they will Init/start/update in this order
@@ -29,7 +27,7 @@ Application::Application()
 	modules.push_back(debugDraw = new ModuleDebugDraw());
 	modules.push_back(texture = new ModuleTexture());
 	
-	timer = new MillisecondTimer();
+	m_timer = new MillisecondTimer();
 }
 
 Application::~Application()
@@ -57,8 +55,8 @@ bool Application::Start()
 	for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret; ++it)
 		ret = (*it)->Start();
 
-	timer->Start();
-	m_prevTime = timer->Read();
+	m_timer->Start();
+	m_prevTime = m_timer->Read();
 
 	return ret;
 }
@@ -67,10 +65,10 @@ update_status Application::Update()
 {
 	update_status ret = UPDATE_CONTINUE;
 
-	int currentTime = timer->Read();
+	int currentTime = m_timer->Read();
 	m_deltaTime = currentTime - m_prevTime;
 
-	if (TIME_PER_FRAME < m_deltaTime){
+	if (m_millisecondsPerFrame < m_deltaTime){
 		for (list<Module*>::iterator it = modules.begin(); it != modules.end() && ret == UPDATE_CONTINUE; ++it)
 			ret = (*it)->PreUpdate();
 
