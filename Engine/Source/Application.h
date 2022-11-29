@@ -42,18 +42,18 @@ public:
 		return m_deltaTime;
 	}
 
-	float GetMsPerFrame() {
-		return m_millisecondsPerFrame;
+	float GetFPS() {
+		return m_framesPerSecond;
 	}
 
-	void SetMsPerFrame(float i_millisecondsPerFrame) {
-		m_millisecondsPerFrame = i_millisecondsPerFrame;
+	void SetFPS(float i_framesPerSecond) {
+		m_framesPerSecond = i_framesPerSecond;
 	}
 
 private:
 	std::list<Module*> modules;
 
-	float m_millisecondsPerFrame = 1000.f / 60.f; // Approx. 60 fps
+	float m_framesPerSecond = 60.f;
 
 	Timer* m_timer = nullptr;
 	int m_prevTime = 0;
