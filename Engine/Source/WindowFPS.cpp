@@ -20,7 +20,7 @@ update_status WindowFPS::Update()
 
 	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
 		float maxFPS = App->GetFPS();
-		ImGui::SliderFloat("Max FPS", &maxFPS, 0.f, 120.f, "%.1f");
+		ImGui::SliderFloat("Max FPS", &maxFPS, 0.f, 120.f, "%.1f", ImGuiSliderFlags_AlwaysClamp);
 		App->SetFPS(maxFPS);
 		
 		int deltaTime = App->GetDeltaTime();
