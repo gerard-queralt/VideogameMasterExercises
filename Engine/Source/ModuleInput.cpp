@@ -61,6 +61,8 @@ update_status ModuleInput::Update()
     //translate camera
     float3 deltaPosVec = float3::zero;
     float cameraSpeed = 0.02f;
+    if (m_keyboard[SDL_SCANCODE_LSHIFT])
+        cameraSpeed *= 2;
     float deltaPos = cameraSpeed * deltaTime;
 
     if (m_keyboard[SDL_SCANCODE_W]) {
