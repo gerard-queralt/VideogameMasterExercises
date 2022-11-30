@@ -18,6 +18,7 @@ public:
 
 private:
 	DirectX::ScratchImage LoadImageFromFile(std::string i_textureName);
+	HRESULT TryLoadingImage(std::string i_texturePath, DirectX::ScratchImage& o_image);
 	DirectX::ScratchImage RotateImage(const DirectX::ScratchImage& i_imageSource);
 	void LoadInformationFromImage(const DirectX::ScratchImage& i_image,
 		GLint& o_width,

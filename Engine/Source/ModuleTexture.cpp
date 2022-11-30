@@ -34,20 +34,33 @@ GLuint ModuleTexture::LoadTextureFromFile(std::string i_textureName)
 
 DirectX::ScratchImage ModuleTexture::LoadImageFromFile(std::string i_textureName)
 {
-    std::string texturePath = s_textureFolderPath + i_textureName;
-    std::wstring texturePathAsWString = std::wstring(texturePath.begin(), texturePath.end());
+    std::string texturePath = i_textureName;
     DirectX::ScratchImage image;
-    HRESULT res;
+    
+    HRESULT res = TryLoadingImage(texturePath, image);
 
-    res = DirectX::LoadFromDDSFile(texturePathAsWString.c_str(), DirectX::DDS_FLAGS_NONE, nullptr, image);
-    
-    if (FAILED(res))
-        res = DirectX::LoadFromTGAFile(texturePathAsWString.c_str(), DirectX::TGA_FLAGS_NONE, nullptr, image);
-    
-    if (FAILED(res))
-        res = DirectX::LoadFromWICFile(texturePathAsWString.c_str(), DirectX::WIC_FLAGS_NONE, nullptr, image);
+    if (FAILED(res)) {
+        texturePath = s_textureFolderPath + i_textureName;
+        res = TryLoadingImage(texturePath, image);
+    }
 
     return RotateImage(image);
+}
+
+HRESULT ModuleTexture::TryLoadingImage(std::string i_texturePath, DirectX::ScratchImage& o_image)
+{
+    std::wstring texturePathAsWString = std::wstring(i_texturePath.begin(), i_texturePath.end());
+    HRESULT res;
+
+    res = DirectX::LoadFromDDSFile(texturePathAsWString.c_str(), DirectX::DDS_FLAGS_NONE, nullptr, o_image);
+
+    if (FAILED(res))
+        res = DirectX::LoadFromTGAFile(texturePathAsWString.c_str(), DirectX::TGA_FLAGS_NONE, nullptr, o_image);
+
+    if (FAILED(res))
+        res = DirectX::LoadFromWICFile(texturePathAsWString.c_str(), DirectX::WIC_FLAGS_NONE, nullptr, o_image);
+    
+    return res;
 }
 
 void ModuleTexture::LoadInformationFromImage(const DirectX::ScratchImage& i_image,
