@@ -6,6 +6,7 @@
 #include "ModuleWindow.h"
 #include "ModuleEditorCamera.h"
 #include "ModuleEditor.h"
+#include "ModuleRenderExercise.h"
 
 #include "SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
@@ -39,6 +40,8 @@ update_status ModuleInput::Update()
 {
     SDL_Event sdlEvent;
 
+    char* dropfileDir;
+
     while (SDL_PollEvent(&sdlEvent) != 0)
     {
         ImGui_ImplSDL2_ProcessEvent(&sdlEvent);
@@ -51,6 +54,11 @@ update_status ModuleInput::Update()
                     App->renderer->WindowResized(sdlEvent.window.data1, sdlEvent.window.data2);
                 if (sdlEvent.window.event == SDL_WINDOWEVENT_CLOSE)
                     return UPDATE_STOP;
+                break;
+            case SDL_DROPFILE:
+                dropfileDir = sdlEvent.drop.file;
+                App->editor->OutputToConsole(("File dropped: " + std::string(dropfileDir)).c_str());
+                App->exercise->SetModel3D(dropfileDir);
                 break;
         }
     }

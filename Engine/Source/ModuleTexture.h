@@ -14,12 +14,15 @@ public:
 
 	static const std::string s_textureFolderPath;
 
-	GLuint LoadTextureFromFile(std::string i_textureName);
+	GLuint LoadTextureFromFile(std::string i_texturePathInModel, std::string i_modelPath);
 
 private:
-	DirectX::ScratchImage LoadImageFromFile(std::string i_textureName);
+	HRESULT LoadImageFromFile(const std::string& i_texturePathInModel,
+							  const std::string& i_modelPath,
+							  DirectX::ScratchImage& o_image);
+	std::string GetImageNameFromPath(const std::string& i_texturePathInModel);
 	HRESULT TryLoadingImage(std::string i_texturePath, DirectX::ScratchImage& o_image);
-	DirectX::ScratchImage RotateImage(const DirectX::ScratchImage& i_imageSource);
+	HRESULT RotateImage(const DirectX::ScratchImage& i_imageSource, DirectX::ScratchImage& o_rotatedImage);
 	void LoadInformationFromImage(const DirectX::ScratchImage& i_image,
 		GLint& o_width,
 		GLint& o_height,

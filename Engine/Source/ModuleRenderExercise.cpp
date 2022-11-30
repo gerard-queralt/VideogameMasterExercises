@@ -46,7 +46,16 @@ bool ModuleRenderExercise::Start()
 
 update_status ModuleRenderExercise::Update()
 {
-	m_model3D->Draw();
+	if (m_model3D != nullptr)
+		m_model3D->Draw();
 
 	return UPDATE_CONTINUE;
+}
+
+void ModuleRenderExercise::SetModel3D(const char* i_modelPath)
+{
+	m_model3D = Model3D::LoadFromFile(i_modelPath);
+	if (m_model3D != nullptr) {
+		App->editor->SetTargetModel(m_model3D);
+	}
 }

@@ -1,5 +1,8 @@
 #include "ModuleTexture.h"
 
+#include "Application.h"
+#include "ModuleEditor.h"
+
 const std::string ModuleTexture::s_textureFolderPath = "textures/";
 
 ModuleTexture::ModuleTexture()
@@ -10,8 +13,15 @@ ModuleTexture::~ModuleTexture()
 {
 }
 
-GLuint ModuleTexture::LoadTextureFromFile(std::string i_textureName)
+GLuint ModuleTexture::LoadTextureFromFile(std::string i_texturePathInModel, std::string i_modelPath)
 {
+    DirectX::ScratchImage image;
+    HRESULT loadingImageResult = LoadImageFromFile(i_texturePathInModel, i_modelPath, image);
+    if (FAILED(loadingImageResult)) {
+        App->editor->OutputToConsole(("Texture " + i_texturePathInModel + " failed to load").c_str());
+        return -1;
+    }
+
     GLuint texture;
 
     glGenTextures(1, &texture);
@@ -19,8 +29,6 @@ GLuint ModuleTexture::LoadTextureFromFile(std::string i_textureName)
 
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-    DirectX::ScratchImage image = LoadImageFromFile(i_textureName);
 
     GLint width, height, internalFormat, format, type;
     LoadInformationFromImage(image, width, height, internalFormat, format, type);
@@ -32,19 +40,50 @@ GLuint ModuleTexture::LoadTextureFromFile(std::string i_textureName)
     return texture;
 }
 
-DirectX::ScratchImage ModuleTexture::LoadImageFromFile(std::string i_textureName)
+HRESULT ModuleTexture::LoadImageFromFile(const std::string& i_texturePathInModel,
+                                         const std::string& i_modelPath,
+                                         DirectX::ScratchImage& o_image)
 {
-    std::string texturePath = i_textureName;
+    std::string texturePath = i_texturePathInModel;
+    std::string textureName = GetImageNameFromPath(i_texturePathInModel);
     DirectX::ScratchImage image;
     
+    //try loading path in FBX
     HRESULT res = TryLoadingImage(texturePath, image);
 
     if (FAILED(res)) {
-        texturePath = s_textureFolderPath + i_textureName;
+        //try loading in the same folder as the model
+        texturePath = i_modelPath + textureName;
         res = TryLoadingImage(texturePath, image);
     }
 
-    return RotateImage(image);
+    if (FAILED(res)) {
+        //try loading in textures folder
+        texturePath = s_textureFolderPath + textureName;
+        res = TryLoadingImage(texturePath, image);
+    }
+
+    if (FAILED(res)) {
+        App->editor->OutputToConsole(("Texture " + textureName + " not found").c_str());
+    }
+    else {
+        res = RotateImage(image, o_image);
+    }
+
+    return res;
+}
+
+std::string ModuleTexture::GetImageNameFromPath(const std::string& i_texturePathInModel)
+{
+    std::string imageName;
+    bool fileSeparatorNotFound = true;
+    for (int i = i_texturePathInModel.size() - 1; fileSeparatorNotFound && 0 <= i; --i) {
+        char currentChar = i_texturePathInModel[i];
+        fileSeparatorNotFound = currentChar != '\\';
+        if (fileSeparatorNotFound)
+            imageName.insert(imageName.begin(), currentChar);
+    }
+    return imageName;
 }
 
 HRESULT ModuleTexture::TryLoadingImage(std::string i_texturePath, DirectX::ScratchImage& o_image)
@@ -97,9 +136,9 @@ void ModuleTexture::LoadInformationFromImage(const DirectX::ScratchImage& i_imag
     }
 }
 
-DirectX::ScratchImage ModuleTexture::RotateImage(const DirectX::ScratchImage& i_imageSource)
+HRESULT ModuleTexture::RotateImage(const DirectX::ScratchImage& i_imageSource, DirectX::ScratchImage& o_rotatedImage)
 {
-    DirectX::ScratchImage rotatedImage;
-    DirectX::FlipRotate(i_imageSource.GetImages(), 1, i_imageSource.GetMetadata(), DirectX::TEX_FR_FLIP_VERTICAL, rotatedImage);
-    return rotatedImage;
+    HRESULT result =
+        DirectX::FlipRotate(i_imageSource.GetImages(), 1, i_imageSource.GetMetadata(), DirectX::TEX_FR_FLIP_VERTICAL, o_rotatedImage);
+    return result;
 }

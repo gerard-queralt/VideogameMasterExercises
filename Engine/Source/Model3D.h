@@ -20,12 +20,14 @@ public:
 private:
 	friend class WindowModel3D;
 
-	Model3D();
+	Model3D(std::string i_fileName);
 
+	static bool CheckValidFormat(std::string i_fileName);
 	void LoadMaterials(const aiScene* i_scene);
 	void LoadMeshes(aiMesh** i_meshes, int i_numMeshes);
 
 	std::vector<GLuint> m_textures;
 	std::list<Mesh*> m_meshes;
+	std::string m_modelPath;
 };
 

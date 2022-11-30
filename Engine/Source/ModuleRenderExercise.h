@@ -26,6 +26,8 @@ public:
 		return m_program;
 	}
 
+	void SetModel3D(const char* i_modelPath);
+
 private:
 	GLuint m_vbo;
 	GLuint m_program;

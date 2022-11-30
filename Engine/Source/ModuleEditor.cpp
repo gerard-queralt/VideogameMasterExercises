@@ -22,7 +22,7 @@ bool ModuleEditor::Init()
 
 	m_windows.push_back(m_console = new WindowConsole());
 	m_windows.push_back(new WindowHardware());
-	m_windows.push_back(m_model = new WindowModel3D());
+	//m_windows.push_back(m_model = new WindowModel3D());
 	m_windows.push_back(new WindowFPS());
 
 	return true;
