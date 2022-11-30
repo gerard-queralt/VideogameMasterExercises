@@ -14,7 +14,7 @@ public:
 
 	static const std::string s_modelFolderPath;
 
-	static Model3D* LoadFromFile(std::string i_fileName);
+	static Model3D* LoadFromFile(const std::string& i_fileName);
 	void Draw();
 
 private:
@@ -22,7 +22,7 @@ private:
 
 	Model3D(std::string i_fileName);
 
-	static bool CheckValidFormat(std::string i_fileName);
+	static bool CheckValidFormat(const std::string& i_fileName);
 	void LoadMaterials(const aiScene* i_scene);
 	void LoadMeshes(aiMesh** i_meshes, int i_numMeshes);
 

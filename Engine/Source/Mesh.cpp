@@ -11,6 +11,9 @@ Mesh::Mesh()
 
 Mesh::~Mesh()
 {
+	glDeleteBuffers(1, &m_vbo);
+	glDeleteBuffers(1, &m_ebo);
+	glDeleteBuffers(1, &m_vao);
 }
 
 Mesh* Mesh::LoadMesh(const aiMesh* i_mesh)

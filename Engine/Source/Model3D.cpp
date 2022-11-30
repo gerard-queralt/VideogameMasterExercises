@@ -21,9 +21,13 @@ Model3D::Model3D(std::string i_fileName)
 
 Model3D::~Model3D()
 {
+	glDeleteTextures(m_textures.size(), &m_textures[0]);
+	for (Mesh* mesh : m_meshes)
+		delete mesh;
+	m_meshes.clear();
 }
 
-Model3D* Model3D::LoadFromFile(std::string i_fileName)
+Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 {
 	if (!CheckValidFormat(i_fileName)) {
 		App->editor->OutputToConsole("File is not FBX");
@@ -40,6 +44,7 @@ Model3D* Model3D::LoadFromFile(std::string i_fileName)
 		model->LoadMaterials(scene);
 		if (model->m_textures.size() != scene->mNumMaterials) {
 			App->editor->OutputToConsole("Some texture(s) failed to load");
+			aiReleaseImport(scene);
 			return nullptr;
 		}
 		model->LoadMeshes(scene->mMeshes, scene->mNumMeshes);
@@ -54,7 +59,7 @@ Model3D* Model3D::LoadFromFile(std::string i_fileName)
 	}
 }
 
-bool Model3D::CheckValidFormat(std::string i_fileName)
+bool Model3D::CheckValidFormat(const std::string& i_fileName)
 {
 	//this could be more simple if we just get the last 4 characters of the string
 	//but this way is more usable

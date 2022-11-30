@@ -11,7 +11,7 @@ public:
 	virtual void Start();
 	virtual update_status Update();
 protected:
-	Window(std::string i_name);
+	Window(const std::string& i_name);
 
 	std::string m_name;
 };
