@@ -29,7 +29,6 @@ public:
 	void SetModel3D(const char* i_modelPath);
 
 private:
-	GLuint m_vbo;
 	GLuint m_program;
 	Model3D* m_model3D;
 	float4x4 m_model;

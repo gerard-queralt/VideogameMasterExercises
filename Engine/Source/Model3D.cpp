@@ -21,7 +21,8 @@ Model3D::Model3D(std::string i_fileName)
 
 Model3D::~Model3D()
 {
-	glDeleteTextures(m_textures.size(), &m_textures[0]);
+	if (!m_textures.empty())
+		glDeleteTextures(m_textures.size(), &m_textures[0]);
 	for (Mesh* mesh : m_meshes)
 		delete mesh;
 	m_meshes.clear();
@@ -45,6 +46,7 @@ Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 		if (model->m_textures.size() != scene->mNumMaterials) {
 			App->editor->OutputToConsole("Some texture(s) failed to load");
 			aiReleaseImport(scene);
+			delete model;
 			return nullptr;
 		}
 		model->LoadMeshes(scene->mMeshes, scene->mNumMeshes);
@@ -55,6 +57,7 @@ Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 	{
 		std::string errorString = "Error loading " + i_fileName + ": " + aiGetErrorString();
 		App->editor->OutputToConsole(errorString.c_str());
+		delete model;
 		return nullptr;
 	}
 }

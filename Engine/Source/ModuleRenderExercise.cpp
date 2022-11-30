@@ -19,7 +19,6 @@ ModuleRenderExercise::ModuleRenderExercise()
 
 ModuleRenderExercise::~ModuleRenderExercise()
 {
-	glDeleteBuffers(1, &m_vbo);
 	glDeleteProgram(m_program);
 	delete m_model3D;
 }
@@ -36,11 +35,10 @@ bool ModuleRenderExercise::Start()
 	m_program = App->program->CreateProgramFromShaders(VERT_SHADER, FRAG_SHADER);
 
 	m_model = float4x4::FromTRS(float3(2.0f, 2.0f, 0.0f),
-			float4x4::identity,
-			float3(1.0f));
+			  float4x4::identity,
+			  float3(1.0f));
 
-	m_model3D = Model3D::LoadFromFile(Model3D::s_modelFolderPath + "BakerHouse.fbx");
-	App->editor->SetTargetModel(m_model3D);
+	SetModel3D((Model3D::s_modelFolderPath + "BakerHouse.fbx").c_str());
 
 	return true;
 }
@@ -55,6 +53,7 @@ update_status ModuleRenderExercise::Update()
 
 void ModuleRenderExercise::SetModel3D(const char* i_modelPath)
 {
+	delete m_model3D;
 	m_model3D = Model3D::LoadFromFile(i_modelPath);
 	App->editor->SetTargetModel(m_model3D);
 }
