@@ -18,7 +18,7 @@ update_status WindowFPS::Update()
 {
 	bool enabled;
 
-	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
+	if (ImGui::CollapsingHeader(m_name.c_str())) {
 		float maxFPS = App->GetFPS();
 		ImGui::SliderFloat("Max FPS", &maxFPS, 0.f, 120.f, "%.1f", ImGuiSliderFlags_AlwaysClamp);
 		App->SetFPS(maxFPS);
@@ -39,6 +39,6 @@ update_status WindowFPS::Update()
 			m_fpsHist.push_back(0);
 		}
 	}
-	ImGui::End();
+
 	return UPDATE_CONTINUE;
 }

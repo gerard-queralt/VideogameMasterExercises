@@ -34,7 +34,7 @@ bool ModuleRenderExercise::Start()
 {
 	m_program = App->program->CreateProgramFromShaders(VERT_SHADER, FRAG_SHADER);
 
-	m_model = float4x4::FromTRS(float3(2.0f, 2.0f, 0.0f),
+	m_model = float4x4::FromTRS(float3(0.0f, 0.0f, 0.0f),
 			  float4x4::identity,
 			  float3(1.0f));
 
