@@ -29,6 +29,5 @@ private:
 	int m_materialIndex;
 	int m_numVertices;
 	int m_numTriangles;
-	int m_numIndices;
 };
 

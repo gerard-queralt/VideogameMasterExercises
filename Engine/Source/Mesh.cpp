@@ -46,7 +46,7 @@ void Mesh::Draw(const std::vector<GLuint>& i_modelTextures)
 	
 	glBindVertexArray(m_vao);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_ebo);
-	glDrawElements(GL_TRIANGLES, m_numIndices, GL_UNSIGNED_INT, nullptr);
+	glDrawElements(GL_TRIANGLES, m_numTriangles * 3, GL_UNSIGNED_INT, nullptr);
 }
 
 void Mesh::LoadVBO(const aiMesh* i_mesh)
@@ -98,8 +98,6 @@ void Mesh::LoadEBO(const aiMesh* i_mesh)
 	}
 	
 	glUnmapBuffer(GL_ELEMENT_ARRAY_BUFFER);
-	
-	m_numIndices = i_mesh->mNumFaces * 3;
 }
 
 void Mesh::CreateVAO()

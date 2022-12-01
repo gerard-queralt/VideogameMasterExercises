@@ -27,8 +27,6 @@ bool ModuleWindow::Init()
 	else
 	{
 		//Create window
-		int width = SCREEN_WIDTH;
-		int height = SCREEN_HEIGHT;
 		Uint32 flags = SDL_WINDOW_SHOWN | SDL_WINDOW_OPENGL | SDL_WINDOW_RESIZABLE;
 
 		if(FULLSCREEN == true)
@@ -36,7 +34,7 @@ bool ModuleWindow::Init()
 			flags |= SDL_WINDOW_FULLSCREEN;
 		}
 
-		m_window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, width, height, flags);
+		m_window = SDL_CreateWindow(TITLE, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, m_windowWidth, m_windowHeight, flags);
 
 		if(m_window == NULL)
 		{
@@ -71,3 +69,57 @@ bool ModuleWindow::CleanUp()
 	return true;
 }
 
+void ModuleWindow::UpdateSize(int i_windowWidth, int i_windowHeight)
+{
+	m_windowWidth = i_windowWidth;
+	m_windowHeight = i_windowHeight;
+	m_screenSurface = SDL_GetWindowSurface(m_window);
+}
+
+void ModuleWindow::SetWindowToDefault()
+{
+	SDL_SetWindowFullscreen(m_window, 0);
+	SDL_SetWindowResizable(m_window, SDL_FALSE);
+	SDL_SetWindowBordered(m_window, SDL_TRUE);
+	SDL_SetWindowSize(m_window, m_windowWidth, m_windowHeight);
+	m_screenSurface = SDL_GetWindowSurface(m_window);
+}
+
+void ModuleWindow::SetFullscreen(bool i_fullscreen)
+{
+	SetWindowToDefault();
+	if (i_fullscreen) {
+		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
+		m_screenSurface = SDL_GetWindowSurface(m_window);
+	}
+}
+
+void ModuleWindow::SetResizable(bool i_resizable)
+{
+	SetWindowToDefault();
+	SDL_SetWindowResizable(m_window, BoolToSDL_Bool(i_resizable));
+}
+
+void ModuleWindow::SetBorderless(bool i_borderless)
+{
+	SetWindowToDefault();
+	//this call sets borders, so it's the opposite of what we want
+	//thus the negation
+	SDL_SetWindowBordered(m_window, BoolToSDL_Bool(!i_borderless));
+}
+
+void ModuleWindow::SetDesktopFullscreen(bool i_fullDesktop)
+{
+	SetWindowToDefault();
+	if (i_fullDesktop) {
+		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN_DESKTOP);
+		m_screenSurface = SDL_GetWindowSurface(m_window);
+	}
+}
+
+SDL_bool ModuleWindow::BoolToSDL_Bool(bool i_bool)
+{
+	if (i_bool)
+		return SDL_TRUE;
+	return SDL_FALSE;
+}
