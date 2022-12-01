@@ -54,7 +54,6 @@ update_status ModuleInput::Update()
                     int newWidth = sdlEvent.window.data1;
                     int newHeight = sdlEvent.window.data2;
                     App->renderer->WindowResized(newWidth, newHeight);
-                    App->window->UpdateSize(newWidth, newHeight);
                 }
                 if (sdlEvent.window.event == SDL_WINDOWEVENT_CLOSE)
                     return UPDATE_STOP;

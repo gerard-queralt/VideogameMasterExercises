@@ -21,7 +21,6 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	void UpdateSize(int i_windowWidth, int i_windowHeight);
 	void SetWindowToDefault();
 	void SetFullscreen(bool i_fullscreen);
 	void SetResizable(bool i_resizable);

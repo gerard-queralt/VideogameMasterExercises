@@ -69,19 +69,11 @@ bool ModuleWindow::CleanUp()
 	return true;
 }
 
-void ModuleWindow::UpdateSize(int i_windowWidth, int i_windowHeight)
-{
-	m_windowWidth = i_windowWidth;
-	m_windowHeight = i_windowHeight;
-	m_screenSurface = SDL_GetWindowSurface(m_window);
-}
-
 void ModuleWindow::SetWindowToDefault()
 {
 	SDL_SetWindowFullscreen(m_window, 0);
 	SDL_SetWindowResizable(m_window, SDL_FALSE);
 	SDL_SetWindowBordered(m_window, SDL_TRUE);
-	SDL_SetWindowSize(m_window, m_windowWidth, m_windowHeight);
 	m_screenSurface = SDL_GetWindowSurface(m_window);
 }
 
