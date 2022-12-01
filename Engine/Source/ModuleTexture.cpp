@@ -17,10 +17,8 @@ GLuint ModuleTexture::LoadTextureFromFile(std::string i_texturePathInModel, std:
 {
     DirectX::ScratchImage image;
     HRESULT loadingImageResult = LoadImageFromFile(i_texturePathInModel, i_modelPath, image);
-    if (FAILED(loadingImageResult)) {
-        App->editor->OutputToConsole(("Texture " + i_texturePathInModel + " failed to load").c_str());
+    if (FAILED(loadingImageResult))
         return -1;
-    }
 
     GLuint texture;
 
@@ -47,26 +45,32 @@ HRESULT ModuleTexture::LoadImageFromFile(const std::string& i_texturePathInModel
     std::string texturePath = i_texturePathInModel;
     std::string textureName = GetImageNameFromPath(i_texturePathInModel);
     DirectX::ScratchImage image;
+
+    App->editor->OutputToConsole(("Loading texture " + textureName).c_str());
     
     //try loading path in FBX
+    App->editor->OutputToConsole("Attempting to load texture on the path described in the FBX...");
     HRESULT res = TryLoadingImage(texturePath, image);
 
     if (FAILED(res)) {
         //try loading in the same folder as the model
+        App->editor->OutputToConsole("Attempting to load texture on the same folder as the model...");
         texturePath = i_modelPath + textureName;
         res = TryLoadingImage(texturePath, image);
     }
 
     if (FAILED(res)) {
         //try loading in textures folder
+        App->editor->OutputToConsole("Attempting to load texture on the \"/textures\" folder...");
         texturePath = s_textureFolderPath + textureName;
         res = TryLoadingImage(texturePath, image);
     }
 
     if (FAILED(res)) {
-        App->editor->OutputToConsole(("Texture " + textureName + " not found").c_str());
+        App->editor->OutputToConsole(("Texture " + textureName + " failed to load").c_str());
     }
     else {
+        App->editor->OutputToConsole("Texture loaded successfully!");
         res = RotateImage(image, o_image);
     }
 
