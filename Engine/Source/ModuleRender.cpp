@@ -104,7 +104,7 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::Update()
 {
 	// Render to our framebuffer
-	glBindFramebuffer(GL_FRAMEBUFFER, m_framebuffer);
+	glBindFramebuffer(GL_FRAMEBUFFER, /*m_framebuffer*/ 0);
 	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT); // Render on the whole framebuffer, complete from the lower left corner to the upper right
 	return UPDATE_CONTINUE;
 }

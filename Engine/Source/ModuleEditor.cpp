@@ -5,6 +5,7 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "ModuleRender.h"
+#include "WindowMainMenu.h"
 #include "WindowHardware.h"
 #include "WindowConfiguration.h"
 #include "WindowScene.h"
@@ -31,6 +32,7 @@ bool ModuleEditor::Init()
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
+	m_windows.push_back(new WindowMainMenu());
 	m_windows.push_back(m_console = new WindowConsole());
 	m_windows.push_back(new WindowHardware());
 	m_windows.push_back(m_model = new WindowModel3D());

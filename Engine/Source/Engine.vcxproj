@@ -217,6 +217,7 @@
     <ClCompile Include="WindowFPS.cpp" />
     <ClCompile Include="WindowHardware.cpp" />
     <ClCompile Include="WindowInput.cpp" />
+    <ClCompile Include="WindowMainMenu.cpp" />
     <ClCompile Include="WindowModel3D.cpp" />
     <ClCompile Include="WindowScene.cpp" />
     <ClCompile Include="WindowWindow.cpp" />
@@ -332,6 +333,7 @@
     <ClInclude Include="WindowFPS.h" />
     <ClInclude Include="WindowHardware.h" />
     <ClInclude Include="WindowInput.h" />
+    <ClInclude Include="WindowMainMenu.h" />
     <ClInclude Include="WindowModel3D.h" />
     <ClInclude Include="WindowScene.h" />
     <ClInclude Include="WindowWindow.h" />

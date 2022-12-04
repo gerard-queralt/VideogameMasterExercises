@@ -223,6 +223,7 @@
     <ClCompile Include="WindowInput.cpp">
       <Filter>Source\Models\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="WindowMainMenu.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -564,6 +565,7 @@
     <ClInclude Include="WindowInput.h">
       <Filter>Source\Models\Windows</Filter>
     </ClInclude>
+    <ClInclude Include="WindowMainMenu.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Source">
