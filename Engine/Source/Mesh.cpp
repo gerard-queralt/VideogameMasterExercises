@@ -16,10 +16,14 @@ Mesh::~Mesh()
 	glDeleteBuffers(1, &m_vao);
 }
 
-Mesh* Mesh::LoadMesh(const aiMesh* i_mesh)
+Mesh* Mesh::LoadMesh(const aiMesh* i_mesh, const std::vector<GLuint>& i_modelTextures)
 {
 	Mesh* mesh = new Mesh();
-	mesh->m_materialIndex = i_mesh->mMaterialIndex;
+	
+	mesh->m_texture = i_modelTextures[i_mesh->mMaterialIndex];
+	glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_WIDTH, &mesh->m_textureWidth);
+	glGetTexLevelParameteriv(GL_TEXTURE_2D, 0, GL_TEXTURE_HEIGHT, &mesh->m_textureHeight);
+	
 	mesh->m_numTriangles = i_mesh->mNumFaces;
 	mesh->LoadVBO(i_mesh);
 	mesh->LoadEBO(i_mesh);
@@ -27,7 +31,7 @@ Mesh* Mesh::LoadMesh(const aiMesh* i_mesh)
 	return mesh;
 }
 
-void Mesh::Draw(const std::vector<GLuint>& i_modelTextures)
+void Mesh::Draw()
 {
 	GLuint program = App->exercise->GetProgram();
 	const float4x4& view = App->camera->GetView();
@@ -41,7 +45,7 @@ void Mesh::Draw(const std::vector<GLuint>& i_modelTextures)
 	glUniformMatrix4fv(glGetUniformLocation(program, "proj"), 1, GL_TRUE, (const float*)&proj);
 	
 	glActiveTexture(GL_TEXTURE5);
-	glBindTexture(GL_TEXTURE_2D, i_modelTextures[m_materialIndex]);
+	glBindTexture(GL_TEXTURE_2D, m_texture);
 	glUniform1i(glGetUniformLocation(program, "diffuse"), 0);
 	
 	glBindVertexArray(m_vao);

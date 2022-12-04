@@ -79,7 +79,7 @@ bool Model3D::CheckValidFormat(const std::string& i_fileName)
 void Model3D::Draw()
 {
 	for (std::list<Mesh*>::iterator it = m_meshes.begin(); it != m_meshes.end(); ++it) {
-		(*it)->Draw(m_textures);
+		(*it)->Draw();
 	}
 }
 
@@ -106,7 +106,7 @@ void Model3D::LoadMaterials(const aiScene* i_scene)
 void Model3D::LoadMeshes(aiMesh** i_meshes, int i_numMeshes)
 {
 	for (int i = 0; i < i_numMeshes; ++i) {
-		Mesh* mesh = Mesh::LoadMesh(i_meshes[i]);
+		Mesh* mesh = Mesh::LoadMesh(i_meshes[i], m_textures);
 		m_meshes.push_back(mesh);
 	}
 }

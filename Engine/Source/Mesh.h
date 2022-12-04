@@ -9,9 +9,9 @@ class Mesh
 public:
 	~Mesh();
 
-	static Mesh* LoadMesh(const aiMesh* i_mesh);
+	static Mesh* LoadMesh(const aiMesh* i_mesh, const std::vector<GLuint>& i_modelTextures);
 
-	void Draw(const std::vector<GLuint>& i_modelTextures);
+	void Draw();
 
 private:
 	friend class WindowModel3D;
@@ -26,7 +26,9 @@ private:
 	GLuint m_ebo;
 	GLuint m_vao;
 
-	int m_materialIndex;
+	GLuint m_texture;
+	int m_textureWidth;
+	int m_textureHeight;
 	int m_numVertices;
 	int m_numTriangles;
 };

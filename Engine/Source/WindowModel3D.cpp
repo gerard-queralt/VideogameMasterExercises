@@ -25,8 +25,10 @@ update_status WindowModel3D::Update()
 					ImGui::TextUnformatted(("Num Vertices: " + std::to_string(meshNumVertices)).c_str());
 					int meshNumTriangles = (*it)->m_numTriangles;
 					ImGui::TextUnformatted(("Num Triangles: " + std::to_string(meshNumTriangles)).c_str());
-					int meshTextureIndex = (*it)->m_materialIndex;
-					ImGui::TextUnformatted(("Texture Index: " + std::to_string(meshTextureIndex)).c_str());
+					int meshTextureWidth = (*it)->m_textureWidth;
+					ImGui::TextUnformatted(("Texture Width: " + std::to_string(meshTextureWidth)).c_str());
+					int meshTextureHeight = (*it)->m_textureHeight;
+					ImGui::TextUnformatted(("Texture Height: " + std::to_string(meshTextureHeight)).c_str());
 				}
 				++meshNumber;
 			}
