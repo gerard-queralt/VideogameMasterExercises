@@ -10,7 +10,7 @@ public:
 	WindowScene();
 	~WindowScene();
 
-	update_status Update();
+	void Draw();
 
 private:
 	GLuint texture;

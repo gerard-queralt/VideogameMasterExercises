@@ -6,11 +6,14 @@
 class Window
 {
 public:
-	~Window();
+	~Window() {}
 
-	virtual update_status Update();
+	virtual void Draw() = 0;
+	
 protected:
-	Window(const std::string& i_name);
+	Window(const std::string& i_name) {
+		m_name = i_name;
+	}
 
 	std::string m_name;
 };

@@ -59,10 +59,8 @@ update_status ModuleEditor::PreUpdate()
 
 update_status ModuleEditor::Update()
 {
-	update_status status = UPDATE_CONTINUE;
-
-	for (std::list<Window*>::iterator it = m_windows.begin(); it != m_windows.end() && status == UPDATE_CONTINUE; ++it) {
-		status = (*it)->Update();
+	for (std::list<Window*>::iterator it = m_windows.begin(); it != m_windows.end(); ++it) {
+		(*it)->Draw();
 	}
 
 	ImGui::Render();
@@ -78,7 +76,7 @@ update_status ModuleEditor::Update()
 		SDL_GL_MakeCurrent(backup_current_window, backup_current_context);
 	}
 
-	return status;
+	return UPDATE_CONTINUE;
 }
 
 update_status ModuleEditor::PostUpdate()

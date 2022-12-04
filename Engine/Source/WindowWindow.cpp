@@ -13,7 +13,7 @@ WindowWindow::~WindowWindow()
 {
 }
 
-update_status WindowWindow::Update()
+void WindowWindow::Draw()
 {
 	if (ImGui::CollapsingHeader(m_name.c_str())) {
 		ImGui::SliderInt("Window Width", &m_windowWidth, 640, 1920, "%d", ImGuiSliderFlags_AlwaysClamp);
@@ -48,6 +48,4 @@ update_status WindowWindow::Update()
 			}
 		}
 	}
-
-	return UPDATE_CONTINUE;
 }

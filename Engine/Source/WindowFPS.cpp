@@ -14,7 +14,7 @@ WindowFPS::~WindowFPS()
 {
 }
 
-update_status WindowFPS::Update()
+void WindowFPS::Draw()
 {
 	if (ImGui::CollapsingHeader(m_name.c_str())) {
 		float maxFPS = App->GetFPS();
@@ -37,6 +37,4 @@ update_status WindowFPS::Update()
 			m_fpsHist.push_back(0);
 		}
 	}
-
-	return UPDATE_CONTINUE;
 }

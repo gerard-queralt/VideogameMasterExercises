@@ -10,7 +10,7 @@ public:
 	WindowConsole();
 	~WindowConsole();
 
-	update_status Update();
+	void Draw();
 
 	void Output(const char* i_textToPrint);
 

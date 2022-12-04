@@ -8,7 +8,7 @@ public:
 	WindowWindow();
 	~WindowWindow();
 
-	update_status Update();
+	void Draw();
 
 private:
 	int m_windowWidth = SCREEN_WIDTH;

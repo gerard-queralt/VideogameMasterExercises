@@ -184,9 +184,6 @@
     <ClCompile Include="ModuleWindow.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Window.cpp">
-      <Filter>Source\Models\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="WindowConsole.cpp">
       <Filter>Source\Models\Windows</Filter>
     </ClCompile>

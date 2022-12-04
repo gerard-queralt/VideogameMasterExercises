@@ -10,7 +10,7 @@ WindowModel3D::~WindowModel3D()
 {
 }
 
-update_status WindowModel3D::Update()
+void WindowModel3D::Draw()
 {
 	if (m_model != nullptr) {
 		bool enabled;
@@ -35,8 +35,6 @@ update_status WindowModel3D::Update()
 		}
 		ImGui::End();
 	}
-
-	return UPDATE_CONTINUE;
 }
 
 void WindowModel3D::SetModel(const Model3D* i_model)

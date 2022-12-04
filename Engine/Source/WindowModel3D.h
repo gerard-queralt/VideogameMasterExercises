@@ -10,7 +10,7 @@ public:
 	WindowModel3D();
 	~WindowModel3D();
 
-	update_status Update();
+	void Draw();
 
 	void SetModel(const Model3D* i_model);
 

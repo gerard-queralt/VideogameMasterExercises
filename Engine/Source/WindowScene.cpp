@@ -14,7 +14,7 @@ WindowScene::~WindowScene()
 {
 }
 
-update_status WindowScene::Update()
+void WindowScene::Draw()
 {
 	bool enabled;
 
@@ -26,6 +26,4 @@ update_status WindowScene::Update()
 		//ImGui::Image((void*)texture, ImVec2(1024, 1024));
 	}
 	ImGui::End();
-
-	return UPDATE_CONTINUE;
 }

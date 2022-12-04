@@ -8,7 +8,7 @@ WindowConsole::~WindowConsole()
 {
 }
 
-update_status WindowConsole::Update()
+void WindowConsole::Draw()
 {
 	bool enabled;
 
@@ -19,8 +19,6 @@ update_status WindowConsole::Update()
 		}
 	}
 	ImGui::End();
-
-	return UPDATE_CONTINUE;
 }
 
 void WindowConsole::Output(const char* i_textToPrint)

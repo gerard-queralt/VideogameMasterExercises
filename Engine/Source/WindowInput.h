@@ -8,6 +8,6 @@ public:
 	WindowInput();
 	~WindowInput();
 
-	update_status Update();
+	void Draw();
 };
 

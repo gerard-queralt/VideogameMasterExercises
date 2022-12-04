@@ -20,19 +20,13 @@ WindowConfiguration::~WindowConfiguration()
 	m_collapsingSubWindows.clear();
 }
 
-update_status WindowConfiguration::Update()
+void WindowConfiguration::Draw()
 {
 	bool enabled;
-	update_status res = UPDATE_CONTINUE;
 
 	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
-		for (std::list<Window*>::iterator it = m_collapsingSubWindows.begin();
-			res == UPDATE_CONTINUE && it != m_collapsingSubWindows.end();
-			++it) {
-			res = (*it)->Update();
-		}
+		for (std::list<Window*>::iterator it = m_collapsingSubWindows.begin(); it != m_collapsingSubWindows.end(); ++it)
+			(*it)->Draw();
 	}
 	ImGui::End();
-
-	return res;
 }

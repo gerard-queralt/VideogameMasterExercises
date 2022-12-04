@@ -10,7 +10,7 @@ public:
 	WindowConfiguration();
 	~WindowConfiguration();
 
-	update_status Update();
+	void Draw();
 
 private:
 	std::list<Window*> m_collapsingSubWindows;

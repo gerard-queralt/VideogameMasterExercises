@@ -10,7 +10,7 @@ public:
 	WindowFPS();
 	~WindowFPS();
 
-	update_status Update();
+	void Draw();
 
 private:
 	int m_fpsCaptures = 100;

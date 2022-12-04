@@ -44,7 +44,7 @@ WindowHardware::~WindowHardware()
 {
 }
 
-update_status WindowHardware::Update()
+void WindowHardware::Draw()
 {
 	bool enabled;
 
@@ -62,6 +62,4 @@ update_status WindowHardware::Update()
 		ImGui::TextUnformatted(("Brand: " + m_gpuBrand).c_str());
 	}
 	ImGui::End();
-
-	return UPDATE_CONTINUE;
 }

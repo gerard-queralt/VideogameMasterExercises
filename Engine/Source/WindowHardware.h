@@ -10,7 +10,7 @@ public:
 	WindowHardware();
 	~WindowHardware();
 
-	update_status Update();
+	void Draw();
 
 private:
 	std::string m_sdlVersion;
