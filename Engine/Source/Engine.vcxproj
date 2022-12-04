@@ -105,7 +105,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\External\assimp\lib;..\External\DirectXTex\DirectXTex-oct2022\DirectXTex\Bin\Desktop_2019_Win10\x64\Debug;.\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\External\assimp\lib;..\External\DirectXTex\DirectXTex-oct2022\DirectXTex\Bin\Desktop_2019_Win10\lib;.\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>assimp-vc142-mt.lib;DirectXTex.lib;glew32.lib;opengl32.lib;d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
