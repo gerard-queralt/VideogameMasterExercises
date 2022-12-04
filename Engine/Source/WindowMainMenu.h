@@ -8,6 +8,8 @@ public:
 	WindowMainMenu();
 	~WindowMainMenu();
 
+	static const std::string s_repositoryLink;
+
 	void Draw();
 };
 
