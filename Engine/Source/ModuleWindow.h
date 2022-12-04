@@ -28,8 +28,6 @@ public:
 	void SetBorderless(bool i_borderless);
 	void SetDesktopFullscreen(bool i_fullDesktop);
 
-	unsigned int CreateTextureFromSurface();
-
 public:
 	//The window we'll be rendering to
 	SDL_Window* m_window = NULL;
