@@ -5,6 +5,7 @@
 #include "imgui.h"
 #include "glew.h"
 #include "SDL.h"
+#include "d3d9.h"
 
 WindowHardware::WindowHardware() : Window("Hardware")
 {
@@ -27,20 +28,20 @@ WindowHardware::WindowHardware() : Window("Hardware")
 	//insert a dot in the penultimate position
 	ramInGbOneDecimal.insert(ramInGbOneDecimal.length() - 1, ".");
 	m_ram = ramInGbOneDecimal + "Gb";
+
+	LPDIRECT3D9 pD3D = nullptr;
+	pD3D = Direct3DCreate9(D3D_SDK_VERSION);
+	D3DADAPTER_IDENTIFIER9 adapterIdentifier;
+	pD3D->GetAdapterIdentifier(D3DADAPTER_DEFAULT, 0, &adapterIdentifier);
+	
+	std::string gpuVendor = std::to_string(adapterIdentifier.VendorId);
+	std::string gpuDevice = std::to_string(adapterIdentifier.DeviceId);
+	m_gpuVendorAndDevice = "vendor " + gpuVendor + " device " + gpuDevice;
+	m_gpuBrand = adapterIdentifier.Description;
 }
 
 WindowHardware::~WindowHardware()
 {
-}
-
-void WindowHardware::Start()
-{
-	char glVendor[128];
-	sprintf(glVendor, "%s", glGetString(GL_VENDOR));
-	m_gpuVendor = _strdup(glVendor);
-	char glRenderer[128];
-	sprintf(glRenderer, "%s", glGetString(GL_RENDERER));
-	m_gpuBrand = _strdup(glRenderer);
 }
 
 update_status WindowHardware::Update()
@@ -57,7 +58,7 @@ update_status WindowHardware::Update()
 
 		ImGui::Separator();
 
-		ImGui::TextUnformatted(("GPU: " + m_gpuVendor).c_str());
+		ImGui::TextUnformatted(("GPU: " + m_gpuVendorAndDevice).c_str());
 		ImGui::TextUnformatted(("Brand: " + m_gpuBrand).c_str());
 	}
 	ImGui::End();

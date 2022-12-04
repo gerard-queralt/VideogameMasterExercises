@@ -44,10 +44,6 @@ bool ModuleEditor::Start()
 	ImGui_ImplSDL2_InitForOpenGL(App->window->m_window, App->renderer->m_context);
 	ImGui_ImplOpenGL3_Init("#version 130");
 
-	for (std::list<Window*>::iterator it = m_windows.begin(); it != m_windows.end(); ++it) {
-		(*it)->Start();
-	}
-
 	return true;
 }
 

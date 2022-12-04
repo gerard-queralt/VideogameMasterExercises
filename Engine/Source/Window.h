@@ -8,7 +8,6 @@ class Window
 public:
 	~Window();
 
-	virtual void Start();
 	virtual update_status Update();
 protected:
 	Window(const std::string& i_name);
