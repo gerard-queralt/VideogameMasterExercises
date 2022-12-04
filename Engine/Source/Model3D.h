@@ -24,7 +24,7 @@ private:
 
 	static bool CheckValidFormat(const std::string& i_fileName);
 	void LoadMaterials(const aiScene* i_scene);
-	void LoadMeshes(aiMesh** i_meshes, int i_numMeshes);
+	void LoadMeshes(const aiScene* i_scene);
 
 	std::vector<GLuint> m_textures;
 	std::list<Mesh*> m_meshes;

@@ -49,7 +49,7 @@ Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 			delete model;
 			return nullptr;
 		}
-		model->LoadMeshes(scene->mMeshes, scene->mNumMeshes);
+		model->LoadMeshes(scene);
 		aiReleaseImport(scene);
 		return model;
 	}
@@ -103,10 +103,12 @@ void Model3D::LoadMaterials(const aiScene* i_scene)
 	}
 }
 
-void Model3D::LoadMeshes(aiMesh** i_meshes, int i_numMeshes)
+void Model3D::LoadMeshes(const aiScene* i_scene)
 {
-	for (int i = 0; i < i_numMeshes; ++i) {
-		Mesh* mesh = Mesh::LoadMesh(i_meshes[i], m_textures);
+	aiMesh** meshes = i_scene->mMeshes;
+	unsigned int numMeshes = i_scene->mNumMeshes;
+	for (int i = 0; i < numMeshes; ++i) {
+		Mesh* mesh = Mesh::LoadMesh(meshes[i], m_textures);
 		m_meshes.push_back(mesh);
 	}
 }
