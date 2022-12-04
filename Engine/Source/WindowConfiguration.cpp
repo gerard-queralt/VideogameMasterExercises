@@ -4,11 +4,13 @@
 
 #include "WindowFPS.h"
 #include "WindowWindow.h"
+#include "WindowInput.h"
 
 WindowConfiguration::WindowConfiguration() : Window("Configuration")
 {
 	m_collapsingSubWindows.push_back(new WindowFPS());
 	m_collapsingSubWindows.push_back(new WindowWindow());
+	m_collapsingSubWindows.push_back(new WindowInput());
 }
 
 WindowConfiguration::~WindowConfiguration()

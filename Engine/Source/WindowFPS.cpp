@@ -16,8 +16,6 @@ WindowFPS::~WindowFPS()
 
 update_status WindowFPS::Update()
 {
-	bool enabled;
-
 	if (ImGui::CollapsingHeader(m_name.c_str())) {
 		float maxFPS = App->GetFPS();
 		ImGui::SliderFloat("Max FPS", &maxFPS, 0.f, 120.f, "%.1f", ImGuiSliderFlags_AlwaysClamp);

@@ -71,10 +71,9 @@ update_status ModuleInput::Update()
 
     //translate camera
     float3 deltaPosVec = float3::zero;
-    float cameraSpeed = 0.02f;
     if (m_keyboard[SDL_SCANCODE_LSHIFT])
-        cameraSpeed *= 2;
-    float deltaPos = cameraSpeed * deltaTime;
+        m_cameraSpeed *= 2;
+    float deltaPos = m_cameraSpeed * deltaTime;
 
     if (m_keyboard[SDL_SCANCODE_W]) {
         deltaPosVec.x += deltaPos;
@@ -98,8 +97,7 @@ update_status ModuleInput::Update()
 
     //rotate camera
     float3 deltaRot = float3::zero;
-    float angleSpeed = 0.005f;
-    float deltaAngle = angleSpeed * deltaTime;
+    float deltaAngle = m_angleSpeed * deltaTime;
 
     if (m_keyboard[SDL_SCANCODE_LEFT]) {
         deltaRot.y += deltaAngle;

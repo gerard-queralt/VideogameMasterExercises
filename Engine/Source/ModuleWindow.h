@@ -21,6 +21,7 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
+	void ResizeWindow(int i_width, int i_height);
 	void SetWindowToDefault();
 	void SetFullscreen(bool i_fullscreen);
 	void SetResizable(bool i_resizable);
@@ -35,9 +36,6 @@ public:
 
 	//The surface contained by the window
 	SDL_Surface* m_screenSurface = NULL;
-
-	int m_windowWidth = SCREEN_WIDTH;
-	int m_windowHeight = SCREEN_HEIGHT;
 
 private:
 	SDL_bool BoolToSDL_Bool(bool i_bool);

@@ -16,5 +16,10 @@ public:
 	bool CleanUp();
 
 private:
+	friend class WindowInput;
+
 	const Uint8* m_keyboard = NULL;
+
+	float m_cameraSpeed = 0.02f;
+	float m_angleSpeed = 0.005f;
 };
