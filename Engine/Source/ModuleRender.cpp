@@ -5,6 +5,7 @@
 #include "SDL.h"
 #include "glew.h"
 #include "ModuleEditor.h"
+#include "SDL_render.h"
 
 ModuleRender::ModuleRender()
 {
@@ -93,5 +94,16 @@ bool ModuleRender::CleanUp()
 
 void ModuleRender::WindowResized(unsigned i_width, unsigned i_height)
 {
+}
+
+SDL_Texture* ModuleRender::CreateTextureFromContext()
+{
+	int window_width, window_height;
+	SDL_GetWindowSize(App->window->m_window, &window_width, &window_height);
+	SDL_Renderer* renderer = SDL_CreateRenderer(App->window->m_window, -1, 0);
+	SDL_Texture* texture =
+		SDL_CreateTexture(renderer, SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET, window_width, window_height);
+	SDL_SetRenderTarget(renderer, texture);
+	return texture;
 }
 

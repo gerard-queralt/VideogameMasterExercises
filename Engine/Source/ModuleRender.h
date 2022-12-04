@@ -18,6 +18,7 @@ public:
 	update_status PostUpdate();
 	bool CleanUp();
 	void WindowResized(unsigned i_width, unsigned i_height);
+	SDL_Texture* CreateTextureFromContext();
 
 private:
 	friend class ModuleEditor;

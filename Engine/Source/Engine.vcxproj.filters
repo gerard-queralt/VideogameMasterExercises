@@ -220,6 +220,9 @@
     <ClCompile Include="WindowWindow.cpp">
       <Filter>Source\Models\Windows</Filter>
     </ClCompile>
+    <ClCompile Include="WindowScene.cpp">
+      <Filter>Source\Models\Windows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -553,6 +556,9 @@
       <Filter>Source\Models\Windows</Filter>
     </ClInclude>
     <ClInclude Include="WindowWindow.h">
+      <Filter>Source\Models\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowScene.h">
       <Filter>Source\Models\Windows</Filter>
     </ClInclude>
   </ItemGroup>

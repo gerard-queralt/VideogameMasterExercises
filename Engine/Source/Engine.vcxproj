@@ -105,7 +105,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\External\assimp\lib;..\External\DirectXTex\DirectXTex-oct2022\DirectXTex\Bin\Desktop_2019_Win10\lib;.\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\External\assimp\lib;..\External\DirectXTex\DirectXTex-oct2022\DirectXTex\libs\Desktop_2019_Win10\lib;.\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>assimp-vc142-mt.lib;DirectXTex.lib;glew32.lib;opengl32.lib;d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -218,6 +218,7 @@
     <ClCompile Include="WindowFPS.cpp" />
     <ClCompile Include="WindowHardware.cpp" />
     <ClCompile Include="WindowModel3D.cpp" />
+    <ClCompile Include="WindowScene.cpp" />
     <ClCompile Include="WindowWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -331,6 +332,7 @@
     <ClInclude Include="WindowFPS.h" />
     <ClInclude Include="WindowHardware.h" />
     <ClInclude Include="WindowModel3D.h" />
+    <ClInclude Include="WindowScene.h" />
     <ClInclude Include="WindowWindow.h" />
   </ItemGroup>
   <ItemGroup>

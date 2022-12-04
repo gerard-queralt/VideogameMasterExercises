@@ -7,6 +7,7 @@
 #include "ModuleRender.h"
 #include "WindowHardware.h"
 #include "WindowConfiguration.h"
+#include "WindowScene.h"
 
 #include "imgui_impl_opengl3.h"
 #include "imgui_impl_sdl.h"
@@ -28,13 +29,13 @@ bool ModuleEditor::Init()
 
 	ImGuiIO& io = ImGui::GetIO();
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
-	io.ConfigFlags |= ImGuiConfigFlags_ViewportsEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
 	m_windows.push_back(m_console = new WindowConsole());
 	m_windows.push_back(new WindowHardware());
 	m_windows.push_back(m_model = new WindowModel3D());
 	m_windows.push_back(new WindowConfiguration());
+	m_windows.push_back(new WindowScene());
 
 	return true;
 }

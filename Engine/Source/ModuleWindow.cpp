@@ -109,6 +109,26 @@ void ModuleWindow::SetDesktopFullscreen(bool i_fullDesktop)
 	}
 }
 
+GLuint ModuleWindow::CreateTextureFromSurface()
+{
+	GLuint texture;
+
+	glGenTextures(1, &texture);
+	glBindTexture(GL_TEXTURE_2D, texture);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, m_screenSurface->w, m_screenSurface->h, 0, GL_RGBA, GL_UNSIGNED_BYTE, m_screenSurface->pixels);
+
+	glGenerateMipmap(GL_TEXTURE_2D);
+
+	glPixelStorei(GL_UNPACK_ALIGNMENT, 4);
+	glPixelStorei(GL_UNPACK_ROW_LENGTH, 0);
+
+	return texture;
+}
+
 SDL_bool ModuleWindow::BoolToSDL_Bool(bool i_bool)
 {
 	if (i_bool)
