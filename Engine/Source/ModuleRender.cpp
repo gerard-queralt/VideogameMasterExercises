@@ -151,6 +151,14 @@ bool ModuleRender::CleanUp()
 
 void ModuleRender::WindowResized(unsigned i_width, unsigned i_height)
 {
+	glBindTexture(GL_TEXTURE_2D, m_renderedTexture);
+
+	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, i_width, i_height, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
+
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+
+	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, m_renderedTexture, 0);
 }
 
 void ModuleRender::SetModel3D(const char* i_modelPath)
