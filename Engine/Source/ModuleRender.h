@@ -41,6 +41,7 @@ private:
 
 	void* m_context;
 
+	GLuint m_depthrenderbuffer;
 	GLuint m_program;
 	Model3D* m_model3D;
 	float4x4 m_model;
