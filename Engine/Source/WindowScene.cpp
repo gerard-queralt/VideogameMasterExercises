@@ -18,7 +18,7 @@ void WindowScene::Draw()
 	bool enabled;
 
 	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
-		ImGui::Image((void*)App->renderer->m_framebuffer, ImVec2(1024, 1024));
+		ImGui::Image((void*)App->renderer->m_renderedTexture, ImVec2(1024, 1024), ImVec2(0, 1), ImVec2(1, 0));
 	}
 	ImGui::End();
 }

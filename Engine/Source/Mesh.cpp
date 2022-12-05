@@ -2,7 +2,7 @@
 
 #include "float2.h"
 #include "Application.h"
-#include "ModuleRenderExercise.h"
+#include "ModuleRender.h"
 #include "ModuleEditorCamera.h"
 
 Mesh::Mesh()
@@ -33,7 +33,7 @@ Mesh* Mesh::LoadMesh(const aiMesh* i_mesh, const std::vector<GLuint>& i_modelTex
 
 void Mesh::Draw()
 {
-	GLuint program = App->exercise->GetProgram();
+	GLuint program = App->renderer->GetProgram();
 	const float4x4& view = App->camera->GetView();
 	const float4x4& proj = App->camera->GetProjection();
 	float4x4 model = float4x4::identity;

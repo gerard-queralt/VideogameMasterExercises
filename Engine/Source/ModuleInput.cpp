@@ -6,7 +6,6 @@
 #include "ModuleWindow.h"
 #include "ModuleEditorCamera.h"
 #include "ModuleEditor.h"
-#include "ModuleRenderExercise.h"
 
 #include "SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
@@ -61,7 +60,7 @@ update_status ModuleInput::Update()
             case SDL_DROPFILE:
                 dropfileDir = sdlEvent.drop.file;
                 App->editor->OutputToConsole(("File dropped: " + std::string(dropfileDir)).c_str());
-                App->exercise->SetModel3D(dropfileDir);
+                App->renderer->SetModel3D(dropfileDir);
                 break;
         }
     }

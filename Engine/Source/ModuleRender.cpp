@@ -2,8 +2,8 @@
 #include "Application.h"
 #include "ModuleRender.h"
 #include "ModuleWindow.h"
+#include "ModuleProgram.h"
 #include "SDL.h"
-#include "glew.h"
 #include "ModuleEditor.h"
 #include "SDL_render.h"
 
@@ -14,6 +14,8 @@ ModuleRender::ModuleRender()
 // Destructor
 ModuleRender::~ModuleRender()
 {
+	glDeleteProgram(m_program);
+	delete m_model3D;
 }
 
 // Called before render is available
@@ -55,16 +57,17 @@ bool ModuleRender::Init()
 	glEnable(GL_CULL_FACE); // Enable cull backward faces
 	glFrontFace(GL_CCW); // Front faces will be counter clockwise
 
+	glEnable(GL_TEXTURE_2D);
+
 	// The framebuffer, which regroups 0, 1, or more textures, and 0 or 1 depth buffer.
 	glGenFramebuffers(1, &m_framebuffer);
 	glBindFramebuffer(GL_FRAMEBUFFER, m_framebuffer);
 
 	// The texture we're going to render to
-	GLuint renderedTexture;
-	glGenTextures(1, &renderedTexture);
+	glGenTextures(1, &m_renderedTexture);
 
 	// "Bind" the newly created texture : all future texture functions will modify this texture
-	glBindTexture(GL_TEXTURE_2D, renderedTexture);
+	glBindTexture(GL_TEXTURE_2D, m_renderedTexture);
 
 	// Give an empty image to OpenGL ( the last "0" )
 	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, SCREEN_WIDTH, SCREEN_HEIGHT, 0, GL_RGB, GL_UNSIGNED_BYTE, 0);
@@ -80,12 +83,25 @@ bool ModuleRender::Init()
 	glRenderbufferStorage(GL_RENDERBUFFER, GL_DEPTH_COMPONENT, SCREEN_WIDTH, SCREEN_HEIGHT);
 	glFramebufferRenderbuffer(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_RENDERBUFFER, depthrenderbuffer);
 
-	// Set "renderedTexture" as our colour attachement #0
-	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, renderedTexture, 0);
+	// Set "m_renderedTexture" as our colour attachement #0
+	glFramebufferTexture(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, m_renderedTexture, 0);
 
 	// Set the list of draw buffers.
 	GLenum DrawBuffers[1] = { GL_COLOR_ATTACHMENT0 };
 	glDrawBuffers(1, DrawBuffers); // "1" is the size of DrawBuffers
+
+	return true;
+}
+
+bool ModuleRender::Start()
+{
+	m_program = App->program->CreateProgramFromShaders(m_vertexShader, m_fragmentShader);
+
+	m_model = float4x4::FromTRS(float3(0.0f, 0.0f, 0.0f),
+		float4x4::identity,
+		float3(1.0f));
+
+	SetModel3D((Model3D::s_modelFolderPath + "BakerHouse.fbx").c_str());
 
 	return true;
 }
@@ -104,14 +120,21 @@ update_status ModuleRender::PreUpdate()
 update_status ModuleRender::Update()
 {
 	// Render to our framebuffer
-	glBindFramebuffer(GL_FRAMEBUFFER, /*m_framebuffer*/ 0);
-	glViewport(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT); // Render on the whole framebuffer, complete from the lower left corner to the upper right
+	glBindFramebuffer(GL_FRAMEBUFFER, m_framebuffer);
+	int window_width, window_height;
+	SDL_GetWindowSize(App->window->m_window, &window_width, &window_height);
+	glViewport(0, 0, window_width, window_height);
+	glClearColor(0.3f, 0.3f, 0.3f, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	if (m_model3D != nullptr)
+		m_model3D->Draw();
 	return UPDATE_CONTINUE;
 }
 
 update_status ModuleRender::PostUpdate()
 {
 	SDL_GL_SwapWindow(App->window->m_window);
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 	return UPDATE_CONTINUE;
 }
 
@@ -128,4 +151,11 @@ bool ModuleRender::CleanUp()
 
 void ModuleRender::WindowResized(unsigned i_width, unsigned i_height)
 {
+}
+
+void ModuleRender::SetModel3D(const char* i_modelPath)
+{
+	delete m_model3D;
+	m_model3D = Model3D::LoadFromFile(i_modelPath);
+	App->editor->SetTargetModel(m_model3D);
 }

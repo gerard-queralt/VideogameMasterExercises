@@ -61,9 +61,29 @@ update_status ModuleEditor::PreUpdate()
 
 update_status ModuleEditor::Update()
 {
+	ImGuiViewport* viewport = ImGui::GetMainViewport();
+	ImGuiID dockSpaceId = ImGui::GetID("DockSpace");
+	
+	ImGui::SetNextWindowPos(viewport->WorkPos);
+	ImGui::SetNextWindowSize(viewport->WorkSize);
+	
+	ImGuiWindowFlags dockSpaceWindowFlags = 0;
+	dockSpaceWindowFlags |= ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoCollapse | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoDocking;
+	dockSpaceWindowFlags |= ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoNavFocus;
+
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowRounding, 0.0f);
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowBorderSize, 0.0f);
+	ImGui::PushStyleVar(ImGuiStyleVar_WindowPadding, ImVec2(0.0f, 0.0f));
+	ImGui::Begin("DockSpace", nullptr, dockSpaceWindowFlags);
+	ImGui::PopStyleVar(3);
+	ImGui::DockSpace(dockSpaceId);
+	ImGui::End();
+
 	for (std::list<Window*>::iterator it = m_windows.begin(); it != m_windows.end(); ++it) {
 		(*it)->Draw();
 	}
+
+	glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
 	ImGui::Render();
 	ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
