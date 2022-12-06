@@ -16,10 +16,12 @@ WindowWindow::~WindowWindow()
 void WindowWindow::Draw()
 {
 	if (ImGui::CollapsingHeader(m_name.c_str())) {
-		bool widthChanged = ImGui::SliderInt("Window Width", &m_windowWidth, 640, 1920, "%d", ImGuiSliderFlags_AlwaysClamp);
-		bool heighChanged = ImGui::SliderInt("Window Height", &m_windowHeight, 360, 1080, "%d", ImGuiSliderFlags_AlwaysClamp);
+		int width, height;
+		SDL_GetWindowSize(App->window->m_window, &width, &height);
+		bool widthChanged = ImGui::SliderInt("Window Width", &width, 640, 1920, "%d", ImGuiSliderFlags_AlwaysClamp);
+		bool heighChanged = ImGui::SliderInt("Window Height", &height, 360, 1080, "%d", ImGuiSliderFlags_AlwaysClamp);
 		if (widthChanged || heighChanged)
-			App->window->ResizeWindow(m_windowWidth, m_windowHeight);
+			App->window->ResizeWindow(width, height);
 
 		if (ImGui::Checkbox("Fullscreen", &m_fullscreen)) {
 			App->window->SetFullscreen(m_fullscreen);
