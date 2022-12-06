@@ -1,16 +1,14 @@
 #pragma once
 
-#include "Window.h"
+#include "EditorWindow.h"
 
-#include "imgui.h"
-
-class WindowConsole : public Window
+class WindowConsole : public EditorWindow
 {
 public:
 	WindowConsole();
 	~WindowConsole();
 
-	void Draw();
+	void DrawWindowContents();
 
 	void Output(const char* i_textToPrint);
 

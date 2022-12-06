@@ -7,8 +7,10 @@
 #include "SDL.h"
 #include "d3d9.h"
 
-WindowHardware::WindowHardware() : Window("Hardware")
+WindowHardware::WindowHardware() : EditorWindow("Hardware")
 {
+	m_flags |= ImGuiWindowFlags_AlwaysAutoResize;
+
 	m_sdlVersion = std::to_string(SDL_MAJOR_VERSION) + "." + std::to_string(SDL_MINOR_VERSION) + "." + std::to_string(SDL_PATCHLEVEL);
 
 	int cacheSizeInB = SDL_GetCPUCacheLineSize();
@@ -44,22 +46,17 @@ WindowHardware::~WindowHardware()
 {
 }
 
-void WindowHardware::Draw()
+void WindowHardware::DrawWindowContents()
 {
-	bool enabled;
+	ImGui::TextUnformatted(("SDL Version: " + m_sdlVersion).c_str());
 
-	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
-		ImGui::TextUnformatted(("SDL Version: " + m_sdlVersion).c_str());
+	ImGui::Separator();
 
-		ImGui::Separator();
+	ImGui::TextUnformatted(("CPUs: " + m_cpusAndCache).c_str());
+	ImGui::TextUnformatted(("System RAM: " + m_ram).c_str());
 
-		ImGui::TextUnformatted(("CPUs: " + m_cpusAndCache).c_str());
-		ImGui::TextUnformatted(("System RAM: " + m_ram).c_str());
+	ImGui::Separator();
 
-		ImGui::Separator();
-
-		ImGui::TextUnformatted(("GPU: " + m_gpuVendorAndDevice).c_str());
-		ImGui::TextUnformatted(("Brand: " + m_gpuBrand).c_str());
-	}
-	ImGui::End();
+	ImGui::TextUnformatted(("GPU: " + m_gpuVendorAndDevice).c_str());
+	ImGui::TextUnformatted(("Brand: " + m_gpuBrand).c_str());
 }

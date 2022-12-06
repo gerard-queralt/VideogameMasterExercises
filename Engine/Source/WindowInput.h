@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Window.h"
+#include "SubWindow.h"
 
-class WindowInput : public Window
+class WindowInput : public SubWindow
 {
 public:
 	WindowInput();
 	~WindowInput();
 
-	void Draw();
+	void DrawWindowContents();
 };
 

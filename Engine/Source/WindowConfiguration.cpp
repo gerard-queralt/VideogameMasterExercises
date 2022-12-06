@@ -1,13 +1,13 @@
 #include "WindowConfiguration.h"
 
-#include "imgui.h"
-
 #include "WindowFPS.h"
 #include "WindowWindow.h"
 #include "WindowInput.h"
 
-WindowConfiguration::WindowConfiguration() : Window("Configuration")
+WindowConfiguration::WindowConfiguration() : EditorWindow("Configuration")
 {
+	m_flags |= ImGuiWindowFlags_AlwaysAutoResize;
+
 	m_collapsingSubWindows.push_back(new WindowFPS());
 	m_collapsingSubWindows.push_back(new WindowWindow());
 	m_collapsingSubWindows.push_back(new WindowInput());
@@ -20,13 +20,8 @@ WindowConfiguration::~WindowConfiguration()
 	m_collapsingSubWindows.clear();
 }
 
-void WindowConfiguration::Draw()
+void WindowConfiguration::DrawWindowContents()
 {
-	bool enabled;
-
-	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
-		for (std::list<Window*>::iterator it = m_collapsingSubWindows.begin(); it != m_collapsingSubWindows.end(); ++it)
-			(*it)->Draw();
-	}
-	ImGui::End();
+	for (std::list<SubWindow*>::iterator it = m_collapsingSubWindows.begin(); it != m_collapsingSubWindows.end(); ++it)
+		(*it)->Draw();
 }

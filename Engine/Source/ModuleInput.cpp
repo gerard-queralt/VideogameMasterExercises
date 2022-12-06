@@ -69,6 +69,9 @@ update_status ModuleInput::Update()
         m_cameraSpeed *= 2;
     float deltaPos = m_cameraSpeed * deltaTime;
 
+    if (App->editor->IsSceneFocused())
+        App->editor->OutputToConsole("Scene focused!");
+
     if (m_keyboard[SDL_SCANCODE_W]) {
         deltaPosVec.x += deltaPos;
     }

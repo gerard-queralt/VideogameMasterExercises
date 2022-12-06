@@ -6,23 +6,19 @@
 #include "ModuleRender.h"
 #include "ModuleEditorCamera.h"
 
-WindowScene::WindowScene() : Window("Scene")
+WindowScene::WindowScene() : EditorWindow("Scene")
 {
+	m_flags |= ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoNavInputs;
 }
 
 WindowScene::~WindowScene()
 {
 }
 
-void WindowScene::Draw()
+void WindowScene::DrawWindowContents()
 {
-	bool enabled;
-
-	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoNavInputs)) {
-		ManageResize();
-		ImGui::Image((void*)App->renderer->m_renderedTexture, ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
-	}
-	ImGui::End();
+	ManageResize();
+	ImGui::Image((void*)App->renderer->m_renderedTexture, ImGui::GetContentRegionAvail(), ImVec2(0, 1), ImVec2(1, 0));
 }
 
 void WindowScene::ManageResize()

@@ -1,24 +1,20 @@
 #include "WindowConsole.h"
 
-WindowConsole::WindowConsole() : Window("Console")
+WindowConsole::WindowConsole() : EditorWindow("Console")
 {
+	m_flags |= ImGuiWindowFlags_AlwaysAutoResize;
 }
 
 WindowConsole::~WindowConsole()
 {
 }
 
-void WindowConsole::Draw()
+void WindowConsole::DrawWindowContents()
 {
-	bool enabled;
-
-	if (ImGui::Begin(m_name.c_str(), &enabled, ImGuiWindowFlags_AlwaysAutoResize)) {
-		for (int i = 0; i < m_consloneContents.size(); ++i) {
-			const char* line = m_consloneContents[i];
-			ImGui::TextUnformatted(line);
-		}
+	for (int i = 0; i < m_consloneContents.size(); ++i) {
+		const char* line = m_consloneContents[i];
+		ImGui::TextUnformatted(line);
 	}
-	ImGui::End();
 }
 
 void WindowConsole::Output(const char* i_textToPrint)

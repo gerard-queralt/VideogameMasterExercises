@@ -1,14 +1,14 @@
 #pragma once
 
-#include "Window.h"
+#include "SubWindow.h"
 
-class WindowWindow : public Window
+class WindowWindow : public SubWindow
 {
 public:
 	WindowWindow();
 	~WindowWindow();
 
-	void Draw();
+	void DrawWindowContents();
 
 private:
 	bool m_fullscreen = false;

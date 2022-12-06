@@ -8,7 +8,11 @@ class Window
 public:
 	~Window() {}
 
-	virtual void Draw() = 0;
+	virtual void Draw(bool& i_enabled) = 0;
+
+	std::string GetName() {
+		return m_name;
+	}
 	
 protected:
 	Window(const std::string& i_name) {

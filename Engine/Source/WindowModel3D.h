@@ -1,16 +1,16 @@
 #pragma once
 
-#include "Window.h"
+#include "EditorWindow.h"
 
 #include "Model3D.h"
 
-class WindowModel3D : public Window
+class WindowModel3D : public EditorWindow
 {
 public:
 	WindowModel3D();
 	~WindowModel3D();
 
-	void Draw();
+	void DrawWindowContents();
 
 	void SetModel(const Model3D* i_model);
 

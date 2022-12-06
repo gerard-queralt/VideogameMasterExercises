@@ -4,9 +4,11 @@
 
 #include <list>
 
-#include "Window.h"
+#include "EditorWindow.h"
+#include "WindowMainMenu.h"
 #include "WindowConsole.h"
 #include "WindowModel3D.h"
+#include "WindowScene.h"
 #include "Model3D.h"
 
 class ModuleEditor : public Module
@@ -24,10 +26,13 @@ public:
 
 	void OutputToConsole(const char* i_textToPrint);
 	void SetTargetModel(const Model3D* i_model);
+	bool IsSceneFocused();
 
 private:
-	std::list<Window*> m_windows;
+	std::list<EditorWindow*> m_windows;
+	WindowMainMenu* m_mainMenu = nullptr;
 	WindowConsole* m_console = nullptr;
 	WindowModel3D* m_model = nullptr;
+	WindowScene* m_scene = nullptr;
 };
 

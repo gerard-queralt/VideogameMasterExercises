@@ -32,12 +32,14 @@ bool ModuleEditor::Init()
 	io.ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 	io.ConfigFlags |= ImGuiConfigFlags_NavEnableKeyboard;
 
-	m_windows.push_back(new WindowMainMenu());
 	m_windows.push_back(m_console = new WindowConsole());
 	m_windows.push_back(new WindowHardware());
 	m_windows.push_back(m_model = new WindowModel3D());
 	m_windows.push_back(new WindowConfiguration());
-	m_windows.push_back(new WindowScene());
+	m_windows.push_back(m_scene = new WindowScene());
+
+	m_mainMenu = new WindowMainMenu();
+	m_mainMenu->SetUpWindowsMenu(m_windows);
 
 	return true;
 }
@@ -79,8 +81,13 @@ update_status ModuleEditor::Update()
 	ImGui::DockSpace(dockSpaceId);
 	ImGui::End();
 
-	for (std::list<Window*>::iterator it = m_windows.begin(); it != m_windows.end(); ++it) {
-		(*it)->Draw();
+	m_mainMenu->Draw();
+	int windowIndex = 0;
+	for (std::list<EditorWindow*>::iterator it = m_windows.begin(); it != m_windows.end(); ++it) {
+		bool windowEnabled = m_mainMenu->IsWindowEnabled(windowIndex);
+		(*it)->Draw(windowEnabled);
+		m_mainMenu->SetWindowEnabled(windowIndex, windowEnabled);
+		++windowIndex;
 	}
 
 	glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -123,4 +130,9 @@ void ModuleEditor::OutputToConsole(const char* i_textToPrint)
 void ModuleEditor::SetTargetModel(const Model3D* i_model)
 {
 	m_model->SetModel(i_model);
+}
+
+bool ModuleEditor::IsSceneFocused()
+{
+	return m_scene->IsFocused();
 }

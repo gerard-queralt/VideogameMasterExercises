@@ -1,22 +1,22 @@
 #pragma once
 
-#include "Window.h"
+#include "EditorWindow.h"
 
 #include "glew.h"
 
-class WindowScene : public Window
+class WindowScene : public EditorWindow
 {
 public:
 	WindowScene();
 	~WindowScene();
 
-	void Draw();
+	void DrawWindowContents();
 
 private:
 	void ManageResize();
 
-	GLuint texture;
-	float m_previousWidht;
-	float m_previousHeight;
+	GLuint texture = 0;
+	float m_previousWidht = 0;
+	float m_previousHeight = 0;
 };
 

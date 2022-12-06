@@ -1,16 +1,16 @@
 #pragma once
 
-#include "Window.h"
+#include "EditorWindow.h"
 
 #include <string>
 
-class WindowHardware : public Window
+class WindowHardware : public EditorWindow
 {
 public:
 	WindowHardware();
 	~WindowHardware();
 
-	void Draw();
+	void DrawWindowContents();
 
 private:
 	std::string m_sdlVersion;

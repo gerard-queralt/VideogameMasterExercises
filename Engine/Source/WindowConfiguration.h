@@ -1,18 +1,19 @@
 #pragma once
 
-#include "Window.h"
+#include "EditorWindow.h"
+#include "SubWindow.h"
 
 #include <list>
 
-class WindowConfiguration : public Window
+class WindowConfiguration : public EditorWindow
 {
 public:
 	WindowConfiguration();
 	~WindowConfiguration();
 
-	void Draw();
+	void DrawWindowContents();
 
 private:
-	std::list<Window*> m_collapsingSubWindows;
+	std::list<SubWindow*> m_collapsingSubWindows;
 };
 

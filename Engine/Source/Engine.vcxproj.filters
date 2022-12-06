@@ -181,26 +181,14 @@
     <ClCompile Include="ModuleWindow.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="WindowConsole.cpp">
-      <Filter>Source\Models\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="Mesh.cpp">
       <Filter>Source\Models\3D Models</Filter>
     </ClCompile>
     <ClCompile Include="Model3D.cpp">
       <Filter>Source\Models\3D Models</Filter>
     </ClCompile>
-    <ClCompile Include="WindowHardware.cpp">
-      <Filter>Source\Models\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowModel3D.cpp">
-      <Filter>Source\Models\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="Timer.cpp">
       <Filter>Source\Models\Timers</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowFPS.cpp">
-      <Filter>Source\Models\Windows</Filter>
     </ClCompile>
     <ClCompile Include="MillisecondTimer.cpp">
       <Filter>Source\Models\Timers</Filter>
@@ -208,20 +196,38 @@
     <ClCompile Include="MicrosecondTimer.cpp">
       <Filter>Source\Models\Timers</Filter>
     </ClCompile>
-    <ClCompile Include="WindowConfiguration.cpp">
-      <Filter>Source\Models\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowWindow.cpp">
-      <Filter>Source\Models\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowScene.cpp">
-      <Filter>Source\Models\Windows</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowInput.cpp">
-      <Filter>Source\Models\Windows</Filter>
-    </ClCompile>
     <ClCompile Include="WindowMainMenu.cpp">
       <Filter>Source\Models\Windows</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowConfiguration.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowConsole.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="EditorWindow.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowFPS.cpp">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowHardware.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowInput.cpp">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowModel3D.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowScene.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="WindowWindow.cpp">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="SubWindow.cpp">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -522,26 +528,14 @@
     <ClInclude Include="Window.h">
       <Filter>Source\Models\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="WindowConsole.h">
-      <Filter>Source\Models\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="Mesh.h">
       <Filter>Source\Models\3D Models</Filter>
     </ClInclude>
     <ClInclude Include="Model3D.h">
       <Filter>Source\Models\3D Models</Filter>
     </ClInclude>
-    <ClInclude Include="WindowHardware.h">
-      <Filter>Source\Models\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowModel3D.h">
-      <Filter>Source\Models\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="Timer.h">
       <Filter>Source\Models\Timers</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowFPS.h">
-      <Filter>Source\Models\Windows</Filter>
     </ClInclude>
     <ClInclude Include="MillisecondTimer.h">
       <Filter>Source\Models\Timers</Filter>
@@ -549,20 +543,38 @@
     <ClInclude Include="MicrosecondTimer.h">
       <Filter>Source\Models\Timers</Filter>
     </ClInclude>
-    <ClInclude Include="WindowConfiguration.h">
-      <Filter>Source\Models\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowWindow.h">
-      <Filter>Source\Models\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowScene.h">
-      <Filter>Source\Models\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowInput.h">
-      <Filter>Source\Models\Windows</Filter>
-    </ClInclude>
     <ClInclude Include="WindowMainMenu.h">
       <Filter>Source\Models\Windows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowConfiguration.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowConsole.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="EditorWindow.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowFPS.h">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowHardware.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowInput.h">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowModel3D.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowScene.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowWindow.h">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="SubWindow.h">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -610,6 +622,12 @@
     </Filter>
     <Filter Include="Source\Models\Components">
       <UniqueIdentifier>{e74e0e32-27f7-4030-b4bd-fed217418538}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Models\Windows\EditorWindows">
+      <UniqueIdentifier>{e9303ed8-5886-4b19-b970-946185ead3e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source\Models\Windows\SubWindows">
+      <UniqueIdentifier>{6bddb1fd-b581-4a22-8ed7-2f6d37603504}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>

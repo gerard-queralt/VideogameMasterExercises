@@ -1,16 +1,16 @@
 #pragma once
 
-#include "Window.h"
+#include "SubWindow.h"
 
 #include <vector>
 
-class WindowFPS : public Window
+class WindowFPS : public SubWindow
 {
 public:
 	WindowFPS();
 	~WindowFPS();
 
-	void Draw();
+	void DrawWindowContents();
 
 private:
 	int m_fpsCaptures = 100;

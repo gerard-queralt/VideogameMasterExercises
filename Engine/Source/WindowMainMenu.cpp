@@ -4,6 +4,7 @@
 #include "SDL.h"
 
 const std::string WindowMainMenu::s_repositoryLink = "https://github.com/gerard-queralt/VideogameMasterExercises/tree/main/Engine";
+bool WindowMainMenu::s_default = true;
 
 WindowMainMenu::WindowMainMenu() : Window("Main Menu")
 {
@@ -13,7 +14,15 @@ WindowMainMenu::~WindowMainMenu()
 {
 }
 
-void WindowMainMenu::Draw()
+void WindowMainMenu::SetUpWindowsMenu(std::list<EditorWindow*>& i_windows)
+{
+	for (std::list<EditorWindow*>::iterator it = i_windows.begin(); it != i_windows.end(); ++it) {
+		m_windowNames.push_back((*it)->GetName());
+		m_windowsEnabled.push_back(true);
+	}
+}
+
+void WindowMainMenu::Draw(bool& i_enabled)
 {
 	if (ImGui::BeginMainMenuBar()) {
 		if (ImGui::MenuItem("GitHub Link")) {

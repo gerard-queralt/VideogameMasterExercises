@@ -210,9 +210,11 @@
     <ClCompile Include="ModuleRender.cpp" />
     <ClCompile Include="ModuleTexture.cpp" />
     <ClCompile Include="ModuleWindow.cpp" />
+    <ClCompile Include="SubWindow.cpp" />
     <ClCompile Include="Timer.cpp" />
     <ClCompile Include="WindowConfiguration.cpp" />
     <ClCompile Include="WindowConsole.cpp" />
+    <ClCompile Include="EditorWindow.cpp" />
     <ClCompile Include="WindowFPS.cpp" />
     <ClCompile Include="WindowHardware.cpp" />
     <ClCompile Include="WindowInput.cpp" />
@@ -324,10 +326,12 @@
     <ClInclude Include="ModuleRender.h" />
     <ClInclude Include="ModuleTexture.h" />
     <ClInclude Include="ModuleWindow.h" />
+    <ClInclude Include="SubWindow.h" />
     <ClInclude Include="Timer.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="WindowConfiguration.h" />
     <ClInclude Include="WindowConsole.h" />
+    <ClInclude Include="EditorWindow.h" />
     <ClInclude Include="WindowFPS.h" />
     <ClInclude Include="WindowHardware.h" />
     <ClInclude Include="WindowInput.h" />
