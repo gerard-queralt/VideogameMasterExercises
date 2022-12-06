@@ -4,6 +4,7 @@
 #include "ModuleWindow.h"
 #include "SDL.h"
 #include "float3x3.h"
+#include "Sphere.h"
 
 ModuleEditorCamera::ModuleEditorCamera()
 {
@@ -53,7 +54,7 @@ void ModuleEditorCamera::SetPlaneDistances(float i_nearPlaneDistance, float i_fa
 	m_frustum.SetViewPlaneDistances(i_nearPlaneDistance, i_farPlaneDistance);
 }
 
-void ModuleEditorCamera::SetPosition(float3 i_pos)
+void ModuleEditorCamera::SetPosition(const float3& i_pos)
 {
 	m_frustum.SetPos(i_pos);
 }
@@ -63,7 +64,7 @@ void ModuleEditorCamera::SetPosition(float i_x, float i_y, float i_z)
 	SetPosition(float3(i_x, i_y, i_z));
 }
 
-void ModuleEditorCamera::SetOrientation(float3 i_ori)
+void ModuleEditorCamera::SetOrientation(const float3& i_ori)
 {
 	m_frustum.SetUp(i_ori);
 }
@@ -73,7 +74,7 @@ void ModuleEditorCamera::SetOrientation(float i_x, float i_y, float i_z)
 	SetOrientation(float3(i_x, i_y, i_z));
 }
 
-void ModuleEditorCamera::SetLookAt(float3 i_lookAt)
+void ModuleEditorCamera::SetLookAt(const float3& i_lookAt)
 {
 	m_frustum.SetFront(i_lookAt);
 }
@@ -83,7 +84,7 @@ void ModuleEditorCamera::SetLookAt(float i_x, float i_y, float i_z)
 	SetLookAt(float3(i_x, i_y, i_z));
 }
 
-void ModuleEditorCamera::Translate(float3 i_deltaCoords)
+void ModuleEditorCamera::Translate(const float3& i_deltaCoords)
 {
 	float3 deltaCoordsWithRespectFront = m_frustum.Front().Mul(i_deltaCoords);
 
@@ -105,7 +106,19 @@ void ModuleEditorCamera::Translate(float i_deltaX, float i_deltaY, float i_delta
 	Translate(float3(i_deltaX, i_deltaY, i_deltaZ));
 }
 
-void ModuleEditorCamera::Rotate(float3 i_thetasRad)
+void ModuleEditorCamera::Rotate(const float3x3& i_rotationMatrix)
+{
+	float3 oldFront = m_frustum.Front().Normalized();
+	float3 newFront = i_rotationMatrix.MulDir(oldFront);
+
+	float3 oldUp = m_frustum.Up().Normalized();
+	float3 newUp = i_rotationMatrix.MulDir(oldUp);
+
+	SetLookAt(newFront);
+	SetOrientation(newUp);
+}
+
+void ModuleEditorCamera::Rotate(const float3& i_thetasRad)
 {
 	float3x3 rotationX = float3x3::RotateAxisAngle(m_frustum.WorldRight(), i_thetasRad.x);
 	float3x3 rotationY = float3x3::RotateY(i_thetasRad.y);
@@ -127,11 +140,22 @@ void ModuleEditorCamera::Rotate(float3 i_thetasRad)
 		newUp = rotationMat.MulDir(oldUp);
 	}
 
-	SetLookAt(newFront);
-	SetOrientation(newUp);
+	Rotate(rotationMat);
 }
 
 void ModuleEditorCamera::Rotate(float i_thetaXRad, float i_thetaYRad, float i_thetaZRad)
 {
 	Rotate(float3(i_thetaXRad, i_thetaYRad, i_thetaZRad));
+}
+
+void ModuleEditorCamera::FocusOn(const AABB* i_aabb)
+{
+	float3 enclosingSpherePos = i_aabb->MinimalEnclosingSphere().pos;
+
+	float3 direction = enclosingSpherePos - m_frustum.Pos();
+
+	float3x3 rotMat = 
+		float3x3::LookAt(m_frustum.Front().Normalized(), direction.Normalized(), m_frustum.Up().Normalized(), float3::unitY);
+
+	Rotate(rotMat);
 }

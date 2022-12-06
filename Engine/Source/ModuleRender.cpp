@@ -6,6 +6,7 @@
 #include "SDL.h"
 #include "ModuleEditor.h"
 #include "SDL_render.h"
+#include "ModuleEditorCamera.h"
 
 ModuleRender::ModuleRender()
 {
@@ -154,4 +155,11 @@ void ModuleRender::SetModel3D(const char* i_modelPath)
 	delete m_model3D;
 	m_model3D = Model3D::LoadFromFile(i_modelPath);
 	App->editor->SetTargetModel(m_model3D);
+	FocusCameraOnModel();
+}
+
+void ModuleRender::FocusCameraOnModel()
+{
+	if (m_model3D != nullptr)
+		App->camera->FocusOn(m_model3D->GetAABB());
 }

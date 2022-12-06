@@ -32,6 +32,7 @@ public:
 		return m_program;
 	}
 	void SetModel3D(const char* i_modelPath);
+	void FocusCameraOnModel();
 
 	GLuint m_framebuffer = 0;
 	GLuint m_renderedTexture = 0;

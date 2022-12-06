@@ -107,6 +107,9 @@ update_status ModuleInput::Update()
     }
     App->camera->Rotate(deltaRot);
 
+    if (m_keyboard[SDL_SCANCODE_F])
+        App->renderer->FocusCameraOnModel();
+
     return UPDATE_CONTINUE;
 }
 

@@ -26,6 +26,7 @@ Model3D::~Model3D()
 	for (Mesh* mesh : m_meshes)
 		delete mesh;
 	m_meshes.clear();
+	delete m_aabb;
 }
 
 Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
@@ -49,7 +50,7 @@ Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 			delete model;
 			return nullptr;
 		}
-		model->LoadMeshes(scene);
+		model->LoadMeshesAndComputeAABB(scene);
 		aiReleaseImport(scene);
 		return model;
 	}
@@ -103,12 +104,34 @@ void Model3D::LoadMaterials(const aiScene* i_scene)
 	}
 }
 
-void Model3D::LoadMeshes(const aiScene* i_scene)
+void Model3D::LoadMeshesAndComputeAABB(const aiScene* i_scene)
 {
 	aiMesh** meshes = i_scene->mMeshes;
 	unsigned int numMeshes = i_scene->mNumMeshes;
+
+	float3 minVert = float3(math::floatMax);
+	float3 maxVert = float3(math::floatMin);
+	
 	for (int i = 0; i < numMeshes; ++i) {
+		//create mesh instance
 		Mesh* mesh = Mesh::LoadMesh(meshes[i], m_textures);
 		m_meshes.push_back(mesh);
+
+		//update min and max vertices
+		aiVector3D* meshVert = meshes[i]->mVertices;
+		unsigned int numVertices = meshes[i]->mNumVertices;
+		for (int v = 0; v < numVertices; ++v) {
+			aiVector3D vert = meshVert[v];
+			minVert = float3(math::Min(minVert.x, vert.x),
+				math::Min(minVert.y, vert.y),
+				math::Min(minVert.z, vert.z));
+			maxVert = float3(math::Max(maxVert.x, vert.x),
+				math::Max(maxVert.y, vert.y),
+				math::Max(maxVert.z, vert.z));
+		}
 	}
+
+	//when we start to use GameObjects,
+	//this will need to access the position of the transform and add it to the vectors
+	m_aabb = new AABB(minVert, maxVert);
 }
