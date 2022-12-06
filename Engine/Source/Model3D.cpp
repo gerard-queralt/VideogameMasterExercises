@@ -31,6 +31,8 @@ Model3D::~Model3D()
 
 Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 {
+	App->editor->OutputToConsole(std::string("Loading model " + i_fileName + "...").c_str());
+
 	if (!CheckValidFormat(i_fileName)) {
 		App->editor->OutputToConsole("File is not FBX");
 		return nullptr;
@@ -43,6 +45,7 @@ Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 	
 	if (scene)
 	{
+		App->editor->OutputToConsole("Loading textures...");
 		model->LoadMaterials(scene);
 		if (model->m_textures.size() != scene->mNumMaterials) {
 			App->editor->OutputToConsole("Some texture(s) failed to load");
@@ -50,8 +53,11 @@ Model3D* Model3D::LoadFromFile(const std::string& i_fileName)
 			delete model;
 			return nullptr;
 		}
+		App->editor->OutputToConsole("Loading meshes...");
 		model->LoadMeshesAndComputeAABB(scene);
+		App->editor->OutputToConsole("AABB computed");
 		aiReleaseImport(scene);
+		App->editor->OutputToConsole("Model loaded successfully!");
 		return model;
 	}
 	else
