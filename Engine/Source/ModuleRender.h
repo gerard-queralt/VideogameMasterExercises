@@ -23,7 +23,7 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 	bool CleanUp();
-	void WindowResized(unsigned i_width, unsigned i_height);
+	void UpdateBuffers(unsigned i_width, unsigned i_height);
 
 	float4x4 GetModel() {
 		return m_model;

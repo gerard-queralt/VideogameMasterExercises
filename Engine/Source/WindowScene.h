@@ -13,6 +13,10 @@ public:
 	void Draw();
 
 private:
+	void ManageResize();
+
 	GLuint texture;
+	float m_previousWidht;
+	float m_previousHeight;
 };
 

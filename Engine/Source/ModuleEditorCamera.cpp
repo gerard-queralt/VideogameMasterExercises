@@ -31,16 +31,6 @@ bool ModuleEditorCamera::Start()
 	return true;
 }
 
-update_status ModuleEditorCamera::Update()
-{
-	int w, h;
-	SDL_GetWindowSize(App->window->m_window, &w, &h);
-	m_aspectRatio = ((float)w) / ((float)h);
-	SetAspectRatio(m_aspectRatio);
-
-	return UPDATE_CONTINUE;
-}
-
 void ModuleEditorCamera::SetFOVrads(float i_rads)
 {
 	m_fovRads = i_rads;

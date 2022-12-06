@@ -10,7 +10,6 @@ public:
 	~ModuleEditorCamera();
 
 	bool Start();
-	update_status Update();
 
 	float4x4 GetProjection() {
 		return m_frustum.ProjectionMatrix();
