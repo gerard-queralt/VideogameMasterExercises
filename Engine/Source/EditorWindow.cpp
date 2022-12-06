@@ -10,12 +10,14 @@ EditorWindow::~EditorWindow()
 
 void EditorWindow::Draw(bool& io_enabled)
 {
-	if (ImGui::Begin(m_name.c_str(), &io_enabled, m_flags)) {
-		DrawWindowContents();
-		m_focused = ImGui::IsWindowFocused();
+	if (io_enabled) {
+		if (ImGui::Begin(m_name.c_str(), &io_enabled, m_flags)) {
+			DrawWindowContents();
+			m_focused = ImGui::IsWindowFocused();
+		}
+		ImGui::End();
 	}
 	else {
 		m_focused = false;
 	}
-	ImGui::End();
 }

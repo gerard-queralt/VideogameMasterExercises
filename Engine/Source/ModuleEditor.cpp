@@ -38,8 +38,7 @@ bool ModuleEditor::Init()
 	m_windows.push_back(new WindowConfiguration());
 	m_windows.push_back(m_scene = new WindowScene());
 
-	m_mainMenu = new WindowMainMenu();
-	m_mainMenu->SetUpWindowsMenu(m_windows);
+	m_mainMenu = new WindowMainMenu(m_windows);
 
 	return true;
 }

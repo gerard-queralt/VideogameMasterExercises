@@ -10,12 +10,10 @@
 class WindowMainMenu : public Window
 {
 public:
-	WindowMainMenu();
+	WindowMainMenu(std::list<EditorWindow*>& i_editorWindows);
 	~WindowMainMenu();
 
 	static const std::string s_repositoryLink;
-
-	void SetUpWindowsMenu(std::list<EditorWindow*>& i_windows);
 
 	void Draw(bool& i_enabled = s_default);
 
@@ -27,8 +25,13 @@ public:
 	}
 
 private:
+	void DrawWindowsMenu();
+	void DrawGithubLink();
+	void DrawExit();
+
 	static bool s_default;
 
+	int m_nWindows;
 	std::vector<std::string> m_windowNames;
 	std::vector<bool> m_windowsEnabled;
 };
