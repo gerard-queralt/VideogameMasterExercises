@@ -3,6 +3,7 @@
 #include "WindowFPS.h"
 #include "WindowWindow.h"
 #include "WindowInput.h"
+#include "WindowRenderer.h"
 
 WindowConfiguration::WindowConfiguration() : EditorWindow("Configuration")
 {
@@ -11,6 +12,7 @@ WindowConfiguration::WindowConfiguration() : EditorWindow("Configuration")
 	m_collapsingSubWindows.push_back(new WindowFPS());
 	m_collapsingSubWindows.push_back(new WindowWindow());
 	m_collapsingSubWindows.push_back(new WindowInput());
+	m_collapsingSubWindows.push_back(new WindowRenderer());
 }
 
 WindowConfiguration::~WindowConfiguration()

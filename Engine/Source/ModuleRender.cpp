@@ -78,7 +78,7 @@ bool ModuleRender::Init()
 
 bool ModuleRender::Start()
 {
-	m_program = App->program->CreateProgramFromShaders(m_vertexShader, m_fragmentShader);
+	UpdateProgram();
 
 	m_model = float4x4::FromTRS(float3(0.0f, 0.0f, 0.0f),
 		float4x4::identity,
@@ -162,4 +162,16 @@ void ModuleRender::FocusCameraOnModel()
 {
 	if (m_model3D != nullptr)
 		App->camera->FocusOn(m_model3D->GetAABB());
+}
+
+void ModuleRender::SetShaders(const char* i_vertexShader, const char* i_fragmentShader)
+{
+	m_vertexShader = i_vertexShader;
+	m_fragmentShader = i_fragmentShader;
+	UpdateProgram();
+}
+
+void ModuleRender::UpdateProgram()
+{
+	m_program = App->program->CreateProgramFromShaders(m_vertexShader, m_fragmentShader);
 }

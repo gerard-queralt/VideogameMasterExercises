@@ -23,7 +23,11 @@ public:
 	update_status Update();
 	update_status PostUpdate();
 	bool CleanUp();
+
 	void UpdateBuffers(unsigned i_width, unsigned i_height);
+	void SetModel3D(const char* i_modelPath);
+	void FocusCameraOnModel();
+	void SetShaders(const char* i_vertexShader, const char* i_fragmentShader);
 
 	float4x4 GetModel() {
 		return m_model;
@@ -31,14 +35,20 @@ public:
 	GLuint GetProgram() {
 		return m_program;
 	}
-	void SetModel3D(const char* i_modelPath);
-	void FocusCameraOnModel();
+	const char* GetVertexShader() {
+		return m_vertexShader;
+	}
+	const char* GetFragmentShader() {
+		return m_fragmentShader;
+	}
 
 	GLuint m_framebuffer = 0;
 	GLuint m_renderedTexture = 0;
 
 private:
 	friend class ModuleEditor;
+
+	void UpdateProgram();
 
 	void* m_context;
 

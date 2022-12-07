@@ -220,6 +220,7 @@
     <ClCompile Include="WindowInput.cpp" />
     <ClCompile Include="WindowMainMenu.cpp" />
     <ClCompile Include="WindowModel3D.cpp" />
+    <ClCompile Include="WindowRenderer.cpp" />
     <ClCompile Include="WindowScene.cpp" />
     <ClCompile Include="WindowWindow.cpp" />
   </ItemGroup>
@@ -337,6 +338,7 @@
     <ClInclude Include="WindowInput.h" />
     <ClInclude Include="WindowMainMenu.h" />
     <ClInclude Include="WindowModel3D.h" />
+    <ClInclude Include="WindowRenderer.h" />
     <ClInclude Include="WindowScene.h" />
     <ClInclude Include="WindowWindow.h" />
   </ItemGroup>

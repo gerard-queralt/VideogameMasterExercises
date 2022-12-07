@@ -229,6 +229,9 @@
     <ClCompile Include="SubWindow.cpp">
       <Filter>Source\Models\Windows\SubWindows</Filter>
     </ClCompile>
+    <ClCompile Include="WindowRenderer.cpp">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
@@ -574,6 +577,9 @@
       <Filter>Source\Models\Windows\SubWindows</Filter>
     </ClInclude>
     <ClInclude Include="SubWindow.h">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowRenderer.h">
       <Filter>Source\Models\Windows\SubWindows</Filter>
     </ClInclude>
   </ItemGroup>
