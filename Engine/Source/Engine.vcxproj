@@ -99,7 +99,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\External\assimp;..\External\assimp\assimp\Compiler;..\External\assimp\assimp;..\External\DirectXTex\DirectXTex-oct2022;..\External\MathGeoLib\Include\;..\External\MathGeoLib\Include\Time;..\External\MathGeoLib\Include\Math;..\External\MathGeoLib\Include\Geometry;..\External\MathGeoLib\Include\Algorithm;..\External\MathGeoLib\Include\Algorithm\Random;..\External\ImGui\Include\MainSource;..\External\ImGui\Include\GlueCode;..\External\glew-2.1.0\include\GL;..\External\SDL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\External\assimp;..\External\DirectXTex\DirectXTex-oct2022;..\External\MathGeoLib\Include;..\External\ImGui\Include\MainSource;..\External\ImGui\Include\GlueCode;..\External\glew-2.1.0\include\GL;..\External\SDL\include;..\Source</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\External\assimp;..\External\assimp\assimp\Compiler;..\External\assimp\assimp;..\External\DirectXTex\DirectXTex-oct2022;..\External\MathGeoLib\Include\;..\External\MathGeoLib\Include\Time;..\External\MathGeoLib\Include\Math;..\External\MathGeoLib\Include\Geometry;..\External\MathGeoLib\Include\Algorithm;..\External\MathGeoLib\Include\Algorithm\Random;..\External\ImGui\Include\MainSource;..\External\ImGui\Include\GlueCode;..\External\glew-2.1.0\include\GL;..\External\SDL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\External\assimp;..\External\DirectXTex\DirectXTex-oct2022;..\External\MathGeoLib\Include;..\External\ImGui\Include\MainSource;..\External\ImGui\Include\GlueCode;..\External\glew-2.1.0\include\GL;..\External\SDL\include;..\Source</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -198,31 +198,31 @@
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="log.cpp" />
     <ClCompile Include="Main.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="MicrosecondTimer.cpp" />
-    <ClCompile Include="MillisecondTimer.cpp" />
-    <ClCompile Include="Model3D.cpp" />
-    <ClCompile Include="ModuleEditorCamera.cpp" />
-    <ClCompile Include="ModuleDebugDraw.cpp" />
-    <ClCompile Include="ModuleEditor.cpp" />
-    <ClCompile Include="ModuleInput.cpp" />
-    <ClCompile Include="ModuleProgram.cpp" />
-    <ClCompile Include="ModuleRender.cpp" />
-    <ClCompile Include="ModuleTexture.cpp" />
-    <ClCompile Include="ModuleWindow.cpp" />
-    <ClCompile Include="SubWindow.cpp" />
-    <ClCompile Include="Timer.cpp" />
-    <ClCompile Include="WindowConfiguration.cpp" />
-    <ClCompile Include="WindowConsole.cpp" />
-    <ClCompile Include="EditorWindow.cpp" />
-    <ClCompile Include="WindowFPS.cpp" />
-    <ClCompile Include="WindowHardware.cpp" />
-    <ClCompile Include="WindowInput.cpp" />
-    <ClCompile Include="WindowMainMenu.cpp" />
-    <ClCompile Include="WindowModel3D.cpp" />
-    <ClCompile Include="WindowRenderer.cpp" />
-    <ClCompile Include="WindowScene.cpp" />
-    <ClCompile Include="WindowWindow.cpp" />
+    <ClCompile Include="Models\3DModels\Mesh.cpp" />
+    <ClCompile Include="Models\3DModels\Model3D.cpp" />
+    <ClCompile Include="Models\Timers\MicrosecondTimer.cpp" />
+    <ClCompile Include="Models\Timers\MillisecondTimer.cpp" />
+    <ClCompile Include="Models\Timers\Timer.cpp" />
+    <ClCompile Include="Models\Windows\EditorWindows\EditorWindow.cpp" />
+    <ClCompile Include="Models\Windows\EditorWindows\WindowConfiguration.cpp" />
+    <ClCompile Include="Models\Windows\EditorWindows\WindowConsole.cpp" />
+    <ClCompile Include="Models\Windows\EditorWindows\WindowHardware.cpp" />
+    <ClCompile Include="Models\Windows\EditorWindows\WindowModel3D.cpp" />
+    <ClCompile Include="Models\Windows\EditorWindows\WindowScene.cpp" />
+    <ClCompile Include="Models\Windows\SubWindows\SubWindow.cpp" />
+    <ClCompile Include="Models\Windows\SubWindows\WindowFPS.cpp" />
+    <ClCompile Include="Models\Windows\SubWindows\WindowInput.cpp" />
+    <ClCompile Include="Models\Windows\SubWindows\WindowRenderer.cpp" />
+    <ClCompile Include="Models\Windows\SubWindows\WindowWindow.cpp" />
+    <ClCompile Include="Models\Windows\WindowMainMenu.cpp" />
+    <ClCompile Include="Modules\ModuleDebugDraw.cpp" />
+    <ClCompile Include="Modules\ModuleEditor.cpp" />
+    <ClCompile Include="Modules\ModuleEditorCamera.cpp" />
+    <ClCompile Include="Modules\ModuleInput.cpp" />
+    <ClCompile Include="Modules\ModuleProgram.cpp" />
+    <ClCompile Include="Modules\ModuleRender.cpp" />
+    <ClCompile Include="Modules\ModuleTexture.cpp" />
+    <ClCompile Include="Modules\ModuleWindow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\External\ImGui\Include\GlueCode\imgui_impl_opengl3.h" />
@@ -312,35 +312,34 @@
     <ClInclude Include="Application.h" />
     <ClInclude Include="debugdraw.h" />
     <ClInclude Include="debug_draw.hpp" />
-    <ClInclude Include="Dummy.h" />
     <ClInclude Include="Globals.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="MicrosecondTimer.h" />
-    <ClInclude Include="MillisecondTimer.h" />
-    <ClInclude Include="Model3D.h" />
-    <ClInclude Include="Module.h" />
-    <ClInclude Include="ModuleEditorCamera.h" />
-    <ClInclude Include="ModuleDebugDraw.h" />
-    <ClInclude Include="ModuleEditor.h" />
-    <ClInclude Include="ModuleInput.h" />
-    <ClInclude Include="ModuleProgram.h" />
-    <ClInclude Include="ModuleRender.h" />
-    <ClInclude Include="ModuleTexture.h" />
-    <ClInclude Include="ModuleWindow.h" />
-    <ClInclude Include="SubWindow.h" />
-    <ClInclude Include="Timer.h" />
-    <ClInclude Include="Window.h" />
-    <ClInclude Include="WindowConfiguration.h" />
-    <ClInclude Include="WindowConsole.h" />
-    <ClInclude Include="EditorWindow.h" />
-    <ClInclude Include="WindowFPS.h" />
-    <ClInclude Include="WindowHardware.h" />
-    <ClInclude Include="WindowInput.h" />
-    <ClInclude Include="WindowMainMenu.h" />
-    <ClInclude Include="WindowModel3D.h" />
-    <ClInclude Include="WindowRenderer.h" />
-    <ClInclude Include="WindowScene.h" />
-    <ClInclude Include="WindowWindow.h" />
+    <ClInclude Include="Models\3DModels\Mesh.h" />
+    <ClInclude Include="Models\3DModels\Model3D.h" />
+    <ClInclude Include="Models\Timers\MicrosecondTimer.h" />
+    <ClInclude Include="Models\Timers\MillisecondTimer.h" />
+    <ClInclude Include="Models\Timers\Timer.h" />
+    <ClInclude Include="Models\Windows\EditorWindows\EditorWindow.h" />
+    <ClInclude Include="Models\Windows\EditorWindows\WindowConfiguration.h" />
+    <ClInclude Include="Models\Windows\EditorWindows\WindowConsole.h" />
+    <ClInclude Include="Models\Windows\EditorWindows\WindowHardware.h" />
+    <ClInclude Include="Models\Windows\EditorWindows\WindowModel3D.h" />
+    <ClInclude Include="Models\Windows\EditorWindows\WindowScene.h" />
+    <ClInclude Include="Models\Windows\SubWindows\SubWindow.h" />
+    <ClInclude Include="Models\Windows\SubWindows\WindowFPS.h" />
+    <ClInclude Include="Models\Windows\SubWindows\WindowInput.h" />
+    <ClInclude Include="Models\Windows\SubWindows\WindowRenderer.h" />
+    <ClInclude Include="Models\Windows\SubWindows\WindowWindow.h" />
+    <ClInclude Include="Models\Windows\Window.h" />
+    <ClInclude Include="Models\Windows\WindowMainMenu.h" />
+    <ClInclude Include="Modules\Module.h" />
+    <ClInclude Include="Modules\ModuleDebugDraw.h" />
+    <ClInclude Include="Modules\ModuleEditor.h" />
+    <ClInclude Include="Modules\ModuleEditorCamera.h" />
+    <ClInclude Include="Modules\ModuleInput.h" />
+    <ClInclude Include="Modules\ModuleProgram.h" />
+    <ClInclude Include="Modules\ModuleRender.h" />
+    <ClInclude Include="Modules\ModuleTexture.h" />
+    <ClInclude Include="Modules\ModuleWindow.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="..\External\MathGeoLib\Include\Geometry\KDTree.inl" />

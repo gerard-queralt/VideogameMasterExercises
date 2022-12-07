@@ -2,7 +2,7 @@
 
 #include "EditorWindow.h"
 
-#include "Model3D.h"
+#include "Models/3DModels/Model3D.h"
 
 class WindowModel3D : public EditorWindow
 {

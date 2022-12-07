@@ -3,9 +3,9 @@
 #include "Globals.h"
 
 #include "glew.h"
-#include "float4x4.h"
+#include "Math/float4x4.h"
 
-#include "Model3D.h"
+#include "Models/3DModels/Model3D.h"
 
 struct SDL_Texture;
 struct SDL_Renderer;

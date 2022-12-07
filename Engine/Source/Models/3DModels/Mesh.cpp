@@ -1,9 +1,9 @@
 #include "Mesh.h"
 
-#include "float2.h"
+#include "Math/float2.h"
 #include "Application.h"
-#include "ModuleRender.h"
-#include "ModuleEditorCamera.h"
+#include "Modules/ModuleRender.h"
+#include "Modules/ModuleEditorCamera.h"
 
 Mesh::Mesh()
 {

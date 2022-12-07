@@ -1,9 +1,9 @@
 #include "WindowConfiguration.h"
 
-#include "WindowFPS.h"
-#include "WindowWindow.h"
-#include "WindowInput.h"
-#include "WindowRenderer.h"
+#include "Models/Windows/SubWindows/WindowFPS.h"
+#include "Models/Windows/SubWindows/WindowWindow.h"
+#include "Models/Windows/SubWindows/WindowInput.h"
+#include "Models/Windows/SubWindows/WindowRenderer.h"
 
 WindowConfiguration::WindowConfiguration() : EditorWindow("Configuration")
 {

@@ -3,8 +3,8 @@
 #include "Application.h"
 #include "ModuleWindow.h"
 #include "SDL.h"
-#include "float3x3.h"
-#include "Sphere.h"
+#include "Math/float3x3.h"
+#include "Geometry/Sphere.h"
 
 ModuleEditorCamera::ModuleEditorCamera()
 {

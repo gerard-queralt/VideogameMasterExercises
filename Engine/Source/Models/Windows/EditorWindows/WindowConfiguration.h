@@ -1,7 +1,7 @@
 #pragma once
 
 #include "EditorWindow.h"
-#include "SubWindow.h"
+#include "Models/Windows/SubWindows/SubWindow.h"
 
 #include <list>
 

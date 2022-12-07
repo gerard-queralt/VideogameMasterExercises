@@ -3,11 +3,11 @@
 #include <vector>
 
 #include "Application.h"
-#include "ModuleEditor.h"
-#include "ModuleTexture.h"
+#include "Modules/ModuleEditor.h"
+#include "Modules/ModuleTexture.h"
 
-#include "cimport.h"
-#include "postprocess.h"
+#include "assimp/cimport.h"
+#include "assimp/postprocess.h"
 
 const std::string Model3D::s_modelFolderPath = "models/";
 

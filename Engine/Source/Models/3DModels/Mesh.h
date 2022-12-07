@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include "scene.h"
+#include "assimp/scene.h"
 #include "glew.h"
 
 class Mesh

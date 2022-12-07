@@ -5,7 +5,7 @@
 #include <list>
 #include <vector>
 
-#include "EditorWindow.h"
+#include "EditorWindows/EditorWindow.h"
 
 class WindowMainMenu : public Window
 {

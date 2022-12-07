@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Module.h"
-#include "Frustum.h"
+#include "Geometry/Frustum.h"
 #include "Geometry/AABB.h"
 
 class ModuleEditorCamera : public Module

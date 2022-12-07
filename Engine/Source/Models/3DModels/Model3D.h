@@ -3,7 +3,7 @@
 #include <string>
 #include <list>
 
-#include "scene.h"
+#include "assimp/scene.h"
 #include "Geometry/AABB.h"
 
 #include "Mesh.h"

@@ -157,87 +157,84 @@
     <ClCompile Include="..\External\MathGeoLib\Include\Time\Clock.cpp">
       <Filter>External\MathGeoLib\Time</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleDebugDraw.cpp">
+    <ClCompile Include="Modules\ModuleDebugDraw.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleEditor.cpp">
+    <ClCompile Include="Modules\ModuleEditor.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleEditorCamera.cpp">
+    <ClCompile Include="Modules\ModuleEditorCamera.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleInput.cpp">
+    <ClCompile Include="Modules\ModuleInput.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleProgram.cpp">
+    <ClCompile Include="Modules\ModuleProgram.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleRender.cpp">
+    <ClCompile Include="Modules\ModuleRender.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleTexture.cpp">
+    <ClCompile Include="Modules\ModuleTexture.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="ModuleWindow.cpp">
+    <ClCompile Include="Modules\ModuleWindow.cpp">
       <Filter>Source\Modules</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
+    <ClCompile Include="Models\3DModels\Mesh.cpp">
       <Filter>Source\Models\3D Models</Filter>
     </ClCompile>
-    <ClCompile Include="Model3D.cpp">
+    <ClCompile Include="Models\3DModels\Model3D.cpp">
       <Filter>Source\Models\3D Models</Filter>
     </ClCompile>
-    <ClCompile Include="Timer.cpp">
+    <ClCompile Include="Models\Timers\MicrosecondTimer.cpp">
       <Filter>Source\Models\Timers</Filter>
     </ClCompile>
-    <ClCompile Include="MillisecondTimer.cpp">
+    <ClCompile Include="Models\Timers\MillisecondTimer.cpp">
       <Filter>Source\Models\Timers</Filter>
     </ClCompile>
-    <ClCompile Include="MicrosecondTimer.cpp">
+    <ClCompile Include="Models\Timers\Timer.cpp">
       <Filter>Source\Models\Timers</Filter>
     </ClCompile>
-    <ClCompile Include="WindowMainMenu.cpp">
+    <ClCompile Include="Models\Windows\WindowMainMenu.cpp">
       <Filter>Source\Models\Windows</Filter>
     </ClCompile>
-    <ClCompile Include="WindowConfiguration.cpp">
-      <Filter>Source\Models\Windows\EditorWindows</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowConsole.cpp">
-      <Filter>Source\Models\Windows\EditorWindows</Filter>
-    </ClCompile>
-    <ClCompile Include="EditorWindow.cpp">
-      <Filter>Source\Models\Windows\EditorWindows</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowFPS.cpp">
+    <ClCompile Include="Models\Windows\SubWindows\SubWindow.cpp">
       <Filter>Source\Models\Windows\SubWindows</Filter>
     </ClCompile>
-    <ClCompile Include="WindowHardware.cpp">
+    <ClCompile Include="Models\Windows\SubWindows\WindowFPS.cpp">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="Models\Windows\SubWindows\WindowInput.cpp">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="Models\Windows\SubWindows\WindowRenderer.cpp">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="Models\Windows\SubWindows\WindowWindow.cpp">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClCompile>
+    <ClCompile Include="Models\Windows\EditorWindows\EditorWindow.cpp">
       <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClCompile>
-    <ClCompile Include="WindowInput.cpp">
-      <Filter>Source\Models\Windows\SubWindows</Filter>
-    </ClCompile>
-    <ClCompile Include="WindowModel3D.cpp">
+    <ClCompile Include="Models\Windows\EditorWindows\WindowConfiguration.cpp">
       <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClCompile>
-    <ClCompile Include="WindowScene.cpp">
+    <ClCompile Include="Models\Windows\EditorWindows\WindowConsole.cpp">
       <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClCompile>
-    <ClCompile Include="WindowWindow.cpp">
-      <Filter>Source\Models\Windows\SubWindows</Filter>
+    <ClCompile Include="Models\Windows\EditorWindows\WindowHardware.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClCompile>
-    <ClCompile Include="SubWindow.cpp">
-      <Filter>Source\Models\Windows\SubWindows</Filter>
+    <ClCompile Include="Models\Windows\EditorWindows\WindowModel3D.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClCompile>
-    <ClCompile Include="WindowRenderer.cpp">
-      <Filter>Source\Models\Windows\SubWindows</Filter>
+    <ClCompile Include="Models\Windows\EditorWindows\WindowScene.cpp">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Application.h">
-      <Filter>Source</Filter>
-    </ClInclude>
-    <ClInclude Include="Dummy.h">
       <Filter>Source</Filter>
     </ClInclude>
     <ClInclude Include="Globals.h">
@@ -501,86 +498,86 @@
     <ClInclude Include="debugdraw.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="Module.h">
+    <ClInclude Include="Modules\Module.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleDebugDraw.h">
+    <ClInclude Include="Modules\ModuleDebugDraw.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleEditor.h">
+    <ClInclude Include="Modules\ModuleEditor.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleEditorCamera.h">
+    <ClInclude Include="Modules\ModuleEditorCamera.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleInput.h">
+    <ClInclude Include="Modules\ModuleInput.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleProgram.h">
+    <ClInclude Include="Modules\ModuleProgram.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleRender.h">
+    <ClInclude Include="Modules\ModuleRender.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleTexture.h">
+    <ClInclude Include="Modules\ModuleTexture.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="ModuleWindow.h">
+    <ClInclude Include="Modules\ModuleWindow.h">
       <Filter>Source\Modules</Filter>
     </ClInclude>
-    <ClInclude Include="Window.h">
-      <Filter>Source\Models\Windows</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
+    <ClInclude Include="Models\3DModels\Mesh.h">
       <Filter>Source\Models\3D Models</Filter>
     </ClInclude>
-    <ClInclude Include="Model3D.h">
+    <ClInclude Include="Models\3DModels\Model3D.h">
       <Filter>Source\Models\3D Models</Filter>
     </ClInclude>
-    <ClInclude Include="Timer.h">
+    <ClInclude Include="Models\Timers\MicrosecondTimer.h">
       <Filter>Source\Models\Timers</Filter>
     </ClInclude>
-    <ClInclude Include="MillisecondTimer.h">
+    <ClInclude Include="Models\Timers\MillisecondTimer.h">
       <Filter>Source\Models\Timers</Filter>
     </ClInclude>
-    <ClInclude Include="MicrosecondTimer.h">
+    <ClInclude Include="Models\Timers\Timer.h">
       <Filter>Source\Models\Timers</Filter>
     </ClInclude>
-    <ClInclude Include="WindowMainMenu.h">
+    <ClInclude Include="Models\Windows\Window.h">
       <Filter>Source\Models\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="WindowConfiguration.h">
-      <Filter>Source\Models\Windows\EditorWindows</Filter>
+    <ClInclude Include="Models\Windows\WindowMainMenu.h">
+      <Filter>Source\Models\Windows</Filter>
     </ClInclude>
-    <ClInclude Include="WindowConsole.h">
-      <Filter>Source\Models\Windows\EditorWindows</Filter>
-    </ClInclude>
-    <ClInclude Include="EditorWindow.h">
-      <Filter>Source\Models\Windows\EditorWindows</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowFPS.h">
+    <ClInclude Include="Models\Windows\SubWindows\SubWindow.h">
       <Filter>Source\Models\Windows\SubWindows</Filter>
     </ClInclude>
-    <ClInclude Include="WindowHardware.h">
+    <ClInclude Include="Models\Windows\SubWindows\WindowFPS.h">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Windows\SubWindows\WindowInput.h">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Windows\SubWindows\WindowRenderer.h">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Windows\SubWindows\WindowWindow.h">
+      <Filter>Source\Models\Windows\SubWindows</Filter>
+    </ClInclude>
+    <ClInclude Include="Models\Windows\EditorWindows\EditorWindow.h">
       <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClInclude>
-    <ClInclude Include="WindowInput.h">
-      <Filter>Source\Models\Windows\SubWindows</Filter>
-    </ClInclude>
-    <ClInclude Include="WindowModel3D.h">
+    <ClInclude Include="Models\Windows\EditorWindows\WindowConfiguration.h">
       <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClInclude>
-    <ClInclude Include="WindowScene.h">
+    <ClInclude Include="Models\Windows\EditorWindows\WindowConsole.h">
       <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClInclude>
-    <ClInclude Include="WindowWindow.h">
-      <Filter>Source\Models\Windows\SubWindows</Filter>
+    <ClInclude Include="Models\Windows\EditorWindows\WindowHardware.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClInclude>
-    <ClInclude Include="SubWindow.h">
-      <Filter>Source\Models\Windows\SubWindows</Filter>
+    <ClInclude Include="Models\Windows\EditorWindows\WindowModel3D.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClInclude>
-    <ClInclude Include="WindowRenderer.h">
-      <Filter>Source\Models\Windows\SubWindows</Filter>
+    <ClInclude Include="Models\Windows\EditorWindows\WindowScene.h">
+      <Filter>Source\Models\Windows\EditorWindows</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

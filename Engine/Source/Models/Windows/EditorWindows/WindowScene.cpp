@@ -3,8 +3,8 @@
 #include "imgui.h"
 
 #include "Application.h"
-#include "ModuleRender.h"
-#include "ModuleEditorCamera.h"
+#include "Modules/ModuleRender.h"
+#include "Modules/ModuleEditorCamera.h"
 
 WindowScene::WindowScene() : EditorWindow("Scene")
 {

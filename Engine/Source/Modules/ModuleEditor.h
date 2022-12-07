@@ -4,12 +4,12 @@
 
 #include <list>
 
-#include "EditorWindow.h"
-#include "WindowMainMenu.h"
-#include "WindowConsole.h"
-#include "WindowModel3D.h"
-#include "WindowScene.h"
-#include "Model3D.h"
+#include "Models/Windows/WindowMainMenu.h"
+#include "Models/Windows/EditorWindows/EditorWindow.h"
+#include "Models/Windows/EditorWindows/WindowConsole.h"
+#include "Models/Windows/EditorWindows/WindowModel3D.h"
+#include "Models/Windows/EditorWindows/WindowScene.h"
+#include "Models/3DModels/Model3D.h"
 
 class ModuleEditor : public Module
 {
