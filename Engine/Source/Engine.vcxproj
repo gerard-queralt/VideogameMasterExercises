@@ -99,13 +99,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\External\assimp;..\External\assimp\assimp\Compiler;..\External\assimp\assimp;..\External\DirectXTex\DirectXTex-oct2022;..\External\MathGeoLib\Include\;..\External\MathGeoLib\Include\Time;..\External\MathGeoLib\Include\Math;..\External\MathGeoLib\Include\Geometry;..\External\MathGeoLib\Include\Algorithm;..\External\MathGeoLib\Include\Algorithm\Random;..\External\ImGui\Include\MainSource;..\External\ImGui\Include\GlueCode;.\glew-2.1.0\include\GL;.\SDL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\External\assimp;..\External\assimp\assimp\Compiler;..\External\assimp\assimp;..\External\DirectXTex\DirectXTex-oct2022;..\External\MathGeoLib\Include\;..\External\MathGeoLib\Include\Time;..\External\MathGeoLib\Include\Math;..\External\MathGeoLib\Include\Geometry;..\External\MathGeoLib\Include\Algorithm;..\External\MathGeoLib\Include\Algorithm\Random;..\External\ImGui\Include\MainSource;..\External\ImGui\Include\GlueCode;..\External\glew-2.1.0\include\GL;..\External\SDL\include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\External\assimp\lib;..\External\DirectXTex\DirectXTex-oct2022\DirectXTex\libs\Desktop_2019_Win10\lib;.\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\External\assimp\lib;..\External\DirectXTex\DirectXTex-oct2022\DirectXTex\libs\Desktop_2019_Win10\lib;..\External\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>assimp-vc142-mt.lib;DirectXTex.lib;glew32.lib;opengl32.lib;d3d9.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -133,7 +133,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>..\External\assimp;..\External\assimp\assimp\Compiler;..\External\assimp\assimp;..\External\DirectXTex\DirectXTex-oct2022;..\External\MathGeoLib\Include\;..\External\MathGeoLib\Include\Time;..\External\MathGeoLib\Include\Math;..\External\MathGeoLib\Include\Geometry;..\External\MathGeoLib\Include\Algorithm;..\External\MathGeoLib\Include\Algorithm\Random;..\External\ImGui\Include\MainSource;..\External\ImGui\Include\GlueCode;.\glew-2.1.0\include\GL;.\SDL\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>..\External\assimp;..\External\assimp\assimp\Compiler;..\External\assimp\assimp;..\External\DirectXTex\DirectXTex-oct2022;..\External\MathGeoLib\Include\;..\External\MathGeoLib\Include\Time;..\External\MathGeoLib\Include\Math;..\External\MathGeoLib\Include\Geometry;..\External\MathGeoLib\Include\Algorithm;..\External\MathGeoLib\Include\Algorithm\Random;..\External\ImGui\Include\MainSource;..\External\ImGui\Include\GlueCode;..\External\glew-2.1.0\include\GL;..\External\SDL\include</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4996</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -141,7 +141,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>..\External\assimp\lib;..\External\DirectXTex\DirectXTex-oct2022\DirectXTex\Bin\Desktop_2019_Win10\x64\Debug;.\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\External\assimp\lib;..\External\DirectXTex\DirectXTex-oct2022\DirectXTex\Bin\Desktop_2019_Win10\x64\Debug;..\External\glew-2.1.0\lib\Release\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>assimp-vc142-mt.lib;DirectXTex.lib;glew32.lib;opengl32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>

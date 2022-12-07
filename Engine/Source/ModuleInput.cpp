@@ -7,7 +7,7 @@
 #include "ModuleEditorCamera.h"
 #include "ModuleEditor.h"
 
-#include "SDL/include/SDL.h"
+#include "../External/SDL/include/SDL.h"
 #include "imgui_impl_sdl.h"
 
 ModuleInput::ModuleInput()
