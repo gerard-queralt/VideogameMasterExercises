@@ -76,6 +76,26 @@ void ModuleWindow::ResizeWindow(int i_width, int i_height)
 	SDL_SetWindowSize(m_window, i_width, i_height);
 }
 
+bool ModuleWindow::IsWindowFullscreen()
+{
+	return IsFlagSet(SDL_WINDOW_FULLSCREEN) && m_fullscreen;
+}
+
+bool ModuleWindow::IsWindowResizable()
+{
+	return IsFlagSet(SDL_WINDOW_RESIZABLE);
+}
+
+bool ModuleWindow::IsWindowBorderless()
+{
+	return IsFlagSet(SDL_WINDOW_BORDERLESS);
+}
+
+bool ModuleWindow::IsWindowDesktopFullscreen()
+{
+	return IsFlagSet(SDL_WINDOW_FULLSCREEN_DESKTOP) && !m_fullscreen;
+}
+
 void ModuleWindow::SetWindowToDefault()
 {
 	SDL_SetWindowFullscreen(m_window, 0);
@@ -90,6 +110,7 @@ void ModuleWindow::SetFullscreen(bool i_fullscreen)
 	if (i_fullscreen) {
 		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN);
 		m_screenSurface = SDL_GetWindowSurface(m_window);
+		m_fullscreen = true;
 	}
 }
 
@@ -113,6 +134,7 @@ void ModuleWindow::SetDesktopFullscreen(bool i_fullDesktop)
 	if (i_fullDesktop) {
 		SDL_SetWindowFullscreen(m_window, SDL_WINDOW_FULLSCREEN_DESKTOP);
 		m_screenSurface = SDL_GetWindowSurface(m_window);
+		m_fullscreen = false;
 	}
 }
 
@@ -121,4 +143,10 @@ SDL_bool ModuleWindow::BoolToSDL_Bool(bool i_bool)
 	if (i_bool)
 		return SDL_TRUE;
 	return SDL_FALSE;
+}
+
+bool ModuleWindow::IsFlagSet(SDL_WindowFlags i_flag)
+{
+	Uint32 windowFlags = SDL_GetWindowFlags(m_window);
+	return windowFlags & i_flag;
 }

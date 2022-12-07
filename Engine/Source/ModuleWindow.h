@@ -22,6 +22,12 @@ public:
 	bool CleanUp();
 
 	void ResizeWindow(int i_width, int i_height);
+	
+	bool IsWindowFullscreen();
+	bool IsWindowResizable();
+	bool IsWindowBorderless();
+	bool IsWindowDesktopFullscreen();
+
 	void SetWindowToDefault();
 	void SetFullscreen(bool i_fullscreen);
 	void SetResizable(bool i_resizable);
@@ -37,6 +43,11 @@ public:
 
 private:
 	SDL_bool BoolToSDL_Bool(bool i_bool);
+	bool IsFlagSet(SDL_WindowFlags i_flag);
+
+	//whether the window was set to regular fullscreen (true) or desktop fullscreen (false)
+	//this is because both flags are set at the same time, so it's impossible to differentiate otherwise
+	bool m_fullscreen = false;
 };
 
 #endif // __ModuleWindow_H__

@@ -22,31 +22,27 @@ void WindowWindow::DrawWindowContents()
 	if (widthChanged || heighChanged)
 		App->window->ResizeWindow(width, height);
 
-	if (ImGui::Checkbox("Fullscreen", &m_fullscreen)) {
-		App->window->SetFullscreen(m_fullscreen);
-		if (m_fullscreen) {
-			m_resizable = m_borderless = m_fullDesktop = false;
-		}
+	bool fullscreen = App->window->IsWindowFullscreen();
+	if (ImGui::Checkbox("Fullscreen", &fullscreen)) {
+		App->window->SetFullscreen(fullscreen);
 	}
+
 	ImGui::SameLine();
-	if (ImGui::Checkbox("Resizable", &m_resizable)) {
-		App->window->SetResizable(m_resizable);
-		if (m_resizable) {
-			m_borderless = m_fullDesktop = m_fullscreen = false;
-		}
+
+	bool resizable = App->window->IsWindowResizable();
+	if (ImGui::Checkbox("Resizable", &resizable)) {
+		App->window->SetResizable(resizable);
 	}
 		
-	if (ImGui::Checkbox("Borderless", &m_borderless)) {
-		App->window->SetBorderless(m_borderless);
-		if (m_borderless) {
-			m_fullDesktop = m_fullscreen = m_resizable = false;
-		}
+	bool borderless = App->window->IsWindowBorderless();
+	if (ImGui::Checkbox("Borderless", &borderless)) {
+		App->window->SetBorderless(borderless);
 	}
+
 	ImGui::SameLine();
-	if (ImGui::Checkbox("Desktop Fullscreen", &m_fullDesktop)) {
-		App->window->SetDesktopFullscreen(m_fullDesktop);
-		if (m_fullDesktop) {
-			m_fullscreen = m_resizable = m_borderless = false;
-		}
+
+	bool fullDesktop = App->window->IsWindowDesktopFullscreen();
+	if (ImGui::Checkbox("Desktop Fullscreen", &fullDesktop)) {
+		App->window->SetDesktopFullscreen(fullDesktop);
 	}
 }
