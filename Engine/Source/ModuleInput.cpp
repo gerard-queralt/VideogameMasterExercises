@@ -40,6 +40,7 @@ update_status ModuleInput::Update()
     SDL_Event sdlEvent;
 
     char* dropfileDir;
+    bool mouseMotion = false;
 
     while (SDL_PollEvent(&sdlEvent) != 0)
     {
@@ -52,6 +53,17 @@ update_status ModuleInput::Update()
                 if (sdlEvent.window.event == SDL_WINDOWEVENT_CLOSE)
                     return UPDATE_STOP;
                 break;
+            case SDL_MOUSEBUTTONDOWN:
+                if (sdlEvent.button.button == SDL_BUTTON_RIGHT)
+                    m_rightButtonPressed = true;
+                break;
+            case SDL_MOUSEBUTTONUP:
+                if (sdlEvent.button.button == SDL_BUTTON_RIGHT)
+                    m_rightButtonPressed = false;
+                break;
+            case SDL_MOUSEMOTION:
+                mouseMotion = true;
+                break;
             case SDL_DROPFILE:
                 dropfileDir = sdlEvent.drop.file;
                 App->editor->OutputToConsole(("File dropped: " + std::string(dropfileDir)).c_str());
@@ -61,54 +73,45 @@ update_status ModuleInput::Update()
     }
 
     m_keyboard = SDL_GetKeyboardState(NULL);
-    int deltaTime = App->GetDeltaTime();
 
-    //translate camera
-    float3 deltaPosVec = float3::zero;
-    if (m_keyboard[SDL_SCANCODE_LSHIFT])
-        m_cameraSpeed *= 2;
-    float deltaPos = m_cameraSpeed * deltaTime;
+    if (m_rightButtonPressed && App->editor->IsSceneFocused()) {
+        int deltaTime = App->GetDeltaTime();
 
-    if (App->editor->IsSceneFocused())
-        App->editor->OutputToConsole("Scene focused!");
+        //translate camera
+        float3 deltaPosVec = float3::zero;
+        float deltaPos = m_cameraSpeed * deltaTime;
+        if (m_keyboard[SDL_SCANCODE_LSHIFT])
+            deltaPos *= 2;
 
-    if (m_keyboard[SDL_SCANCODE_W]) {
-        deltaPosVec.x += deltaPos;
-    }
-    if (m_keyboard[SDL_SCANCODE_S]) {
-        deltaPosVec.x -= deltaPos;
-    }
-    if (m_keyboard[SDL_SCANCODE_Q]) {
-        deltaPosVec.y += deltaPos;
-    }
-    if (m_keyboard[SDL_SCANCODE_E]) {
-        deltaPosVec.y -= deltaPos;
-    }
-    if (m_keyboard[SDL_SCANCODE_D]) {
-        deltaPosVec.z += deltaPos;
-    }
-    if (m_keyboard[SDL_SCANCODE_A]) {
-        deltaPosVec.z -= deltaPos;
-    }
-    App->camera->Translate(deltaPosVec);
+        if (m_keyboard[SDL_SCANCODE_W]) {
+            deltaPosVec.x += deltaPos;
+        }
+        if (m_keyboard[SDL_SCANCODE_S]) {
+            deltaPosVec.x -= deltaPos;
+        }
+        if (m_keyboard[SDL_SCANCODE_Q]) {
+            deltaPosVec.y += deltaPos;
+        }
+        if (m_keyboard[SDL_SCANCODE_E]) {
+            deltaPosVec.y -= deltaPos;
+        }
+        if (m_keyboard[SDL_SCANCODE_D]) {
+            deltaPosVec.z += deltaPos;
+        }
+        if (m_keyboard[SDL_SCANCODE_A]) {
+            deltaPosVec.z -= deltaPos;
+        }
+        App->camera->Translate(deltaPosVec);
 
-    //rotate camera
-    float3 deltaRot = float3::zero;
-    float deltaAngle = m_angleSpeed * deltaTime;
-
-    if (m_keyboard[SDL_SCANCODE_LEFT]) {
-        deltaRot.y += deltaAngle;
+        if (mouseMotion) {
+            //rotate camera
+            float3 deltaRot = float3::zero;
+            float deltaAngle = m_angleSpeed * deltaTime;
+            deltaRot.x = -deltaAngle * sdlEvent.motion.xrel;
+            deltaRot.y = -deltaAngle * sdlEvent.motion.yrel;
+            App->camera->Rotate(deltaRot);
+        }
     }
-    if (m_keyboard[SDL_SCANCODE_RIGHT]) {
-        deltaRot.y -= deltaAngle;
-    }
-    if (m_keyboard[SDL_SCANCODE_UP]) {
-        deltaRot.x += deltaAngle;
-    }
-    if (m_keyboard[SDL_SCANCODE_DOWN]) {
-        deltaRot.x -= deltaAngle;
-    }
-    App->camera->Rotate(deltaRot);
 
     if (m_keyboard[SDL_SCANCODE_F])
         App->renderer->FocusCameraOnModel();

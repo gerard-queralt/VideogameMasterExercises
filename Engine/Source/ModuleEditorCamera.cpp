@@ -120,11 +120,11 @@ void ModuleEditorCamera::Rotate(const float3x3& i_rotationMatrix)
 
 void ModuleEditorCamera::Rotate(const float3& i_thetasRad)
 {
-	float3x3 rotationX = float3x3::RotateAxisAngle(m_frustum.WorldRight(), i_thetasRad.x);
-	float3x3 rotationY = float3x3::RotateY(i_thetasRad.y);
+	float3x3 rotationX = float3x3::RotateY(i_thetasRad.x);
+	float3x3 rotationY = float3x3::RotateAxisAngle(m_frustum.WorldRight(), i_thetasRad.y);
 	float3x3 rotationZ = float3x3::RotateAxisAngle(m_frustum.Front(), i_thetasRad.z);
 
-	float3x3 rotationMat = rotationY * rotationX * rotationZ;
+	float3x3 rotationMat = rotationX * rotationY * rotationZ;
 
 	float3 oldFront = m_frustum.Front().Normalized();
 	float3 newFront = rotationMat.MulDir(oldFront);
@@ -133,8 +133,8 @@ void ModuleEditorCamera::Rotate(const float3& i_thetasRad)
 	float3 newUp = rotationMat.MulDir(oldUp);
 
 	if (newUp.y < 0.f) { //TODO: when migrating this function to ComponentTransform, check if parent GameObject has camera? Maybe this check is not needed?
-		//ignore rotation in X axis
-		rotationMat = rotationY * float3x3::identity * rotationZ;
+		//ignore rotation in Y axis
+		rotationMat = rotationX * float3x3::identity * rotationZ;
 
 		newFront = rotationMat.MulDir(oldFront);
 		newUp = rotationMat.MulDir(oldUp);

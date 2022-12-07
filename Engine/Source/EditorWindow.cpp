@@ -17,7 +17,9 @@ void EditorWindow::Draw(bool& io_enabled)
 		}
 		ImGui::End();
 	}
-	else {
+	//The call to ImGui::Begin can change the value of io_enabled
+	//so using "else" will cause the window to remain focused for an extra frame
+	if (!io_enabled) {
 		m_focused = false;
 	}
 }

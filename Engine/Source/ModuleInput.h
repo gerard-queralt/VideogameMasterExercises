@@ -20,6 +20,7 @@ private:
 
 	const Uint8* m_keyboard = NULL;
 
+	bool m_rightButtonPressed = false;
 	float m_cameraSpeed = 0.02f;
 	float m_angleSpeed = 0.005f;
 };
